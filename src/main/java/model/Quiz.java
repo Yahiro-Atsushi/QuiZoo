@@ -1,18 +1,44 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Map;
+import java.util.Objects;
 
 public class Quiz implements Serializable {
+	private int id;
 	private String quistionMsg;
 	private String answer;
-	private String correct;
-	private String[] choices;
+	private Map<Integer, String> buttons;
+	private Map<Integer, String> buttonTexts;
 
-	public Quiz(String quistionMsg, String answer, String correct, String[] choices) {
+	public Quiz(int id, String quistionMsg, String answer,
+			Map<Integer, String> buttons, Map<Integer, String> buttonTexts) {
+		this.id = id;
 		this.quistionMsg = quistionMsg;
 		this.answer = answer;
-		this.correct = correct;
-		this.choices = choices;
+		this.buttons = buttons;
+		this.buttonTexts = buttonTexts;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Quiz other = (Quiz) obj;
+		return id == other.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	public int getId() {
+		return this.id;
 	}
 
 	public String getQuistionMsg() {
@@ -23,12 +49,12 @@ public class Quiz implements Serializable {
 		return answer;
 	}
 
-	public String getCorrect() {
-		return correct;
+	public Map<Integer, String> getButtons() {
+		return buttons;
 	}
 
-	public String[] getChoices() {
-		return choices;
+	public Map<Integer, String> getButtonTexts() {
+		return buttonTexts;
 	}
 
 }
