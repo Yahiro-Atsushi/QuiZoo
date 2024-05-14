@@ -12,13 +12,18 @@ import java.util.TreeMap;
 import model.GameMode;
 import model.Quiz;
 
-public class selectDao {
-
-	public static Quiz selectQuizById(GameMode mode, String randomId) {
-
+public class SelectDao {
+	private DatabaseConnector connector;
+	private Connection con;
+	
+	public SelectDao() {
+		this.connector = DatabaseConnector.getInstance();
+		this.con = connector.getConnection();
+	}
+	
+	public Quiz selectQuizById(GameMode mode, String randomId) {
+		
 		Quiz quiz = null;
-
-		Connection con = DatabaseConnector.getInstance().getConnection();
 
 		String sql = ""
 				+ "SELECT "
@@ -27,7 +32,7 @@ public class selectDao {
 				+ "WHERE "
 				+ " id = " + randomId + " ;";
 
-		try (PreparedStatement ps = con.prepareStatement(sql)) {
+		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -36,7 +41,6 @@ public class selectDao {
 				String answer = rs.getString(ColumnNames.answer.name());
 				Map<Integer, String> buttons = new TreeMap<>();
 				Map<Integer, String> buttonTexts = new TreeMap<>();
-
 				for (int i = 1; i < mode.getButtonSize(); i++) {
 					//button1, button2, button3, button4
 					String button = "button" + i;
@@ -57,9 +61,7 @@ public class selectDao {
 		return quiz;
 	}
 
-	public static List<Quiz> selectAllQuiz(GameMode mode) {
-
-		Connection con = DatabaseConnector.getInstance().getConnection();
+	public List<Quiz> selectAllQuiz(GameMode mode) {
 
 		List<Quiz> allQuiz = new ArrayList<>();
 
@@ -99,8 +101,7 @@ public class selectDao {
 		return allQuiz;
 	}
 
-	public static List<String> selectAllQuizId(GameMode mode) {
-		Connection con = DatabaseConnector.getInstance().getConnection();
+	public List<String> selectAllQuizId(GameMode mode) {
 
 		List<String> allQuizId = new ArrayList<>();
 

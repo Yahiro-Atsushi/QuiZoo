@@ -1,8 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class Game implements Serializable {
 	private int quizCount;
@@ -14,18 +14,32 @@ public class Game implements Serializable {
 		//問題数の初期値は０
 		this.quizCount = 0;
 		this.mode = mode;
-		this.quizzes = new TreeMap<>();
-		this.isCorrects = new TreeMap<>();
+		this.quizzes = new LinkedHashMap<>();
+		this.isCorrects = new LinkedHashMap<>();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(""
+				+ "Game [quizCount=" + quizCount + ", mode=" + mode + "\n"
+				+ "quizzes and isCorrects \n");
+		for(int key : quizzes.keySet()) {
+			sb.append(""
+					+ "[" + key + ":" + quizzes.get(key).getAnswer()
+					+ "/" + isCorrects.get(key) + "]\n");
+		}
+		return sb.toString();
 	}
 
 	public int getQuizCount() {
 		return quizCount;
 	}
-	
+
 	public void setQuizCount(int count) {
 		this.quizCount = count;
 	}
-	
+
 	public GameMode getMode() {
 		return mode;
 	}
@@ -37,5 +51,4 @@ public class Game implements Serializable {
 	public Map<Integer, Boolean> getIsCorrects() {
 		return isCorrects;
 	}
-	
 }

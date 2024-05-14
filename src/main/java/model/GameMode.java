@@ -4,7 +4,8 @@ public enum GameMode {
 	EASY("チンパンジー", " quiz_easy ", 4), 
 	NORMAL("人間", " quiz_normal ", 4), 
 	HARD("オランウータン", " quiz_hard ", 4),
-	CHALLENGE("キメラ", "quiz_challenge", 4);
+	CHALLENGE("キメラ", " quiz_challenge ", 4), 
+	TUTORIAL("がんばろうね", " quiz_test ", 4);
 
 	private String animal;
 	private String table;

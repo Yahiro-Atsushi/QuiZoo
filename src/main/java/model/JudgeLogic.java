@@ -22,7 +22,7 @@ public class JudgeLogic {
 		}
 		
 		//次の問題へ
-		game.setQuizCount(game.getQuizCount() + 1);
+		game.setQuizCount(section + 1);
 		return game;
 	}
 }
