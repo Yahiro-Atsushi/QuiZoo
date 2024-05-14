@@ -5,10 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <link rel="stylesheet" href="css/style.css">
+<title>Insert title here</title>
 </head>
 <body>
 <div class="contents"></div>
@@ -18,6 +16,5 @@
 正解やで
 </div>
 </div>
-</body>
 </body>
 </html>
