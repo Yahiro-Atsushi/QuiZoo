@@ -22,10 +22,10 @@ public class TutorialServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String answer = request.getParameter("name");
-		request.setAttribute("answer", answer);
-		System.out.println(answer);
-		if (answer.equals("猫")) {
+		String input = request.getParameter("input");
+		request.setAttribute("answer", "猫");
+		System.out.println(input);
+		if (input.equals("猫")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/tutorial_answer.jsp");
 			dispatcher.forward(request, response);
 		} else {
