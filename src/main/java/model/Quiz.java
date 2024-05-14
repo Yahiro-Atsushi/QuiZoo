@@ -5,19 +5,20 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Quiz implements Serializable {
-	private int id;
+	private String id;
 	private String quistionMsg;
 	private String answer;
 	private Map<Integer, String> buttons;
 	private Map<Integer, String> buttonTexts;
 
-	public Quiz(int id, String quistionMsg, String answer,
+	public Quiz(String id, String quistionMsg, String answer,
 			Map<Integer, String> buttons, Map<Integer, String> buttonTexts) {
 		this.id = id;
 		this.quistionMsg = quistionMsg;
 		this.answer = answer;
 		this.buttons = buttons;
 		this.buttonTexts = buttonTexts;
+		
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class Quiz implements Serializable {
 		return Objects.hash(id);
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
