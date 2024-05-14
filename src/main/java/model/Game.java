@@ -11,8 +11,8 @@ public class Game implements Serializable {
 	private Map<Integer, Boolean> isCorrects;
 
 	public Game(GameMode mode) {
-		//問題数の初期値は０
-		this.quizCount = 0;
+		//問題数の初期値は1にする。これはゲームの始まりが１問目であり、Mapのkeyも1以上10以下で作成するから。
+		this.quizCount = 1;
 		this.mode = mode;
 		this.quizzes = new LinkedHashMap<>();
 		this.isCorrects = new LinkedHashMap<>();
