@@ -19,6 +19,7 @@ public class Quiz implements Serializable {
 		this.buttons = buttons;
 		this.buttonTexts = buttonTexts;
 		
+		System.out.println("Quiz Constructor: " + buttons.toString());
 	}
 
 	@Override

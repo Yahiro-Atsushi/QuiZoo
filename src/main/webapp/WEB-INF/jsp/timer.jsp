@@ -4,23 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <script>
-	function startCountdown() {
-		var secondsLeft = 10;
-		var countdownLabel = document.getElementById("countdownLabel");
-		countdownLabel.innerHTML = secondsLeft;
-
-		var countdownInterval = setInterval(function() {
-			secondsLeft--;
-			countdownLabel.innerHTML = secondsLeft;
-			if (secondsLeft <= 0) {
-				clearInterval(countdownInterval);
-				window.location.href = "TimeOutServlet";
-			}
-		}, 1000);
-	}
+let timeLeft = 10;
+function startTimer() {
+    const timerElement = document.getElementById('timer');
+    const interval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            window.location.href = 'TimeOutServlet'; // タイムアウト時の遷移先
+        } else {
+            timerElement.innerText = '残り時間: ' + timeLeft + '秒';
+            timeLeft--;
+        }
+    }, 1000);
+}
+window.onload = startTimer;
 </script>
 </head>
-<body onload="startCountdown()">
+<body onload="startTimer()">
 	<b><span id="countdownLabel"></span></b>
 </body>
 </html>

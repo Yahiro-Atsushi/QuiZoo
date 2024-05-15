@@ -12,11 +12,11 @@
 	<div class="contents"></div>
 	<b> 結果 </b>
 	<div class="parent">
-		<c:forEach var="i" begin="1" end="11">
-			<c:out value="${i}" />問目：<c:out value="${result.i}" />
+		<c:forEach var="i" begin="1" end="10">
+			<c:out value="${i}" />問目：<c:out value="${result[i]}" />
 			<br>
 		</c:forEach>
-		<br> <b>お疲れ様でした！</b><br>
+		<br><br><br><br><br><br><br> <b>お疲れ様でした！</b><br>
 		<br> <a href="MainServlet">メインへ戻る</a>
 	</div>
 	</div>

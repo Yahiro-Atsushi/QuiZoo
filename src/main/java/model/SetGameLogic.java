@@ -23,6 +23,7 @@ public class SetGameLogic {
 			System.out.println("イテレータ：" + randomIterator);
 			//id取得し、ランダムなIDを引数にクイズを取得する
 			String randomId = allQuizIds.get(randomIterator);
+			System.out.println("randomID:" + randomId);
 			Quiz quiz = dao.selectQuizById(mode, randomId);
 			
 			//取得したクイズを格納する。
