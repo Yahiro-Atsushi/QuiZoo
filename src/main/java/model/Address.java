@@ -5,9 +5,11 @@ public enum Address {
 	REGISTER("WEB-INF/jsp/register.jsp"),
 	MAIN("WEB-INF/jsp/main.jsp"),
 	TUTORIAL("WEB-INF/jsp/tutorial.jsp"),
-	QUESTION("WEB-INF/jsp/question.jsp"),
+	QUIZ("WEB-INF/jsp/quiz.jsp"),
 	ANSWER("WEB-INF/jsp/answer.jsp"),
-	RESULT("WEB-INF/jsp/result.jsp");
+	RESULT("WEB-INF/jsp/result.jsp"), 
+	CORRECT("WEB-INF/jsp/correct.jsp"),
+	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp");
 	
 	private String address;
 
