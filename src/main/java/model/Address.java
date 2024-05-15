@@ -7,7 +7,9 @@ public enum Address {
 	TUTORIAL("WEB-INF/jsp/tutorial.jsp"),
 	QUIZ("WEB-INF/jsp/quiz.jsp"),
 	ANSWER("WEB-INF/jsp/answer.jsp"),
-	RESULT("WEB-INF/jsp/result.jsp"), ;
+	RESULT("WEB-INF/jsp/result.jsp"), 
+	CORRECT("WEB-INF/jsp/correct.jsp"),
+	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp");
 	
 	private String address;
 
