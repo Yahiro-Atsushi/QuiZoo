@@ -40,7 +40,7 @@ public class SelectDao  {
 				String answer = rs.getString(ColumnNames.answer.name());
 				Map<Integer, String> buttons = new TreeMap<>();
 				Map<Integer, String> buttonTexts = new TreeMap<>();
-				for (int i = 1; i < mode.getButtonSize(); i++) {
+				for (int i = 1; i <= mode.getButtonSize(); i++) {
 					//button1, button2, button3, button4
 					String button = "button" + i;
 					buttons.put(i, rs.getString(button));
