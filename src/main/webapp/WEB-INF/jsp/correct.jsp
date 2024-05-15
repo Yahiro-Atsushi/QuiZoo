@@ -5,23 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/answer.css">
 <title>QuiZoo</title>
 </head>
 <body>
-	<div class="contents"></div>
-	<b> 問<c:out value="${game.quizCount}" />
-	</b>
-	<div class="parent">
-		正解は
-		<c:out value="${answer}" />
-		<br>
-		<br> 解説<br>
-		<br>
-		<c:out value="${text}" />
-		<br>
-		<br> <a href="GameServlet">次の問題へ</a>
-	</div>
-	</div>
+<div class="quiz-container">    
+    <h1>正解!</h1>
+    <h2>正解は<c:out value="${answer}" /></h2>
+        
+        <figure class="talking-left_icon">
+           <img src="アイコン画像のURL" alt="代替テキスト">
+        </figure>
+        
+        <div class="talking-left">
+            <c:out value="${text}" />
+         </div><br><br><br><br><br>
+      <a href="GameServlet">次の問題へ</a>
+</div>
 </body>
+</html>
 </html>
