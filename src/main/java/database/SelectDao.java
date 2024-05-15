@@ -15,14 +15,14 @@ import model.Quiz;
 public class SelectDao {
 	private DatabaseConnector connector;
 	private Connection con;
-	
+
 	public SelectDao() {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
-	
+
 	public Quiz selectQuizById(GameMode mode, String randomId) {
-		
+
 		Quiz quiz = null;
 
 		String sql = ""
@@ -56,6 +56,8 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuiz() エラー ： sql文が正しく実行されませんでした。");
+		} finally {
+			connector.dbClose();
 		}
 
 		return quiz;
@@ -96,6 +98,8 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuiz() エラー ： sql文が正しく実行されませんでした。");
+		} finally {
+			connector.dbClose();
 		}
 
 		return allQuiz;
@@ -121,6 +125,8 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuizId() エラー ： sql文が正しく実行されませんでした。");
+		} finally {
+			connector.dbClose();
 		}
 
 		return allQuizId;
