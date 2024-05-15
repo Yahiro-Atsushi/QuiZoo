@@ -30,7 +30,7 @@ public class QuizServlet extends HttpServlet {
 		String button2 = quiz.getButtons().get(2);
 		String button3 = quiz.getButtons().get(3);
 		String button4 = quiz.getButtons().get(4);
-		
+		System.out.println("ボタン４テスト" + button4);
 //		String question = game.getQuizzes().get(game.getQuizCount()).getQuistionMsg();
 //		String button1 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(1);
 //		String button2 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(2);
