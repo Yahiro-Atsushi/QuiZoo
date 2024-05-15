@@ -15,12 +15,9 @@
 	<div class="parent">
 		正解は
 		<c:out value="${answer}" />
-		<br>
-		<br> 解説<br>
-		<br>
+		<br> <br> 解説 <br> <br>
 		<c:out value="${text}" />
-		<br>
-		<br> <a href="GameServlet">次の問題へ</a>
+		<br> <br> <a href="GameServlet">次の問題へ</a>
 	</div>
 	</div>
 </body>

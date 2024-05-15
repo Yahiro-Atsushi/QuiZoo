@@ -4,20 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <script>
-    function startCountdown() {
-        var secondsLeft = 10;
-        var countdownLabel = document.getElementById("countdownLabel");
-        countdownLabel.innerHTML = secondsLeft;
-        
-        var countdownInterval = setInterval(function() {
-            secondsLeft--;
-            countdownLabel.innerHTML = secondsLeft;
-            if (secondsLeft <= 0) {
-                clearInterval(countdownInterval);
-                window.location.href = "TimeOutServlet";
-            }
-        }, 1000);
-    }
+	function startCountdown() {
+		var secondsLeft = 10;
+		var countdownLabel = document.getElementById("countdownLabel");
+		countdownLabel.innerHTML = secondsLeft;
+
+		var countdownInterval = setInterval(function() {
+			secondsLeft--;
+			countdownLabel.innerHTML = secondsLeft;
+			if (secondsLeft <= 0) {
+				clearInterval(countdownInterval);
+				window.location.href = "TimeOutServlet";
+			}
+		}, 1000);
+	}
 </script>
 </head>
 <body onload="startCountdown()">

@@ -12,17 +12,16 @@ import java.util.TreeMap;
 import model.GameMode;
 import model.Quiz;
 
-public class SelectDao {
+public class SelectDao  {
 	private DatabaseConnector connector;
 	private Connection con;
-	
+
 	public SelectDao() {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
 	
 	public Quiz selectQuizById(GameMode mode, String randomId) {
-		
 		Quiz quiz = null;
 
 		String sql = ""
