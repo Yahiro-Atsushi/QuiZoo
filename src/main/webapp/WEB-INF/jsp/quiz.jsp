@@ -6,6 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>QuiZoo</title>
+ <script>
+        let timeLeft = 10;
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            const interval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    window.location.href = 'TimeOutServlet'; // タイムアウト時の遷移先
+                } else {
+                    timerElement.innerText = '残り時間: ' + timeLeft + '秒';
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        window.onload = startTimer;
+    </script>
 <link rel="stylesheet" href="css/quiz.css">
 </head>
 <body>
@@ -17,7 +34,9 @@
 		<div class="question">
 			<c:out value="${question}" />
 		</div>
-		<jsp:include page="timer.jsp" />
+		 <div class="timer" id="timer">
+            残り時間: 10秒
+        </div>
 		<div class="choices">
 			<form action="JudgeServlet" method="post">
 				<input type="submit" name="input" value="${button1}">　 
