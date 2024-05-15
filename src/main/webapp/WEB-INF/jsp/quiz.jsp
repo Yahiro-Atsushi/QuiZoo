@@ -13,7 +13,7 @@
             const interval = setInterval(() => {
                 if (timeLeft <= 0) {
                     clearInterval(interval);
-                    window.location.href = 'timeout.jsp'; // タイムアウト時の遷移先
+                    window.location.href = 'TimeOutServlet'; // タイムアウト時の遷移先
                 } else {
                     timerElement.innerText = '残り時間: ' + timeLeft + '秒';
                     timeLeft--;
