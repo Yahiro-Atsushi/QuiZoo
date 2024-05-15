@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Game;
+import model.Quiz;
 
 
 @WebServlet("/QuizServlet")
@@ -21,11 +22,21 @@ public class QuizServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
-		String question = game.getQuizzes().get(game.getQuizCount()).getQuistionMsg();
-		String button1 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(1);
-		String button2 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(2);
-		String button3 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(3);
-		String button4 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(4);
+		int section = game.getQuizCount();
+		Quiz quiz = game.getQuizzes().get(section);
+		
+		String question = quiz.getQuistionMsg();
+		String button1 = quiz.getButtons().get(1);
+		String button2 = quiz.getButtons().get(2);
+		String button3 = quiz.getButtons().get(3);
+		String button4 = quiz.getButtons().get(4);
+		
+//		String question = game.getQuizzes().get(game.getQuizCount()).getQuistionMsg();
+//		String button1 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(1);
+//		String button2 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(2);
+//		String button3 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(3);
+//		String button4 = game.getQuizzes().get(game.getQuizCount()).getButtons().get(4);
+		
 		request.setAttribute("question", question);
 		request.setAttribute("button1", button1);
 		request.setAttribute("button2", button2);
