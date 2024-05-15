@@ -24,9 +24,15 @@ public class JudgeServlet extends HttpServlet {
 		String input = request.getParameter("input");
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
+<<<<<<< HEAD
 		String answer = game.getQuizzes().get(game.getQuizCount()).getAnswer();
 		String text = ChoiceButtonTextLogic.execute(game, input);
 		int nowSection = game.getQuizCount();
+=======
+		int nowSection = game.getQuizCount();
+		String answer = game.getQuizzes().get(nowSection).getAnswer();
+		String text = ChoiceButtonTextLogic.execute(game, input);
+>>>>>>> efcc590 (Merge branch 'main' of https://github.com/Yahiro-Atsushi/QuiZoo)
 		request.setAttribute("answer", answer);
 		request.setAttribute("text", text);
 		

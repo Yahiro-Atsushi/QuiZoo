@@ -20,9 +20,8 @@ public class SelectDao {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
-
+	
 	public Quiz selectQuizById(GameMode mode, String randomId) {
-
 		Quiz quiz = null;
 
 		String sql = ""
