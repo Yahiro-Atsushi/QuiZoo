@@ -6,14 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/style.css">
-<title>Insert title here</title>
+<title>QuiZoo</title>
 </head>
 <body>
 <div class="contents"></div>
-<h1>チュートリアル</h1>
+<b>
+問<c:out value="${game.quizCount}" />
+</b>
 <div class="parent">
+<b>残念！</b><br><br>
 正解は<c:out value="${answer}" /><br><br>
-正解やで
+解説<br><br>
+<c:out value="${text}" /><br><br>
+<a href="GameServlet">次の問題へ</a>
 </div>
 </div>
 </body>

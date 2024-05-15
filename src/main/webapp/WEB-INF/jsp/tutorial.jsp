@@ -16,10 +16,10 @@
 <b>問1</b>
 <br><br>
 にゃーんと鳴く動物は？<br><br><br>
-<input type="submit" name="name" value="犬">
-<input type="submit" name="name" value="猫">
-<input type="submit" name="name" value="人間">
-<input type="submit" name="name" value="ゴリラ">
+<input type="submit" name="input" value="犬">
+<input type="submit" name="input" value="猫">
+<input type="submit" name="input" value="人間">
+<input type="submit" name="input" value="ゴリラ">
 </form>
 </div>
 </div>
