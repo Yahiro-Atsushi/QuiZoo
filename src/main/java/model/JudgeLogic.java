@@ -9,12 +9,7 @@ public class JudgeLogic {
 			game.setQuizCount(game.getQuizCount() + 1);
 			return game;
 		}
-		
-<<<<<<< HEAD
 		//今何問目かを取得
-=======
-		//今何問めかを取得
->>>>>>> efcc590 (Merge branch 'main' of https://github.com/Yahiro-Atsushi/QuiZoo)
 		int section = game.getQuizCount();
 		
 		//現在のクイズを取得
@@ -24,12 +19,7 @@ public class JudgeLogic {
 		if(quiz.getAnswer().equals(input)) {
 			game.getIsCorrects().put(section, true);
 		}
-		
-<<<<<<< HEAD
 		//次の問題へカウントを増加
-=======
-		//次の問題へ
->>>>>>> efcc590 (Merge branch 'main' of https://github.com/Yahiro-Atsushi/QuiZoo)
 		game.setQuizCount(section + 1);
 		return game;
 	}
