@@ -24,9 +24,9 @@ public class JudgeServlet extends HttpServlet {
 		String input = request.getParameter("input");
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
-		String answer = game.getQuizzes().get(game.getQuizCount()).getAnswer();
-		String text = ChoiceButtonTextLogic.execute(game, input);
 		int nowSection = game.getQuizCount();
+		String answer = game.getQuizzes().get(nowSection).getAnswer();
+		String text = ChoiceButtonTextLogic.execute(game, input);
 		request.setAttribute("answer", answer);
 		request.setAttribute("text", text);
 		
