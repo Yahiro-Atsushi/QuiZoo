@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import model.Address;
 import model.Game;
 import model.GameMode;
 import model.Quiz;
+import model.ResultLogic;
 import model.SetGameLogic;
 import model.VarNames;
 
@@ -70,6 +72,13 @@ public class GameServlet extends HttpServlet {
 		/* ----リザルト画面へ遷移する際の処理---- */
 		}else {
 			//10問終えていたらresult.jspへ
+			//---------------------------------------------------//
+			// 結果を(1, "正解")のように表示させるロジック
+			Map<Integer, String> result = ResultLogic.execute(game);
+			session.setAttribute("result", result);
+			//---------------------------------------------------//
+			
+			session.removeAttribute(VarNames.game.name());
 			rdp = request.getRequestDispatcher(Address.RESULT.getAddress());
 			
 		}
