@@ -11,7 +11,7 @@ public class LoginDAOTest {
 	}
 
 	public static void testExecuteOK() {
-		User use = new User("minato", "1234");
+		User use = new User("湊 雄輔" , "1234");
 		LoginLogic bo = new LoginLogic();
 		boolean result = bo.execute(use);
 		if (result) {
@@ -22,17 +22,17 @@ public class LoginDAOTest {
 	}
 
 	public static void testExecuteNG() {
-		User user = new User("minato", "12345");
+		User user = new User("湊 雄輔" , "12345");
 		LoginLogic bo = new LoginLogic();
 		boolean result = bo.execute(user);
 		if (!result) {
 			System.out.println("testExecuteNG：成功しました");
 		} else {
 			System.out.println("testExecuteNG：失敗しました");
-		}
-
-
+		}	
 	}
-	
+	public static void testUserInsertOK() {
+		
+	}
 
 }

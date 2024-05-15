@@ -10,5 +10,10 @@ public class LoginLogic {
 		AccountsDTO account = accountDAO.findByLogin(user);
 		return account != null;
 	}
+	
+	public boolean executeInsert(User user) {
+		return false;
+		
+	}
 
 }

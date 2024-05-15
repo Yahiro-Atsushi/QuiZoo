@@ -6,12 +6,8 @@ public class User implements Serializable{
 	private String name;
 	private String pass;
 
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", pass=" + pass + "]";
-	}
 
-	public User(String name, String pass) {
+	public User(final String name, final String pass) {
 		this.name = name;
 		this.pass = pass;
 	}
@@ -22,6 +18,11 @@ public class User implements Serializable{
 
 	public String getPass() {
 		return pass;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", pass=" + pass + "]";
 	}
 
 }

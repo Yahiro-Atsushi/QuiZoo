@@ -1,7 +1,7 @@
 package database;
 
 public class AccountsDTO {
-	private String id;
+	private int id;
 	private String name;
 	private String pass;
 	private String delete_at;
@@ -10,14 +10,19 @@ public class AccountsDTO {
 		
 	}
 	
-	public AccountsDTO(final String id, final String name, final String pass, final String delete_at) {
+	public AccountsDTO(final String name, final String pass) {
+		this.name = name;
+		this.pass = pass;
+	}
+	
+	public AccountsDTO(final int id, final String name, final String pass, final String delete_at) {
 		this.id = id;
 		this.name = name;
 		this.pass = pass;
 		this.delete_at = delete_at;
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	public String getName() {

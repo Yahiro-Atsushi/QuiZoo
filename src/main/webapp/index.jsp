@@ -8,18 +8,21 @@
 <title>QuiZoo</title>
 </head>
 <body>
-	<h1 style="text-align:center">QuiZoo</h1>
-	<form action=" LoginServlet" method="post">
-	<p  style="text-align:center">
+<div style="text-align:center">
+	<h1 >QuiZoo</h1>
+	<form action="LoginServlet" method="post">
+	<p>
 		名前<input type="text" name="name"><br>
 		pass<input type="password" name="pass"><br><br>
 		<input type="submit" value="ログイン">
 	</p>
 	</form>
-	<form action=" RegisterServlet">
-	<p  style="text-align:center">	
+</div>
+
+<div style="text-align:center">	
+	<form action="LoginServlet" method="get">
 		<input type="submit" value="新規登録">
 	</form>
-	</p>
+</div>
 </body>
 </html>

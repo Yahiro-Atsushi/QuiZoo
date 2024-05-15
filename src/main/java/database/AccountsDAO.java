@@ -25,13 +25,12 @@ public class AccountsDAO {
 	public AccountsDTO findByLogin(User user) {
 		AccountsDTO account = null;
 		
-		String sql = "SELECT * " +
+		String sql = "SELECT name, pass " +
 					"FROM accounts " +
 					"WHERE " +
-					"name = ? " +
-					"pass = ? ";
+					"name = ? AND pass = ? ";
 		
-		try(PreparedStatement ps = con.prepareStatement(sql)){
+		try(PreparedStatement ps = con.prepareStatement(sql);){
 			
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getPass());
@@ -39,17 +38,36 @@ public class AccountsDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				String id = rs.getString("id");
 				String name = rs.getString("name");
 				String pass = rs.getString("pass");
-				account = new AccountsDTO(id, name, pass, pass);
+				account = new AccountsDTO(name, pass);
+				
+				System.out.println(name + pass);
 			}
 		} catch (SQLException e) {
 			System.out.println("SELECT文実行エラー");
 			e.printStackTrace();
-			return null;
 		}
-		return account;		
+		return account;	
+	}
+	
+	public AccountsDTO  userInsert(User user) {
+		AccountsDTO acount = null;
+		
+		String query = "INSERT INTO" +
+					"account(name, pass) " +
+					"VALUES (?, ?); ";
+		try(PreparedStatement ps = con.prepareStatement(query);) {
+			
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getPass());
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+		}
+		return acount;
+		
 		
 	}
 }

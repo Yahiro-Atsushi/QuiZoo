@@ -20,7 +20,10 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher(Address.REGISTER.getAddress());
+		dispatcher.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,17 +37,22 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理
 		LoginLogic loginLogic = new LoginLogic();
 		boolean isLogin = loginLogic.execute(user);
+		
 
 		if (isLogin) {
 			ServletContext application = this.getServletContext();
 			application.setAttribute("name", name);
 
 			// ログイン成功時、main画面にフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.name());
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(Address.MAIN.getAddress());
 			dispatcher.forward(request, response);
 
 		} else {
-			response.sendRedirect("LoginServlet");
+			// indexにフォワード
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher(Address.INDEX.getAddress());
+			dispatcher.forward(request, response);
 
 		}
 	}
