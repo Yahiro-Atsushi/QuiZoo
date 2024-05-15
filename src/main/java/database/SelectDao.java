@@ -12,7 +12,7 @@ import java.util.TreeMap;
 import model.GameMode;
 import model.Quiz;
 
-public class SelectDao {
+public class SelectDao  {
 	private DatabaseConnector connector;
 	private Connection con;
 
@@ -55,8 +55,6 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuiz() エラー ： sql文が正しく実行されませんでした。");
-		} finally {
-			connector.dbClose();
 		}
 
 		return quiz;
@@ -97,8 +95,6 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuiz() エラー ： sql文が正しく実行されませんでした。");
-		} finally {
-			connector.dbClose();
 		}
 
 		return allQuiz;
@@ -124,8 +120,6 @@ public class SelectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuizId() エラー ： sql文が正しく実行されませんでした。");
-		} finally {
-			connector.dbClose();
 		}
 
 		return allQuizId;
