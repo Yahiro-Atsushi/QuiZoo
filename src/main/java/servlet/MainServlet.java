@@ -17,7 +17,7 @@ public class MainServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.name());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
 		dispatcher.forward(request, response);
 	}
 
