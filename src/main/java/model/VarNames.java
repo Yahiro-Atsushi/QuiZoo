@@ -1,9 +1,13 @@
 package model;
 
 public enum VarNames {
-	userName,
-	game,
-	quiz, 
-	gameMode;
-	
+	name, 
+	pass, 
+	loginErrorMsg,
+	registerErrorMsg,
+	userName, 
+	gameMode,
+	game, 
+	quiz;
+
 }
