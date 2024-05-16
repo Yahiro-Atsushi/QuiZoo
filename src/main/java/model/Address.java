@@ -9,7 +9,8 @@ public enum Address {
 	ANSWER("WEB-INF/jsp/answer.jsp"),
 	RESULT("WEB-INF/jsp/result.jsp"), 
 	CORRECT("WEB-INF/jsp/correct.jsp"),
-	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp");
+	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp"),
+	TIMEOUT("WEB-INF/jsp/timeOut.jsp");
 	
 	private String address;
 
