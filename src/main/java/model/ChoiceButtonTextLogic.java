@@ -3,12 +3,12 @@ package model;
 public class ChoiceButtonTextLogic {
 
 	public static String execute(Game game, String input) {
-		//もしnullなら帰る
-		if(game == null || input == null || input.isEmpty()) {
-			System.err.println("ChoiceButtonTextLogic."
-					+ "execute(Game, String):渡された引数がnullです。");
-			return null;
-		}
+//		//もしnullなら帰る
+//		if(game == null || input == null || input.isEmpty()) {
+//			System.err.println("ChoiceButtonTextLogic."
+//					+ "execute(Game, String):渡された引数がnullです。");
+//			return null;
+//		}
 		
 		//今、何問目？を取得
 		int section = game.getQuizCount();
