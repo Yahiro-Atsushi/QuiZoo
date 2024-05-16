@@ -44,17 +44,16 @@ public class AccountsDAO {
 				
 			}
 		} catch (SQLException e) {
-			System.out.println("SELECT文実行エラー");
+			System.out.println("AccountsDao.findAccountFromInput（String, String）: SELECT文実行エラー");
 			e.printStackTrace();
 		}
 		return user;	
 	}
 	
-	public User userInsert(String inputName, String inputPass) {
-		User user = null;
+	public void userInsert(String inputName, String inputPass) {
 		
-		String query = "INSERT INTO" +
-					"account(name, pass) " +
+		String query = "INSERT INTO " +
+					"accounts(name, pass) " +
 					"VALUES (?, ?); ";
 		try(PreparedStatement ps = con.prepareStatement(query);) {
 			
@@ -63,9 +62,11 @@ public class AccountsDAO {
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			
+			System.out.println("AccountsDao.userInsert（String, String）：INSERT文実行エラー");
+			e.printStackTrace();
 		}
-		return user;
+		
+		return ;
 		
 		
 	}
