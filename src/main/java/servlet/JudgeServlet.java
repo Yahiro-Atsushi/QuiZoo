@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Address;
 import model.ChoiceButtonTextLogic;
 import model.Game;
 import model.JudgeLogic;
@@ -41,11 +42,11 @@ public class JudgeServlet extends HttpServlet {
 		
 		// 正解だったらcorrect.jspへ
 		if (collect == true) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/correct.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
 			dispatcher.forward(request, response);
 		} else {
 		// 不正解ならnotCorrect.jsp
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/notCorrect.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
 			dispatcher.forward(request, response);
 		}
 	
