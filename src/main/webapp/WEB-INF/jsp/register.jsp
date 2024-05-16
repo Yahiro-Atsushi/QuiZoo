@@ -29,6 +29,8 @@
 			</div>
 			</p>
 		</form>
+		<a href="index.jsp">トップ画面へ戻る</a>
+		
 	</div>
 </body>
 </html>
