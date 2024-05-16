@@ -1,29 +1,28 @@
 package filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
+
+import entity.Address;
+import entity.VarNames;
 
 /**
- * Servlet Filter implementation class DummyFilter
+ * Servlet Filter implementation class CheckLoginFilter
  */
-@WebFilter("/DummyFilter")
-public class DummyFilter extends HttpFilter implements Filter {
+@WebFilter("/WelcomeServlet, /MainServlet, /LoginServlet, /GameServlet")
+public class CheckLoginFilter extends HttpFilter implements Filter {
        
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
-    public DummyFilter() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
 	 * @see Filter#destroy()
 	 */
@@ -35,10 +34,18 @@ public class DummyFilter extends HttpFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
-		// pass the request along the filter chain
+		
+		ServletContext application = getServletContext();
+		String userName = (String)application.getAttribute(VarNames.userName.name());
+		
+		if(userName == null || userName.isEmpty()) {
+			HttpServletRequest HttpRequest = (HttpServletRequest)request;
+			RequestDispatcher rdp = 
+					HttpRequest.getRequestDispatcher(Address.INDEX.getAddress());
+			rdp.forward(HttpRequest, response);
+			return;
+		}
+		
 		chain.doFilter(request, response);
 	}
 
