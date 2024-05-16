@@ -6,15 +6,6 @@ public class AccountsDTO {
 	private String pass;
 	private String delete_at;
 	
-	public AccountsDTO() {
-		
-	}
-	
-	public AccountsDTO(final String name, final String pass) {
-		this.name = name;
-		this.pass = pass;
-	}
-	
 	public AccountsDTO(final int id, final String name, final String pass, final String delete_at) {
 		this.id = id;
 		this.name = name;
