@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/main.css">
 <title>QuiZoo</title>
 </head>
 <body>
@@ -13,13 +13,14 @@
         <div class="sidebar">
             <h1>QuiZoo</h1>
             <ul>
-                <li><a href="#">ゲームスタート</a></li>
-                <!-- 他のメニューアイテムをここに追加 -->
+                <li><a href="#">履歴</a></li>
+                <li><a href="#">ランキング</a></li>
                 <li class="logout-link"><a href="#">ログアウト</a></li>
             </ul>
         </div>
         <div class="content">
-            <!-- コンテンツをここに配置 -->
+            <h1 class="title" style="font-size: 100px;">QuiZoo</h1><br><br><br>
+            <a href="GameServlet" class="start-link">ゲームスタート</a>
         </div>
     </div>
 </body>
