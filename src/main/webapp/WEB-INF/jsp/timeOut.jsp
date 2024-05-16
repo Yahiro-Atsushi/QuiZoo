@@ -20,7 +20,18 @@
         <div class="talking-left">
             <c:out value="${text}" />
          </div><br><br><br><br><br>
-      <a href="GameServlet">次の問題へ</a>
+         <c:choose>
+       <c:when test="${game.quizCount == 11}">
+       	 <div class="link-container">
+      	 	<a href="GameServlet">解答結果へ</a>
+      	 </div>
+       </c:when>
+       <c:otherwise>
+       	<div class="link-container">
+      		<a href="GameServlet">次の問題へ</a>
+        </div>
+       </c:otherwise>
+      </c:choose>    
 </div>
 </body>
 </html>
