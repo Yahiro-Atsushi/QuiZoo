@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Address;
+import model.RegisterErrorCheckLogic;
+import model.RegisterErrorMessage;
 import model.User;
-import model.logic.LoginLogic;
+import model.VarNames;
 import model.logic.RegisterLogic;
 
 @WebServlet("/RegisterServlet")
@@ -21,20 +23,29 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rdp = request.getRequestDispatcher(Address.REGISTER.getAddress());
+		rdp.forward(request, response);
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+ 		throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		
 		// アカウント登録処理
-		//すでにアカウントが登録されているかもここで確認する
-		User error = RegisterLogic.execute(name, pass);
+		//すでにアカウントが登録されていてもnull
+		User user = RegisterLogic.execute(name, pass);
 		
-		//ログイン処理
-		User user = LoginLogic.execute(name, pass);
-				
-		if (error != null || user != null) {
+		if (user == null) {
 			/* --------アカウント登録、ログイン失敗の時の処理--------*/
+			
+			RegisterErrorMessage errorMsg = RegisterErrorCheckLogic.execute(user, name, pass);
+			request.setAttribute(VarNames.registerErrorMsg.name(), errorMsg);
+			request.setAttribute(VarNames.name.name(), name);
+			request.setAttribute(VarNames.pass.name(), pass);
 			
 			// register.jspにフォワード
 			RequestDispatcher dispatcher =
@@ -44,11 +55,11 @@ public class RegisterServlet extends HttpServlet {
 			/* --------処理終了-------- */
 						
 		} else {
-			/* --------ログイン成功時の処理-------- */
+			/* --------アカウント登録成功時の処理-------- */
 			
 			//アプリケーションスコープに保存
 			ServletContext application = this.getServletContext();
-			application.setAttribute("userName", name);
+			application.setAttribute("userName", user.getName());
 
 			// main画面にフォワード
 			RequestDispatcher dispatcher = 
@@ -59,11 +70,6 @@ public class RegisterServlet extends HttpServlet {
 			
 		}
 	
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
- 		throws ServletException, IOException {
-		
 
 	}
 
