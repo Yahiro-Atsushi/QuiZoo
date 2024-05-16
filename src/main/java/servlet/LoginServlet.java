@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Address;
+import model.LoginErrorCheckLogic;
+import model.LoginUserErrorMessage;
 import model.User;
+import model.VarNames;
 import model.logic.LoginLogic;
 
 @WebServlet("/LoginServlet")
@@ -38,6 +41,11 @@ public class LoginServlet extends HttpServlet {
 		if (user == null) {
 			/* --------ログイン失敗の時の処理--------*/
 			
+			LoginUserErrorMessage errorMsg = LoginErrorCheckLogic.execute(user, name, pass);
+			request.setAttribute(VarNames.loginErrorMsg.name(), errorMsg);
+			request.setAttribute(VarNames.name.name(), name);
+			request.setAttribute(VarNames.pass.name(), pass);
+			
 			// indexにフォワード
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher(Address.INDEX.getAddress());
@@ -49,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			
 			//アプリケーションスコープに保存
 			ServletContext application = this.getServletContext();
-			application.setAttribute("name", name);
+			application.setAttribute(VarNames.userName.name(), user.getName());
 
 			// main画面にフォワード
 			RequestDispatcher dispatcher = 
