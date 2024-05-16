@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.LoginLogic;
-import model.VarNames;
-
 /**
  * Servlet implementation class dummyServlet
  */
@@ -24,9 +21,6 @@ public class DummyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String userName = request.getParameter(VarNames.userName.name());
-		
-		String address = LoginLogic.execute(userName);
 		
 	}
 
