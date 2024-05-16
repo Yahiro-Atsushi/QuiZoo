@@ -22,8 +22,8 @@ public class AccountsDAO {
 		connector.dbClose();
 	}
 	
-	public AccountsDTO findByLogin(User user) {
-		AccountsDTO account = null;
+	public User findAccountFromInput(String inputName, String inputPass) {
+		User user = null;
 		
 		String sql = "SELECT name, pass " +
 					"FROM accounts " +
@@ -32,41 +32,40 @@ public class AccountsDAO {
 		
 		try(PreparedStatement ps = con.prepareStatement(sql);){
 			
-			ps.setString(1, user.getName());
-			ps.setString(2, user.getPass());
+			ps.setString(1, inputName);
+			ps.setString(2, inputPass);
 			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				String name = rs.getString("name");
 				String pass = rs.getString("pass");
-				account = new AccountsDTO(name, pass);
+				user = new User(name, pass);
 				
-				System.out.println(name + pass);
 			}
 		} catch (SQLException e) {
 			System.out.println("SELECT文実行エラー");
 			e.printStackTrace();
 		}
-		return account;	
+		return user;	
 	}
 	
-	public AccountsDTO  userInsert(User user) {
-		AccountsDTO acount = null;
+	public User userInsert(String inputName, String inputPass) {
+		User user = null;
 		
 		String query = "INSERT INTO" +
 					"account(name, pass) " +
 					"VALUES (?, ?); ";
 		try(PreparedStatement ps = con.prepareStatement(query);) {
 			
-			ps.setString(1, user.getName());
-			ps.setString(2, user.getPass());
+			ps.setString(1, inputName);
+			ps.setString(2, inputPass);
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			
 		}
-		return acount;
+		return user;
 		
 		
 	}
