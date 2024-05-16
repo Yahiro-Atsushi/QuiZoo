@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
 		if (user == null) {
 			/* --------アカウント登録、ログイン失敗の時の処理--------*/
 			
-			RegisterErrorMessage errorMsg = RegisterErrorCheckLogic.execute(user, name, pass);
+			RegisterErrorMessage errorMsg = RegisterErrorCheckLogic.execute(name, pass);
 			request.setAttribute(VarNames.registerErrorMsg.name(), errorMsg);
 			request.setAttribute(VarNames.name.name(), name);
 			request.setAttribute(VarNames.pass.name(), pass);
