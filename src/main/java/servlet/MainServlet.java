@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Address;
+import entity.Address;
 
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Address;
-import model.ChoiceButtonTextLogic;
-import model.Game;
-import model.JudgeLogic;
+import businessObject.ChoiceButtonTextLogic;
+import businessObject.JudgeLogic;
+import entity.Address;
+import entity.Game;
 
 @WebServlet("/TimeOutServlet")
 public class TimeOutServlet extends HttpServlet {

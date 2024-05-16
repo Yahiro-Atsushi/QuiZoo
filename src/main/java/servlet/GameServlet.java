@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Address;
-import model.Game;
-import model.GameMode;
-import model.Quiz;
-import model.ResultLogic;
-import model.SetGameLogic;
-import model.VarNames;
+import businessObject.ResultLogic;
+import businessObject.SetGameLogic;
+import entity.Address;
+import entity.Game;
+import entity.GameMode;
+import entity.Quiz;
+import entity.VarNames;
 
 
 @WebServlet("/GameServlet")

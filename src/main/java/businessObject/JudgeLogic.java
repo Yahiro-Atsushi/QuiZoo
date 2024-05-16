@@ -1,4 +1,7 @@
-package model;
+package businessObject;
+
+import entity.Game;
+import entity.Quiz;
 
 public class JudgeLogic {
 

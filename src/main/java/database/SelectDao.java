@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import model.GameMode;
-import model.Quiz;
+import entity.GameMode;
+import entity.Quiz;
 
 public class SelectDao  {
 	private DatabaseConnector connector;

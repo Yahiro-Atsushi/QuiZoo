@@ -1,6 +1,7 @@
-package model;
+package businessObject;
 
 import database.AccountsDAO;
+import entity.RegisterErrorMessage;
 
 public class RegisterErrorCheckLogic {
 

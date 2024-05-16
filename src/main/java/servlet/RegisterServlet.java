@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Address;
-import model.RegisterErrorCheckLogic;
-import model.RegisterErrorMessage;
-import model.User;
-import model.VarNames;
-import model.logic.RegisterLogic;
+import businessObject.RegisterErrorCheckLogic;
+import businessObject.RegisterLogic;
+import entity.Address;
+import entity.RegisterErrorMessage;
+import entity.User;
+import entity.VarNames;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {

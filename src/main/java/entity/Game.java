@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -24,7 +24,7 @@ public class Game implements Serializable {
 		sb.append(""
 				+ "Game [quizCount=" + quizCount + ", mode=" + mode + "\n"
 				+ "quizzes and isCorrects \n");
-		for(int key : quizzes.keySet()) {
+		for (int key : quizzes.keySet()) {
 			sb.append(""
 					+ "[" + key + ":" + quizzes.get(key).getAnswer()
 					+ "/" + isCorrects.get(key) + "]\n");

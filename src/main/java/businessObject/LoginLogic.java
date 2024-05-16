@@ -1,7 +1,7 @@
-package model.logic;
+package businessObject;
 
 import database.AccountsDAO;
-import model.User;
+import entity.User;
 
 public class LoginLogic {
 	

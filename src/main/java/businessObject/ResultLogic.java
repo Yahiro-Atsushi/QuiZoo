@@ -1,7 +1,9 @@
-package model;
+package businessObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import entity.Game;
 
 public class ResultLogic {
 	public static Map<Integer, String>  execute(Game game) {

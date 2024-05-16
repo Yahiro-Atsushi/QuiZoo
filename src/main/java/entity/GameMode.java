@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public enum GameMode {
 	EASY("チンパンジー", " quiz_easy ", 4), 

@@ -1,4 +1,7 @@
-package model;
+package businessObject;
+
+import entity.LoginUserErrorMessage;
+import entity.User;
 
 public class LoginErrorCheckLogic {
 

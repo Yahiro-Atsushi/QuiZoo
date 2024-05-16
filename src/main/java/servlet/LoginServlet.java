@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Address;
-import model.LoginErrorCheckLogic;
-import model.LoginUserErrorMessage;
-import model.User;
-import model.VarNames;
-import model.logic.LoginLogic;
+import businessObject.LoginErrorCheckLogic;
+import businessObject.LoginLogic;
+import entity.Address;
+import entity.LoginUserErrorMessage;
+import entity.User;
+import entity.VarNames;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

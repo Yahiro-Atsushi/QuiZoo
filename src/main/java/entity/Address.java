@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public enum Address {
 	INDEX("index.jsp"),

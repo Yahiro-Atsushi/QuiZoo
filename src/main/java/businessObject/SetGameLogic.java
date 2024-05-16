@@ -1,8 +1,11 @@
-package model;
+package businessObject;
 
 import java.util.List;
 
 import database.SelectDao;
+import entity.Game;
+import entity.GameMode;
+import entity.Quiz;
 
 public class SetGameLogic {
 	public static Game execute(GameMode mode) {
