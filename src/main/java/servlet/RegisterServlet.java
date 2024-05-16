@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Address;
 import model.User;
 import model.logic.LoginLogic;
+import model.logic.RegisterLogic;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -25,26 +26,37 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		
-		User user = new User(name, pass);
+		// アカウント登録処理
+		//すでにアカウントが登録されているかもここで確認する
+		User error = RegisterLogic.execute(name, pass);
 		
-		// ログイン処理
-		LoginLogic loginLogic = new LoginLogic();
-		boolean result = loginLogic.executeInsert(user);
+		//ログイン処理
+		User user = LoginLogic.execute(name, pass);
 				
-		if (result) {
-			ServletContext application = this.getServletContext();
-			application.setAttribute("name", name);
-
-			// ログイン成功時、main画面にフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
-			dispatcher.forward(request, response);
+		if (error != null || user != null) {
+			/* --------アカウント登録、ログイン失敗の時の処理--------*/
 			
-		} else {
-			// indexにフォワード
+			// register.jspにフォワード
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher(Address.REGISTER.getAddress());
 			dispatcher.forward(request, response);
+			
+			/* --------処理終了-------- */
+						
+		} else {
+			/* --------ログイン成功時の処理-------- */
+			
+			//アプリケーションスコープに保存
+			ServletContext application = this.getServletContext();
+			application.setAttribute("userName", name);
 
+			// main画面にフォワード
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(Address.MAIN.getAddress());
+			dispatcher.forward(request, response);
+			
+			/* --------処理終了-------- */
+			
 		}
 	
 	}
