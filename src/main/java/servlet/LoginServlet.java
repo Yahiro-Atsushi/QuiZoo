@@ -32,28 +32,32 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 
-		User user = new User(name, pass);
-
 		// ログイン処理
-		LoginLogic loginLogic = new LoginLogic();
-		boolean isLogin = loginLogic.execute(user);
+		User user = LoginLogic.execute(name, pass);
 		
-
-		if (isLogin) {
-			ServletContext application = this.getServletContext();
-			application.setAttribute("name", name);
-
-			// ログイン成功時、main画面にフォワード
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher(Address.MAIN.getAddress());
-			dispatcher.forward(request, response);
-
-		} else {
+		if (user == null) {
+			/* --------ログイン失敗の時の処理--------*/
+			
 			// indexにフォワード
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher(Address.INDEX.getAddress());
 			dispatcher.forward(request, response);
+			
+			/* --------処理終了-------- */
+		} else {
+			/* --------ログイン成功時の処理-------- */
+			
+			//アプリケーションスコープに保存
+			ServletContext application = this.getServletContext();
+			application.setAttribute("name", name);
 
+			// main画面にフォワード
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(Address.MAIN.getAddress());
+			dispatcher.forward(request, response);
+			
+			/* --------処理終了-------- */
+			
 		}
 	}
 
