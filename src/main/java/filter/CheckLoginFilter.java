@@ -20,9 +20,10 @@ import entity.VarNames;
 /**
  * Servlet Filter implementation class CheckLoginFilter
  */
-@WebFilter("/WelcomeServlet, /MainServlet, /LoginServlet, /GameServlet")
+@WebFilter({ "/WelcomeServlet", "/MainServlet",
+		"/LoginServlet", "/GameServlet", "/JournalServlet" })
 public class CheckLoginFilter extends HttpFilter implements Filter {
-       
+
 	/**
 	 * @see Filter#destroy()
 	 */
@@ -33,19 +34,21 @@ public class CheckLoginFilter extends HttpFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		System.out.println("CheckLoginFilter：処理開始");
 		
-		ServletContext application = getServletContext();
-		String userName = (String)application.getAttribute(VarNames.userName.name());
-		
-		if(userName == null || userName.isEmpty()) {
-			HttpServletRequest HttpRequest = (HttpServletRequest)request;
-			RequestDispatcher rdp = 
-					HttpRequest.getRequestDispatcher(Address.INDEX.getAddress());
+		ServletContext application = request.getServletContext();
+		String userName = (String) application.getAttribute(VarNames.userName.name());
+		System.out.println("ユーザー名取得：" + userName);
+		if (userName == null || userName.isEmpty()) {
+			System.out.println("ユーザー名がnullです。トップ画面へ遷移");
+			HttpServletRequest HttpRequest = (HttpServletRequest) request;
+			RequestDispatcher rdp = HttpRequest.getRequestDispatcher(Address.INDEX.getAddress());
 			rdp.forward(HttpRequest, response);
 			return;
 		}
-		
+
 		chain.doFilter(request, response);
 	}
 
