@@ -35,7 +35,7 @@
                             <td><c:out value="${i}"/></td>
                             <td>
                                 <form action="JournalServlet" method="post">
-                                    <input type="hidden" name="historyId" value="${3}">
+                                    <input type="hidden" name="journalId" value="${3}">
                                     <input type="submit" value="詳細を見る">
                                 </form>
                             </td>

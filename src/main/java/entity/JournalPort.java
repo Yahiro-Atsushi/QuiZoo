@@ -7,7 +7,7 @@ public class JournalPort implements Serializable {
 	private String journalId;
 	private String playDate;
 	private String userName;
-	private String correctCount;
+	private int correctCount;
 
 	@Override
 	public String toString() {
@@ -32,7 +32,7 @@ public class JournalPort implements Serializable {
 		return Objects.equals(journalId, other.journalId);
 	}
 
-	public JournalPort(String journalId, String playDate, String userName, String correctCount) {
+	public JournalPort(String journalId, String playDate, String userName, int correctCount) {
 		this.journalId = journalId;
 		this.playDate = playDate;
 		this.userName = userName;
@@ -51,7 +51,7 @@ public class JournalPort implements Serializable {
 		return userName;
 	}
 
-	public String getCorrectCount() {
+	public int getCorrectCount() {
 		return correctCount;
 	}
 
