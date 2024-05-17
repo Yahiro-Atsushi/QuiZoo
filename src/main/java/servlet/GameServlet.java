@@ -74,7 +74,7 @@ public class GameServlet extends HttpServlet {
 			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
 			
 		/* ----リザルト画面へ遷移する際の処理---- */
-		}else {
+		} else {
 			//10問終えていたらresult.jspへ
 			
 			//---------------------------------------------------//
