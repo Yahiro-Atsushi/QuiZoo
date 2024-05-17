@@ -17,7 +17,6 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     width: 100%;
-    height: 120%;
     overflow-y: auto;
     max-height: 90vh;
 }
@@ -61,12 +60,8 @@ h1 {
 }
 
 .summary {
-    display: inline-block;
-    padding: 5px 10px; /* ボタンのパディングを追加 */
-    background-color: rgb(255, 128, 128); /* ボタンの背景色を指定 */
-    color: #fff; /* ボタンのテキスト色を指定 */
-    border: none; /* ボタンの枠線を削除 */
-    border-radius: 5px; /* ボタンの角丸を設定 */
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
 
 .link-container {

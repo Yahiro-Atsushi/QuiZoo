@@ -11,8 +11,9 @@
 <body>
     <div class="menu-container">
         <div class="sidebar">
-            <h1>QuiZoo</h1>
+            <h2>QuiZoo</h2>
             <ul>
+            	<li><a href="MainServlet">TOP</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
                 <li><a href="#">ランキング</a></li>
                 <li class="logout-link"><a href="#">ログアウト</a></li>
