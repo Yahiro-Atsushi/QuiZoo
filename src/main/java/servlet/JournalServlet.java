@@ -32,8 +32,12 @@ public class JournalServlet extends HttpServlet {
 		request.setAttribute("journalPort", journalPortList);
 		//----------------------------------------------//
 		
-		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.JOURNALLIST.getAddress());
+		/* --------履歴がなかった場合にフォワード先を分岐する処理-------- */
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.JOURNAL_LIST.getAddress());
+		if(journalPortList.isEmpty()) {
+			dispatcher = request.getRequestDispatcher(Address.EMPTY_JOURNAL_LIST.getAddress());
+		}
 		dispatcher.forward(request, response);
 	}
 	
