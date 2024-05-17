@@ -13,7 +13,7 @@
         <div class="sidebar">
             <h1>QuiZoo</h1>
             <ul>
-                <li><a href="#">履歴</a></li>
+                <li><a href="JournalServlet">履歴</a></li>
                 <li><a href="#">ランキング</a></li>
                 <li class="logout-link"><a href="#">ログアウト</a></li>
             </ul>
