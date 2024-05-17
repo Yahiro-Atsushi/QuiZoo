@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import entity.GameMode;
 import entity.Journal;
 import entity.JournalPort;
 
@@ -34,7 +35,7 @@ public class JournalDao {
 		String sql = ""
 				+ "INSERT INTO "
 				+ " journal "
-				+ " (name, correct_count, "
+				+ " (name, correct_count, mode, "
 				+ "  q1_id, q1_result, "
 				+ "  q2_id, q2_result, "
 				+ "  q3_id, q3_result, "
@@ -46,7 +47,7 @@ public class JournalDao {
 				+ "  q9_id, q9_result, "
 				+ "  q10_id, q10_result) "
 				+ "VALUES "
-				+ " (?, ?, "
+				+ " (?, ?, ?, "
 				+ " ?, ?, "
 				+ " ?, ?, "
 				+ " ?, ?, "
@@ -63,6 +64,7 @@ public class JournalDao {
 			/* -------- ?に値を代入する処理 -------- */
 			ps.setString(1, journalMap.get("name"));
 			ps.setString(2, journalMap.get("correct_count"));
+			ps.setString(3, journalMap.get("mode"));
 			//列3～列22までの20列は問題数（=section）のみ列名が違うので、for文で処理をまとめる
 			int parameterIndex = 3;
 			final int START_SECTION = 1;
@@ -111,6 +113,7 @@ public class JournalDao {
 				+ "SELECT "
 				+ " id, "
 				+ " name, "
+				+ " mode, "
 				+ " correct_count, "
 				+ " play_date "
 				+ "FROM "
@@ -128,10 +131,11 @@ public class JournalDao {
 			while (rs.next()) {
 				String journalId = rs.getString(ColumnNames.id.name());
 				String name = rs.getString(ColumnNames.name.name());
+				String mode = rs.getString(ColumnNames.mode.name());
 				int correctCount = rs.getInt(ColumnNames.correct_count.name());
 				String playDate = rs.getString(ColumnNames.play_date.name());
 
-				JournalPort jp = new JournalPort(journalId, playDate, name, correctCount);
+				JournalPort jp = new JournalPort(journalId, playDate, name, mode, correctCount);
 				list.add(jp);
 			}
 
@@ -166,6 +170,7 @@ public class JournalDao {
 			String id = rs.getString(ColumnNames.id.name());
 			String playDate = rs.getString(ColumnNames.play_date.name());
 			String name = rs.getString(ColumnNames.name.name());
+			String mode = rs.getString(ColumnNames.mode.name());
 			int correctCount = rs.getInt(ColumnNames.correct_count.name());
 
 			Map<Integer, String> quizIds = new LinkedHashMap<>();
@@ -180,7 +185,7 @@ public class JournalDao {
 				quizResults.put(section, colQuizResult);
 			}
 
-			journal = new Journal(id, playDate, name, correctCount,
+			journal = new Journal(id, playDate, name, mode, correctCount,
 					quizIds, quizResults);
 
 		} catch (SQLException e) {
@@ -189,6 +194,45 @@ public class JournalDao {
 		}
 
 		return journal;
+	}
+
+	public List<JournalPort> selectRankingByGameMode(GameMode mode) {
+
+		List<JournalPort> list = new ArrayList<>();
+
+		String query = ""
+				+ "SELECT "
+				+ " id, "
+				+ " name, "
+				+ " mode, "
+				+ " correct_count, "
+				+ " play_date "
+				+ "FROM "
+				+ " ? "
+				+ "LIMIT 10 ;";
+
+		try (PreparedStatement ps = con.prepareStatement(query)) {
+			ps.setString(1, mode.getRankingTable());
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String journalId = rs.getString(ColumnNames.id.name());
+				String name = rs.getString(ColumnNames.name.name());
+				String gameMode = rs.getString(ColumnNames.mode.name());
+				int correctCount = rs.getInt(ColumnNames.correct_count.name());
+				String playDate = rs.getString(ColumnNames.play_date.name());
+
+				JournalPort jp = new JournalPort(journalId, playDate, name,  gameMode, correctCount);
+				list.add(jp);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("JournalDao.selectJournalPortByUserName:SELECT文のエラー");
+		}
+
+		return list;
 	}
 
 }
