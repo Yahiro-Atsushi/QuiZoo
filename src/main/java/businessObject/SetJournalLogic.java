@@ -27,6 +27,9 @@ public class SetJournalLogic {
 		//nameにはプレイヤーの名前が入る
 		inputMap.put(ColumnNames.name.name(), userName);
 		
+		//難易度表記を格納
+		inputMap.put(ColumnNames.mode.name(), game.getMode().getValue());
+		
 		//正解数
 		int correctCount = 0;
 		

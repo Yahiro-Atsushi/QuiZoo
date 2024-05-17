@@ -39,7 +39,9 @@ public class GameServlet extends HttpServlet {
 			if (mode == null) {
 				mode = GameMode.TUTORIAL;
 			}
-
+			
+			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
+			session.setAttribute(VarNames.gameMode.name(), mode);
 			game = SetGameLogic.execute(mode);
 		}
 		/* --------初回の処理終了-------- */

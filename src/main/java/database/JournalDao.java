@@ -202,17 +202,20 @@ public class JournalDao {
 
 		String query = ""
 				+ "SELECT "
-				+ " id, "
+				+ " rank, "
 				+ " name, "
 				+ " mode, "
 				+ " correct_count, "
-				+ " play_date "
+				+ " play_date, "
+				+ " id "
 				+ "FROM "
-				+ " ? "
+				+ " ranking "
+				+ "WHERE "
+				+ " mode = ? "
 				+ "LIMIT 10 ;";
 
 		try (PreparedStatement ps = con.prepareStatement(query)) {
-			ps.setString(1, mode.getRankingTable());
+			ps.setString(1, mode.getValue());
 
 			ResultSet rs = ps.executeQuery();
 
