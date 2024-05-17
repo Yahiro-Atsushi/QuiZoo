@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.GetJournalLogic;
 import businessObject.GetJournalPortRankingLogic;
+import businessObject.SetGameModeLogic;
 import entity.Address;
 import entity.GameMode;
 import entity.Journal;
@@ -28,12 +29,18 @@ public class RankingServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		//----------------------------------------------//
-		// JournalPortを正解数の多い順で10レコード持ってくるロジック
-		HttpSession session = request.getSession();
-		GameMode mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
-		if(mode == null) {
-			mode = GameMode.TUTORIAL;
+		// リクエストスコープから検索する履歴のゲームモードを取得
+		String gameMode = (String)request.getAttribute(VarNames.gameMode.name());
+		GameMode mode = SetGameModeLogic.execute(gameMode);
+		
+		//もしリクエストスコープになければセッションスコープから取得する
+		if(gameMode == null ||gameMode.isEmpty()) {
+			HttpSession session = request.getSession();
+			 mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
 		}
+		//セッションスコープになかろうと、SetGameLogic内でTUTORIALになっているのでnullにはならない。
+		
+		// JournalPortを正解数の多い順で10レコード持ってくるロジック
 		List<JournalPort> journalPortList = GetJournalPortRankingLogic.execute(mode);
 		// System.out.println(journal);
 		request.setAttribute("journalPort", journalPortList);
