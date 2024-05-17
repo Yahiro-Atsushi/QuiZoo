@@ -12,7 +12,8 @@ public enum Address {
 	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp"),
 	TIMEOUT("WEB-INF/jsp/timeOut.jsp"),
 	JOURNAL("WEB-INF/jsp/journal.jsp"),
-	JOURNALLIST("WEB-INF/jsp/journalList.jsp");
+	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"), 
+	EMPTY_JOURNAL_LIST("WEB-INF/jsp/emptyJournalList.jsp");
 	
 	private String address;
 
