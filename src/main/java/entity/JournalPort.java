@@ -7,12 +7,14 @@ public class JournalPort implements Serializable {
 	private String journalId;
 	private String playDate;
 	private String userName;
+	private String mode;
 	private int correctCount;
+
 
 	@Override
 	public String toString() {
-		return "JournalPort [playDate=" + playDate + ", userName=" + userName + ", correctCount=" + correctCount
-				+ ", journalId=" + journalId + "]";
+		return "JournalPort [journalId=" + journalId + ", playDate=" + playDate + ", userName=" + userName + ", mode="
+				+ mode + ", correctCount=" + correctCount + "]";
 	}
 
 	@Override
@@ -32,10 +34,11 @@ public class JournalPort implements Serializable {
 		return Objects.equals(journalId, other.journalId);
 	}
 
-	public JournalPort(String journalId, String playDate, String userName, int correctCount) {
+	public JournalPort(String journalId, String playDate, String userName, String mode, int correctCount) {
 		this.journalId = journalId;
 		this.playDate = playDate;
 		this.userName = userName;
+		this.mode = mode;
 		this.correctCount = correctCount;
 	}
 
@@ -53,6 +56,10 @@ public class JournalPort implements Serializable {
 
 	public int getCorrectCount() {
 		return correctCount;
+	}
+
+	public String getMode() {
+		return mode;
 	}
 
 }
