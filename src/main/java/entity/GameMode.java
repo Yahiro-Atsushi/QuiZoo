@@ -1,6 +1,8 @@
 package entity;
 
-public enum GameMode {
+import java.io.Serializable;
+
+public enum GameMode implements Serializable {
 	EASY("チンパンジー", " quiz_easy ", " journal_easy ", 4), 
 	NORMAL("人間", " quiz_normal ", " journal_normal ", 4), 
 	HARD("オランウータン", " quiz_hard ", " journal_hard ", 4),
