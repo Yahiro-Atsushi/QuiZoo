@@ -9,7 +9,7 @@ public class Quiz implements Serializable {
 	private String id; // クイズID(ユニークな値)
 	private String quistionMsg; // 問題文
 	private String answer; // 回答
-	private Map<Integer, String> buttons; // key: ・value:選択肢文
+	private Map<Integer, String> buttons; // key: ・value:選択肢文(ボタンの番号)
 	private Map<Integer, String> buttonTexts; // key: ・ value:答えの解説
 
 	// コンストラクタ

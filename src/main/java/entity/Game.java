@@ -7,7 +7,7 @@ import java.util.Map;
 	// ゲームの情報を所持するクラス
 public class Game implements Serializable {
 	private int quizCount; // 問題数
-	private GameMode mode; // ゲームの難易度・テーブル名・回答の選択肢の数(列挙型)
+	private GameMode mode; // ゲームの難易度・テーブル名・解答の選択肢の数(列挙型)
 	private Map<Integer, Quiz> quizzes; // key:現在の問題数・value:現在のクイズ
 	private Map<Integer, Boolean> isCorrects; // key:選択肢の番号・value:正解(true)or不正解(false)の判定
 
