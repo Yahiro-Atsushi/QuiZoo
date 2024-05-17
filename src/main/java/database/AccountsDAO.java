@@ -22,7 +22,7 @@ public class AccountsDAO {
 		connector.dbClose();
 	}
 
-	// データベースから名前・パスワードを検索
+	// テーブルから名前・パスワードを検索
 	public User findAccountFromInput(String inputName, String inputPass) {
 		User user = null;
 
