@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
+import entity.JournalPort;
+
 public class JournalDao {
 
 	private DatabaseConnector connector;
@@ -81,6 +83,16 @@ public class JournalDao {
 		}
 		
 		return;
+	}
+
+	public Map<Integer, JournalPort> selectJournalIdsByUserName(String userName) {
+		if(userName == null || userName.isEmpty()) {
+			System.out.println("userNameがnullです");
+		}
+		
+		
+		
+		return null;
 	}
 
 	
