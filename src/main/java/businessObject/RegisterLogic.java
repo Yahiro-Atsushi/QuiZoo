@@ -1,6 +1,6 @@
 package businessObject;
 
-import database.AccountsDAO;
+import database.AccountsDao;
 import entity.User;
 
  // ユーザー登録に関する処理を行うクラス
@@ -8,7 +8,7 @@ public class RegisterLogic {
 	
 	public static User execute(String inputName, String inputPass) {
 		// データベースのAccountsテーブルの処理をまとめたクラス のインスタンスを生成
-		AccountsDAO aDao = new AccountsDAO();
+		AccountsDao aDao = new AccountsDao();
 		
 		// 入力されたユーザー名を検索しuserNameに代入する
 		String userName = aDao.findUserName(inputName);
