@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Game;
-import model.ResultLogic;
+import businessObject.ResultLogic;
+import entity.Game;
 
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
