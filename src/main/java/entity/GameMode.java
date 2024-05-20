@@ -6,8 +6,8 @@ public enum GameMode implements Serializable {
 	EASY("チンパンジー", " quiz_easy_view ", " journal_view ", 4), 
 	NORMAL("人間", " quiz_normal_view ", " journal_view ", 4), 
 	HARD("オランウータン", " quiz_hard_view ", " journal_view ", 4),
-	CHALLENGE("キメラ", " challenge ", " journal_view ", 4),
-	TUTORIAL("テスト", " quiz_test_view ", " journal_view ", 4), ;
+	CHALLENGE("キメラ", " challenge_view ", " ranking_challenge ", 4),
+	TEST("テスト", " quiz_test_view ", " journal_view ", 4), ;
 
 	private String animal;
 	private String quizTable;

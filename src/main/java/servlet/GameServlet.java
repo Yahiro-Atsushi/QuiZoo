@@ -37,7 +37,7 @@ public class GameServlet extends HttpServlet {
 
 			//GameModeがnullならチュートリアル
 			if (mode == null) {
-				mode = GameMode.TUTORIAL;
+				mode = GameMode.TEST;
 			}
 			
 			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する

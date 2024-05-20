@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -123,5 +124,33 @@ public class QuizDao  {
 		}
 
 		return allQuizId;
+	}
+
+	public List<Map<String, String>> selectAllChallengeQuiz(GameMode mode) {
+		
+		List<Map<String, String>> mapList = new ArrayList<>();
+		Map<String, String> map = new LinkedHashMap<>(); 
+
+		String sql = ""
+				+ "SELECT "
+				+ " id, "
+				+ " mode "
+				+ "FROM " + mode.getQuizTable();
+
+		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String id = rs.getString(ColumnNames.id.name());
+				String quizMode = rs.getString(ColumnNames.mode.name());
+				map.put(id, quizMode);
+				mapList.add(map);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("selectAllQuizId() エラー ： sql文が正しく実行されませんでした。");
+		}
+
+		return mapList;
 	}
 }
