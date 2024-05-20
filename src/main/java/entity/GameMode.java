@@ -1,6 +1,6 @@
 package entity;
 
-	// 列挙型でゲームの難易度・テーブル・回答の選択肢を持つ
+	// 列挙型でゲームの難易度・テーブル・回答の選択肢の数を持つ
 public enum GameMode {
 	EASY("チンパンジー", " quiz_easy ", 4), 
 	NORMAL("人間", " quiz_normal ", 4), 

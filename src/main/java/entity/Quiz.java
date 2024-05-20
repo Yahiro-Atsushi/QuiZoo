@@ -6,10 +6,10 @@ import java.util.Objects;
 
 	// クイズに関する情報を所持するクラス
 public class Quiz implements Serializable {
-	private String id; // クイズID(ユニークな値)
+	private String id; // クイズID
 	private String quistionMsg; // 問題文
 	private String answer; // 回答
-	private Map<Integer, String> buttons; // key: ・value:選択肢文(ボタンの番号)
+	private Map<Integer, String> buttons; // key:選択肢の番号(ボタンの番号) ・value:選択肢文
 	private Map<Integer, String> buttonTexts; // key: ・ value:答えの解説
 
 	// コンストラクタ

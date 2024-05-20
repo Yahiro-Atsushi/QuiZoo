@@ -3,6 +3,7 @@ package businessObject;
 import database.AccountsDAO;
 import entity.RegisterErrorMessage;
 
+// ユーザー登録時のエラーメッセージを保持するクラス
 public class RegisterErrorCheckLogic {
 
 	public static RegisterErrorMessage execute(String inputName, String inputPass) {

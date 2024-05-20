@@ -7,8 +7,7 @@ import entity.User;
 public class RegisterLogic {
 	
 	public static User execute(String inputName, String inputPass) {
-		// データベースのAccountsテーブルの処理をまとめたクラス
-		// のインスタンスを生成
+		// データベースのAccountsテーブルの処理をまとめたクラス のインスタンスを生成
 		AccountsDAO aDao = new AccountsDAO();
 		
 		// 入力されたユーザー名を検索しuserNameに代入する
@@ -24,7 +23,7 @@ public class RegisterLogic {
 		aDao.userInsert(inputName, inputPass);
 		// 入力されたユーザー名・パスワードをUserに代入
 		User user = aDao.findAccountFromInput(inputName, inputPass);
-		
+		// 追加したを返すユーザー(inputName,inputoPass)を返す
 		return user;
 	}
 

@@ -15,7 +15,7 @@ public class ResultLogic {
 		correct.put(true, "正解");
 		correct.put(false, "不正解");
 		
-		// 
+		// 解答結果を判定する
 		Map<Integer, String> result = new HashMap<>();
 		// for文で10回ループ(問題数)
 		for (int i = 1; i < 11; i++) {
