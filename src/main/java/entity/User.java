@@ -2,9 +2,10 @@ package entity;
 
 import java.io.Serializable;
 
+// ユーザー情報を所持するクラス
 public class User implements Serializable{
-	private String name;
-	private String pass;
+	private String name; // ユーザー名
+	private String pass; // パスワード
 
 
 	public User(final String name, final String pass) {

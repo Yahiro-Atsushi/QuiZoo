@@ -1,5 +1,6 @@
 package database;
 
+ // 列挙型でデータベースの列名を所持するクラス
 public enum ColumnNames {
 	id,
 	name,

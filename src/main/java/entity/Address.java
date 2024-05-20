@@ -1,5 +1,6 @@
 package entity;
 
+ // 列挙型でjspファイルを所持するクラス
 public enum Address {
 	INDEX("index.jsp"),
 	REGISTER("WEB-INF/jsp/register.jsp"),
@@ -21,7 +22,7 @@ public enum Address {
 	private Address(String address) {
 		this.address = address;
 	}
-
+ // getAddressで上記のアドレスを返す
 	public String getAddress() {
 		return address;
 	}

@@ -7,6 +7,7 @@ import entity.Game;
 import entity.GameMode;
 import entity.Quiz;
 
+// クイズを取得するクラス
 public class SetGameLogic {
 	public static Game execute(GameMode mode) {
 		//ゲームインスタンス生成
