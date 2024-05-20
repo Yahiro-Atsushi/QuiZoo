@@ -14,7 +14,8 @@ public enum Address {
 	JOURNAL("WEB-INF/jsp/journal.jsp"),
 	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"), 
 	EMPTY_JOURNAL_LIST("WEB-INF/jsp/emptyJournalList.jsp"), 
-	LOGOUT("WEB-INF/jsp/logout.jsp");
+	LOGOUT("WEB-INF/jsp/logout.jsp"), 
+	CHALLENGE_RESULT("WEB-INF/jsp/challengeResult.jsp");
 	
 	private String address;
 

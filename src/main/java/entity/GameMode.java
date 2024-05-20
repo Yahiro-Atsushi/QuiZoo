@@ -3,16 +3,16 @@ package entity;
 import java.io.Serializable;
 
 public enum GameMode implements Serializable {
-	EASY("チンパンジー", " quiz_easy ", " journal_easy ", 4), 
-	NORMAL("人間", " quiz_normal ", " journal_normal ", 4), 
-	HARD("オランウータン", " quiz_hard ", " journal_hard ", 4),
-	CHALLENGE("キメラ", " quiz_challenge ", " journal_challenge ", 4),
-	TUTORIAL("テスト", " quiz_test ", " journal_test ", 4), ;
+	EASY("チンパンジー", " quiz_easy_view ", " journal_view ", 4), 
+	NORMAL("人間", " quiz_normal_view ", " journal_view ", 4), 
+	HARD("オランウータン", " quiz_hard_view ", " journal_view ", 4),
+	CHALLENGE("キメラ", " challenge ", " journal_view ", 4),
+	TUTORIAL("テスト", " quiz_test_view ", " journal_view ", 4), ;
 
 	private String animal;
 	private String quizTable;
-	private int buttonSize;
 	private String rankingTable;
+	private int buttonSize;
 
 	private GameMode(String animal, String quizTable, String rankingTable, int buttonSize) {
 		this.animal = animal;
