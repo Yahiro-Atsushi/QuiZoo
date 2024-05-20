@@ -2,7 +2,6 @@ package entity;
 
 import java.io.Serializable;
 
-	
 public class LoginUserErrorMessage implements Serializable {
 	private String notUser;
 	private String nameError;

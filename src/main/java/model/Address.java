@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public enum Address {
 	INDEX("index.jsp"),
@@ -7,14 +7,7 @@ public enum Address {
 	TUTORIAL("WEB-INF/jsp/tutorial.jsp"),
 	QUIZ("WEB-INF/jsp/quiz.jsp"),
 	ANSWER("WEB-INF/jsp/answer.jsp"),
-	RESULT("WEB-INF/jsp/result.jsp"), 
-	CORRECT("WEB-INF/jsp/correct.jsp"),
-	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp"),
-	TIMEOUT("WEB-INF/jsp/timeOut.jsp"),
-	JOURNAL("WEB-INF/jsp/journal.jsp"),
-	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"), 
-	EMPTY_JOURNAL_LIST("WEB-INF/jsp/emptyJournalList.jsp"), 
-	LOGOUT("WEB-INF/jsp/logout.jsp");
+	RESULT("WEB-INF/jsp/result.jsp"), ;
 	
 	private String address;
 

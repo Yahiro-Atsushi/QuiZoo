@@ -13,14 +13,14 @@
 	<b> 問<c:out value="${game.quizCount}" />
 	</b>
 	<div class="parent">
-		<b>残念！</b><br><br>
-		正解は<c:out value="${answer}" />
+		正解は
+		<c:out value="${answer}" />
 		<br>
+		<br> 解説<br>
 		<br>
-		解説<br><br>
 		<c:out value="${text}" />
-		<br><br>
-		<a href="GameServlet">次の問題へ</a>
+		<br>
+		<br> <a href="GameServlet">次の問題へ</a>
 	</div>
 	</div>
 </body>

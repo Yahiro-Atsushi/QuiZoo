@@ -1,6 +1,5 @@
 package entity;
 
-// ユーザー登録時のエラーチェック
 public class RegisterErrorMessage {
 	private String userDoubleError;
 	private String nameError;
