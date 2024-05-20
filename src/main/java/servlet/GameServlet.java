@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,12 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Address;
-import model.Game;
-import model.GameMode;
-import model.Quiz;
-import model.SetGameLogic;
-import model.VarNames;
+import businessObject.ResultLogic;
+import businessObject.SetGameLogic;
+import entity.Address;
+import entity.Game;
+import entity.GameMode;
+import entity.Quiz;
+import entity.VarNames;
 
 
 @WebServlet("/GameServlet")
@@ -57,7 +59,11 @@ public class GameServlet extends HttpServlet {
 			String button2 = quiz.getButtons().get(2);
 			String button3 = quiz.getButtons().get(3);
 			String button4 = quiz.getButtons().get(4);
-			
+			System.out.println("質問テスト" + question);
+			System.out.println("ボタン1テスト" + button1);
+			System.out.println("ボタン2テスト" + button2);
+			System.out.println("ボタン3テスト" + button3);
+			System.out.println("ボタン4テスト" + button4);
 			request.setAttribute("question", question);
 			request.setAttribute("button1", button1);
 			request.setAttribute("button2", button2);
@@ -70,6 +76,12 @@ public class GameServlet extends HttpServlet {
 		/* ----リザルト画面へ遷移する際の処理---- */
 		}else {
 			//10問終えていたらresult.jspへ
+			
+			//---------------------------------------------------//
+			// 結果を(1, "正解")のように表示させるロジック
+			Map<Integer, String> result = ResultLogic.execute(game);
+			session.setAttribute("result", result);
+			//---------------------------------------------------//
 			rdp = request.getRequestDispatcher(Address.RESULT.getAddress());
 			
 		}

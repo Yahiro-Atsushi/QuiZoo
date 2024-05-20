@@ -11,23 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Address;
 
-/**
- * Servlet implementation class WelcomeServlet
- */
-@WebServlet("/WelcomeServlet")
-public class WelcomeServlet extends HttpServlet {
+@WebServlet("/MainServlet")
+public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		RequestDispatcher rdp = request.getRequestDispatcher(Address.INDEX.getAddress());
-		rdp.forward(request, response);
-		
-	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
+		dispatcher.forward(request, response);
+	}
 
 }
