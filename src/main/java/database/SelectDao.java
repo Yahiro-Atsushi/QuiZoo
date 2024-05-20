@@ -29,7 +29,7 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable() + " "
+				+ "FROM " + mode.getQuizTable() + " "
 				+ "WHERE "
 				+ " id = " + randomId + " ;";
 
@@ -72,7 +72,7 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
@@ -112,7 +112,7 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " id "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();

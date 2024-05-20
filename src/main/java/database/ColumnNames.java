@@ -1,6 +1,5 @@
 package database;
 
- // 列挙型でデータベースの列名を所持するクラス
 public enum ColumnNames {
 	id,
 	name,
@@ -15,4 +14,27 @@ public enum ColumnNames {
 	button_text3,
 	button4,
 	button_text4,
+	mode,
+	q1_id,
+	q1_result,
+	q2_id,
+	q2_result,
+	q3_id,
+	q3_result,
+	q4_id,
+	q4_result,
+	q5_id,
+	q5_result,
+	q6_id,
+	q6_result,
+	q7_id,
+	q7_result,
+	q8_id,
+	q8_result,
+	q9_id,
+	q9_result,
+	q10_id,
+	q10_result,
+	correct_count,
+	play_date;
 }

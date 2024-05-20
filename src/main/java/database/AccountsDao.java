@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 import entity.User;
 
-public class AccountsDao {
+public class AccountsDAO {
 	private Connection con;
 	private DatabaseConnector connector;
 
 	// コンストラクタでデータベースに接続
-	public AccountsDao() {
+	public AccountsDAO() {
 		connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}

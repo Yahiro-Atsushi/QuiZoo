@@ -1,6 +1,6 @@
 package businessObject;
 
-import database.AccountsDao;
+import database.AccountsDAO;
 import entity.RegisterErrorMessage;
 
 // ユーザー登録時のエラーメッセージを保持するクラス
@@ -11,7 +11,7 @@ public class RegisterErrorCheckLogic {
 		String nameError = null;
 		String passError = null;
 		
-		AccountsDao aDao = new AccountsDao();
+		AccountsDAO aDao = new AccountsDAO();
 		String userName = aDao.findUserName(inputName);
 		
 		if (inputName == null || inputName.isEmpty())
