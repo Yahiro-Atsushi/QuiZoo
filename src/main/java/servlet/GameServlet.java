@@ -49,6 +49,13 @@ public class GameServlet extends HttpServlet {
 		session.setAttribute(VarNames.game.name(), game);
 		RequestDispatcher rdp;
 
+		/* --------チャレンジモードならChallengeServletへ遷移-------- */
+		if(game.getMode() == GameMode.CHALLENGE) {
+			rdp = request.getRequestDispatcher("/ChallengeServlet");
+			rdp.forward(request, response);
+		}
+		/* --------処理終了-------- */
+		
 		/* --------クイズが全問終わっているか判定-------- */
 		/* ----10問終えるまではクイズ画面へ遷移する際の処理 ---- */
 		if (game.getQuizCount() <= 10) {
