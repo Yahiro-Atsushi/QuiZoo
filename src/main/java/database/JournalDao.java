@@ -65,7 +65,7 @@ public class JournalDao {
 			ps.setString(1, journalMap.get("name"));
 			ps.setString(2, journalMap.get("correct_count"));
 			ps.setString(3, journalMap.get("mode"));
-			//列3～列22までの20列は問題数（=section）のみ列名が違うので、for文で処理をまとめる
+			//列4～列23までの20列は問題数（=section）のみ列名が違うので、for文で処理をまとめる
 			int parameterIndex = 3;
 			final int START_SECTION = 1;
 			final int MAX_SECTION = 10;
