@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -9,36 +10,26 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class DummyFilter
+ * Servlet Filter implementation class LogoutFilter
  */
-@WebFilter("/DummyFilter")
-public class DummyFilter extends HttpFilter implements Filter {
+@WebFilter("/LogoutServlet")
+public class LogoutFilter extends HttpFilter implements Filter {
        
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
-    public DummyFilter() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
-		// pass the request along the filter chain
+		//ログアウト時にセッションスコープを破棄する。
+		HttpServletRequest httpRequest =
+				(HttpServletRequest)request;
+		
+		HttpSession session = httpRequest.getSession();
+		session.invalidate();
 		chain.doFilter(request, response);
 	}
 
@@ -49,4 +40,10 @@ public class DummyFilter extends HttpFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * @see Filter#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
 }
