@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -13,9 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import businessObject.GetJournalLogic;
 import businessObject.GetJournalPortLogic;
+import businessObject.SetGameModeLogic;
+import database.QuizDao;
 import entity.Address;
+import entity.GameMode;
 import entity.Journal;
 import entity.JournalPort;
+import entity.Quiz;
 import entity.VarNames;
 
 @WebServlet("/JournalServlet")
@@ -47,8 +53,18 @@ public class JournalServlet extends HttpServlet {
 		// Journalインスタンス（Quizマップ・日付・resultマップ（正解or不正解）・ユーザー名・履歴ID）
 		String journalId = request.getParameter("journalId");
 		Journal journal = GetJournalLogic.execute(journalId);
+		@SuppressWarnings("unchecked")
+		List<JournalPort> journalPortList = (List<JournalPort>)request.getAttribute("journalPort");
+		Map<Integer, Quiz> quizMap = new TreeMap<>();
+		QuizDao qDao = new QuizDao();
+		for (int i = 1; i < 11; i++) {
+			GameMode gameMode = SetGameModeLogic.execute(journalPortList.get(i).getMode());
+			Quiz q = qDao.selectQuizById(gameMode, journal.getQuizIds().get(i));
+			quizMap.put(1, q);
+		}
 		// System.out.println(journal);
 		request.setAttribute("journal", journal);
+		request.setAttribute("quizMap", quizMap);
 		//----------------------------------------------//
 				
 		// フォワード
