@@ -4,6 +4,7 @@ import java.util.List;
 
 import database.SelectDao;
 
+// クイズを取得するクラス
 public class SetGameLogic {
 	public static Game execute(GameMode mode) {
 		//ゲームインスタンス生成

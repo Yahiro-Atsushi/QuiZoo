@@ -1,5 +1,6 @@
 package model;
 
+// 回答の選択肢に対して入力された値の判定をするクラス
 public class ChoiceButtonTextLogic {
 
 	public static String execute(Game game, String input) {

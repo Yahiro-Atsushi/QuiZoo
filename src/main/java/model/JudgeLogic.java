@@ -1,5 +1,8 @@
-package model;
+package businessObject;
 
+import entity.Game;
+import entity.Quiz;
+// 入力された値に対しての判定をするクラス
 public class JudgeLogic {
 
 	public static Game execute(Game game, String input) {
@@ -9,8 +12,7 @@ public class JudgeLogic {
 			game.setQuizCount(game.getQuizCount() + 1);
 			return game;
 		}
-		
-		//今何問めかを取得
+		//今何問目かを取得
 		int section = game.getQuizCount();
 		
 		//現在のクイズを取得
@@ -20,8 +22,7 @@ public class JudgeLogic {
 		if(quiz.getAnswer().equals(input)) {
 			game.getIsCorrects().put(section, true);
 		}
-		
-		//次の問題へ
+		//次の問題へカウントを増加
 		game.setQuizCount(section + 1);
 		return game;
 	}

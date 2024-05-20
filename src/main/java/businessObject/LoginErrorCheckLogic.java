@@ -2,7 +2,8 @@ package businessObject;
 
 import entity.LoginUserErrorMessage;
 import entity.User;
-
+		
+// ログイン時のエラーメッセージを所持するクラス
 public class LoginErrorCheckLogic {
 
 	public static LoginUserErrorMessage execute(User user, String userId, String pass) {
