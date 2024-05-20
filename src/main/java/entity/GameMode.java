@@ -1,19 +1,23 @@
 package entity;
 
-public enum GameMode {
-	EASY("チンパンジー", " quiz_easy ", 4), 
-	NORMAL("人間", " quiz_normal ", 4), 
-	HARD("オランウータン", " quiz_hard ", 4),
-	CHALLENGE("キメラ", " quiz_challenge ", 4),
-	TUTORIAL("テスト", " quiz_test ", 4);
+import java.io.Serializable;
+
+public enum GameMode implements Serializable {
+	EASY("チンパンジー", " quiz_easy ", " journal_easy ", 4), 
+	NORMAL("人間", " quiz_normal ", " journal_normal ", 4), 
+	HARD("オランウータン", " quiz_hard ", " journal_hard ", 4),
+	CHALLENGE("キメラ", " quiz_challenge ", " journal_challenge ", 4),
+	TUTORIAL("テスト", " quiz_test ", " journal_test ", 4), ;
 
 	private String animal;
-	private String table;
+	private String quizTable;
 	private int buttonSize;
+	private String rankingTable;
 
-	private GameMode(String animal, String table, int buttonSize) {
+	private GameMode(String animal, String quizTable, String rankingTable, int buttonSize) {
 		this.animal = animal;
-		this.table = table;
+		this.quizTable = quizTable;
+		this.rankingTable = rankingTable;
 		this.buttonSize = buttonSize;
 	}
 
@@ -21,11 +25,15 @@ public enum GameMode {
 		return this.animal;
 	}
 	
-	public String getTable() {
-		return this.table;
+	public String getQuizTable() {
+		return this.quizTable;
 	}
 
 	public int getButtonSize() {
 		return this.buttonSize;
+	}
+
+	public String getRankingTable() {
+		return this.rankingTable;
 	}
 }

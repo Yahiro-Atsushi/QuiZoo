@@ -14,6 +14,7 @@ public enum ColumnNames {
 	button_text3,
 	button4,
 	button_text4,
+	mode,
 	q1_id,
 	q1_result,
 	q2_id,

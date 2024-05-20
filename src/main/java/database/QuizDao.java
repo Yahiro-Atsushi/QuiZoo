@@ -27,7 +27,7 @@ public class QuizDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable() + " "
+				+ "FROM " + mode.getQuizTable() + " "
 				+ "WHERE "
 				+ " id = " + randomId + " ;";
 
@@ -67,7 +67,7 @@ public class QuizDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
@@ -107,7 +107,7 @@ public class QuizDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " id "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
