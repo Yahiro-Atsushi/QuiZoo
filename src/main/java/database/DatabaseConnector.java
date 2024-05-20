@@ -47,7 +47,6 @@ public class DatabaseConnector {
 		if (this.con != null) {
 			try {
 				this.con.close();
-				instance = null;
 				System.out.println("【情報】　データベースをクローズしました");
 			} catch (SQLException e) {
 				System.out.println("【失敗】　データベースをクローズできませんでした");

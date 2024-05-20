@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import businessObject.ChoiceButtonTextLogic;
-import businessObject.JudgeLogic;
-import entity.Address;
-import entity.Game;
+import model.ChoiceButtonTextLogic;
+import model.Game;
+import model.JudgeLogic;
 
 
 @WebServlet("/JudgeServlet")
@@ -25,11 +24,9 @@ public class JudgeServlet extends HttpServlet {
 		String input = request.getParameter("input");
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
-		
-		String answer = game.getQuizzes().get(game.getQuizCount()).getAnswer();
-		String text = ChoiceButtonTextLogic.execute(game, input);
 		int nowSection = game.getQuizCount();
-		
+		String answer = game.getQuizzes().get(nowSection).getAnswer();
+		String text = ChoiceButtonTextLogic.execute(game, input);
 		request.setAttribute("answer", answer);
 		request.setAttribute("text", text);
 		
@@ -44,11 +41,11 @@ public class JudgeServlet extends HttpServlet {
 		
 		// 正解だったらcorrect.jspへ
 		if (collect == true) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/correct.jsp");
 			dispatcher.forward(request, response);
 		} else {
 		// 不正解ならnotCorrect.jsp
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/notCorrect.jsp");
 			dispatcher.forward(request, response);
 		}
 	
