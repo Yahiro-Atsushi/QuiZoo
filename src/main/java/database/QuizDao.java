@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import entity.GameMode;
 import entity.Quiz;
 
-public class SelectDao  {
+public class QuizDao  {
 	private DatabaseConnector connector;
 	private Connection con;
 
 	// コンストラクタでデータベースに接続
-	public SelectDao() {
+	public QuizDao() {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
@@ -29,12 +29,14 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable() + " "
+				+ "FROM " + mode.getQuizTable() + " "
 				+ "WHERE "
 				+ " id = " + randomId + " ;";
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
+			
+			quiz = new Quiz(null,null,null,null,null);
 
 			while (rs.next()) {
 				// レコードを取得
@@ -72,7 +74,7 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
@@ -112,7 +114,7 @@ public class SelectDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " id "
-				+ "FROM " + mode.getTable();
+				+ "FROM " + mode.getQuizTable();
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();

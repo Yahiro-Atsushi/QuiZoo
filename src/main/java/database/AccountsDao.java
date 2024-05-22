@@ -28,7 +28,7 @@ public class AccountsDao {
 
 	// SELECT文を実行
 		String sql = "SELECT name, pass " +
-				"FROM accounts " +
+				"FROM accounts_view " +
 				"WHERE " +
 				"name = ? AND pass = ? ";
 
@@ -85,7 +85,7 @@ public class AccountsDao {
 				+ "SELECT "
 				+ " name "
 				+ "FROM "
-				+ " accounts "
+				+ " accounts_view "
 				+ "WHERE "
 				+ " name = ? ";
 

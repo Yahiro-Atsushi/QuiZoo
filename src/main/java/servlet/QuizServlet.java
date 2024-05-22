@@ -25,7 +25,7 @@ public class QuizServlet extends HttpServlet {
 		int section = game.getQuizCount();
 		Quiz quiz = game.getQuizzes().get(section);
 		
-		String question = quiz.getQuistionMsg();
+		String question = quiz.getQuestionMsg();
 		String button1 = quiz.getButtons().get(1);
 		String button2 = quiz.getButtons().get(2);
 		String button3 = quiz.getButtons().get(3);
