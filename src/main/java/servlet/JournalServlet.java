@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,9 +16,13 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.GetJournalLogic;
 import businessObject.GetJournalPortLogic;
+import businessObject.SetGameModeLogic;
+import database.QuizDao;
 import entity.Address;
+import entity.GameMode;
 import entity.Journal;
 import entity.JournalPort;
+import entity.Quiz;
 import entity.VarNames;
 
 @WebServlet("/JournalServlet")

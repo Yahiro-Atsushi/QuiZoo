@@ -217,7 +217,7 @@ public class JournalDao {
 				+ "LIMIT 10 ;";
 
 		try (PreparedStatement ps = con.prepareStatement(query)) {
-			ps.setString(1, mode.getValue());
+			ps.setString(1, mode.name());
 
 			ResultSet rs = ps.executeQuery();
 
