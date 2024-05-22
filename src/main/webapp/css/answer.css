@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #099e24f6;
+    background-image: url('../image/Zoo_Inside.png');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: left;
-    background-color: #fff;
+    background-color: rgb(247, 203, 109);
+    border:  1px solid #050d16;
     padding: 40px 60px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -48,14 +49,14 @@ h2 {
     margin: auto;
     display: block; 
     background-position: center;
-    background-image: url("CorrectCat.jpg");
+    background-image: url("CorrectCat.png");
 }
 
 .talking-left {
 	width: 20em;
     margin-bottom: 20px;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #050d16;
     border-radius: 10px;
     background-color: lightpink;
     text-align: left;
