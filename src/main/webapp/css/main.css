@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body {
     margin: 0;
     padding: 0;
@@ -62,38 +61,26 @@ body {
     flex: 1;
     padding: 20px;
     display: flex;
-    border:  1px solid #050d16;
-    background-image: url('../image/QuiZoo_TOP3.png'); /* 背景画像のパスを指定 */
-    background-size: cover; /* 画像をコンテナ全体にカバーするように設定 */
-    background-position: center; /* 画像を中央に配置 */
+    background-color: #099e24f6;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .title {
-    background-color: rgb(247, 203, 109);
     font-size: 3em;
-    color: #155505;
     margin-bottom: 30px;
-    border: 2px solid #050d16; /* 枠線を追加 */
-    border-radius: 10px; /* 枠線の角丸を追加 */
-    padding: 20px; /* テキストと枠線の間に余白を追加 */
-    text-align: center; /* テキストを中央に配置 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影を追加 */
-   
 }
-
 .start-link {
     text-decoration: none;
-    color: #155505;
+    color: #fff;
     font-size: 1.5em;
     padding: 10px 25px;
-    border: 2px solid #000407; /* 枠線の初期設定 */
+    border: 1px solid #000407; /* 枠線の初期設定 */
     border-radius: 30px;
-    background-color: rgb(247, 203, 109);
     transition: all 0.3s;
     display: inline-block; /* リンク要素をブロック要素に変更 */
+    background-color: #007bff;
     position: relative; /* 枠線を追加するための相対位置 */
 }
 
@@ -113,3 +100,6 @@ body {
     z-index: -1;
 }
 
+.start-link:hover:before {
+    border-color: #0056b3;
+}

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="journalPort" items="${journalPort}">
+                            <c:forEach var="i" begin="1" end="10">
                                 <tr>
-                                    <td><c:out value="${journalPort.playDate}"/></td>
-                                    <td><c:out value="${journalPort.correctCount}"/></td>
+                                    <td><c:out value="2024/05/17"/></td>
+                                    <td><c:out value="${i}"/></td>
                                     <td>
                                         <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="journalId" value="${journalPort.journalId}">
+                                            <input type="hidden" name="historyId" value="${3}">
                                             <input type="submit" value="詳細を見る">
                                         </form>
                                     </td>
