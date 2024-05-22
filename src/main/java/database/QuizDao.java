@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import entity.GameMode;
 import entity.Quiz;
 
-public class SelectDao  {
+public class QuizDao  {
 	private DatabaseConnector connector;
 	private Connection con;
 
 	// コンストラクタでデータベースに接続
-	public SelectDao() {
+	public QuizDao() {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}

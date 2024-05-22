@@ -35,7 +35,7 @@
                 </div>
             </c:forEach>
             <div class="summary">
-            <p>10問中 <c:out value="${journalPort.correctCount}" /> 問正解</p>
+            <p>10問中 <c:out value="${journal.correctCount}" /> 問正解</p>
         </div>
         </div>
 		<br>

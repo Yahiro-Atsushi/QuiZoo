@@ -2,7 +2,7 @@ package businessObject;
 
 import java.util.List;
 
-import database.SelectDao;
+import database.QuizDao;
 import entity.Game;
 import entity.GameMode;
 import entity.Quiz;
@@ -18,7 +18,7 @@ public class SetGameLogic {
 		int count = 10; //問題数分格納するためのカウント
 		
 		//クイズテーブルの全Idを取得
-		SelectDao dao = new SelectDao();
+		QuizDao dao = new QuizDao();
 		List<String> allQuizIds = dao.selectAllQuizId(mode);
 
 		while (count != 0) {

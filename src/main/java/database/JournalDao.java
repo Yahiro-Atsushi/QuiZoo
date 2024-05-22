@@ -77,7 +77,7 @@ public class JournalDao {
 				ps.setString(parameterIndex, journalMap.get(colQuizId));
 				parameterIndex += 1;
 
-				ps.setString(section, journalMap.get(colQuizResult));
+				ps.setString(parameterIndex, journalMap.get(colQuizResult));
 				parameterIndex += 1;
 			}
 			/* --------処理終了-------- */
