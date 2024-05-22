@@ -17,14 +17,16 @@ public class QuizDao  {
 	private DatabaseConnector connector;
 	private Connection con;
 
+	// コンストラクタでデータベースに接続
 	public QuizDao() {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
 	
+	// IDを指定しクイズを検索する
 	public Quiz selectQuizById(GameMode mode, String randomId) {
 		Quiz quiz = null;
-
+		// SELECT文を実行
 		String sql = ""
 				+ "SELECT "
 				+ " * "
@@ -34,30 +36,35 @@ public class QuizDao  {
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
+			
+			quiz = new Quiz(null,null,null,null,null);
 
 			while (rs.next()) {
+				// レコードを取得
 				String id = rs.getString(ColumnNames.id.name());
 				String qMsg = rs.getString(ColumnNames.question.name());
 				String answer = rs.getString(ColumnNames.answer.name());
 				Map<Integer, String> buttons = new TreeMap<>();
 				Map<Integer, String> buttonTexts = new TreeMap<>();
 				for (int i = 1; i <= mode.getButtonSize(); i++) {
+					// 選択肢分ループ
 					//button1, button2, button3, button4
 					String button = "button" + i;
+					// buttonsに格納
 					buttons.put(i, rs.getString(button));
 
 					//button_text1, button_text2...
 					String button_text = "button_text" + i;
 					buttonTexts.put(i, rs.getString(button_text));
 				}
-
+				// quizに取得した値を格納
 				quiz = new Quiz(id, qMsg, answer, buttons, buttonTexts);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllQuiz() エラー ： sql文が正しく実行されませんでした。");
 		}
-
+		// quizを返す
 		return quiz;
 	}
 

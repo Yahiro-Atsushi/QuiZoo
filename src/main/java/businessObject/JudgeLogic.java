@@ -2,7 +2,7 @@ package businessObject;
 
 import entity.Game;
 import entity.Quiz;
-
+// 入力された値に対しての判定をするクラス
 public class JudgeLogic {
 
 	public static Game execute(Game game, String input) {

@@ -8,7 +8,7 @@ public class SetGameModeLogic {
 	public static GameMode execute(String gameMode) {
 		
 		for(GameMode value : GameMode.values()) {
-			if(value.getValue().equals(gameMode)) {
+			if(value.name().equals(gameMode)) {
 				return value;
 			}
 		}

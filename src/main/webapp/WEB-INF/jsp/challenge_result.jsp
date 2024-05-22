@@ -1,8 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>QuiZoo</title>
+<style>
 @charset "UTF-8";
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../image/Zoo_Inside.png');
+    background-color: #099e24f6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,8 +25,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: left;
-    background-color: rgb(247, 203, 109);
-    border:  1px solid #050d16;
+    background-color: #fff;
     padding: 40px 60px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -49,14 +57,13 @@ h2 {
     margin: auto;
     display: block; 
     background-position: center;
-    background-image: url("CorrectCat.png");
 }
 
 .talking-left {
 	width: 20em;
     margin-bottom: 20px;
     padding: 15px;
-    border: 1px solid #050d16;
+    border: 1px solid #ccc;
     border-radius: 10px;
     background-color: lightpink;
     text-align: left;
@@ -85,3 +92,23 @@ h2 {
 .link-container a:hover {
     background-color: #0056b3;
 }
+
+</style>
+</head>
+<body>
+<div class="quiz-container">    
+    <h1>終了!</h1>
+    	<h2>正解数：10問</h2><br>
+    		<div class="talking-left">
+       			またの挑戦をお待ちしております。
+    		</div>
+    			<figure class="talking-left_icon">
+       				<img src="image/Challenge_Result.png" alt="代替テキスト">
+    			</figure>
+    <br><br>
+    			<div class="link-container">
+        		<a href="MainServlet">TOPへ</a>
+        		</div>      
+</div>
+</body>
+</html>

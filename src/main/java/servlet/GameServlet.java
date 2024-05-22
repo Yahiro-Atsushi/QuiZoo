@@ -65,7 +65,7 @@ public class GameServlet extends HttpServlet {
 			Quiz quiz = game.getQuizzes().get(section);
 
 			//リクエストサーブレットへ
-			String question = quiz.getQuistionMsg();
+			String question = quiz.getQuestionMsg();
 			String button1 = quiz.getButtons().get(1);
 			String button2 = quiz.getButtons().get(2);
 			String button3 = quiz.getButtons().get(3);
