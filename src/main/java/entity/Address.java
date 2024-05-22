@@ -1,5 +1,6 @@
 package entity;
 
+ // 列挙型でjspファイルを所持するクラス
 public enum Address {
 	INDEX("index.jsp"),
 	REGISTER("WEB-INF/jsp/register.jsp"),
@@ -10,10 +11,10 @@ public enum Address {
 	RESULT("WEB-INF/jsp/result.jsp"), 
 	CORRECT("WEB-INF/jsp/correct.jsp"),
 	NOT_CORRECT("WEB-INF/jsp/notCorrect.jsp"),
-	TIMEOUT("WEB-INF/jsp/timeOut.jsp"),
-	JOURNAL("WEB-INF/jsp/journal.jsp"),
-	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"), 
+	TIMEOUT("WEB-INF/jsp/timeOut.jsp"), 
+	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"),
 	EMPTY_JOURNAL_LIST("WEB-INF/jsp/emptyJournalList.jsp"), 
+	JOURNAL("WEB-INF/jsp/journal.jsp"),
 	LOGOUT("WEB-INF/jsp/logout.jsp");
 	
 	private String address;
@@ -21,7 +22,7 @@ public enum Address {
 	private Address(String address) {
 		this.address = address;
 	}
-
+ // getAddressで上記のアドレスを返す
 	public String getAddress() {
 		return address;
 	}

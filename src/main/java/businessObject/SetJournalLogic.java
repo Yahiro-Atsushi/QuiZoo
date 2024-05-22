@@ -28,9 +28,9 @@ public class SetJournalLogic {
 		inputMap.put(ColumnNames.name.name(), userName);
 		
 		//難易度表記を格納
-		inputMap.put(ColumnNames.mode.name(), game.getMode().getValue());
+		inputMap.put(ColumnNames.mode.name(), game.getMode().name());
 		
-		//正解数
+		//正解数を初期化、ここからカウントする
 		int correctCount = 0;
 		
 		//10問すべてマップに格納する
