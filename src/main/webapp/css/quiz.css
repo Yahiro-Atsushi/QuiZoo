@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #099e24f6;
+    background-image: url('../image/Zoo_Inside.png');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,8 @@ body {
 }
 .quiz-container {
     text-align: center;
-    background-color: #fff;
+    background-color: rgb(247, 203, 109);
+    border:  1px solid #050d16;
     padding: 40px 60px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
