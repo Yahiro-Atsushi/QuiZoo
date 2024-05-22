@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import businessObject.GetJournalLogic;
 import businessObject.GetJournalPortLogic;
@@ -35,7 +36,8 @@ public class JournalServlet extends HttpServlet {
 		String userName = (String)application.getAttribute(VarNames.userName.name());
 		List<JournalPort> journalPortList = GetJournalPortLogic.execute(userName);
 		// System.out.println(journal);
-		request.setAttribute("journalPort", journalPortList);
+		HttpSession session = request.getSession();
+		session.setAttribute("journalPort", journalPortList);
 		//----------------------------------------------//
 		
 		/* --------履歴がなかった場合にフォワード先を分岐する処理-------- */
@@ -53,14 +55,13 @@ public class JournalServlet extends HttpServlet {
 		// Journalインスタンス（Quizマップ・日付・resultマップ（正解or不正解）・ユーザー名・履歴ID）
 		String journalId = request.getParameter("journalId");
 		Journal journal = GetJournalLogic.execute(journalId);
-		@SuppressWarnings("unchecked")
-		List<JournalPort> journalPortList = (List<JournalPort>)request.getAttribute("journalPort");
 		Map<Integer, Quiz> quizMap = new TreeMap<>();
 		QuizDao qDao = new QuizDao();
 		for (int i = 1; i < 11; i++) {
-			GameMode gameMode = SetGameModeLogic.execute(journalPortList.get(i).getMode());
-			Quiz q = qDao.selectQuizById(gameMode, journal.getQuizIds().get(i));
-			quizMap.put(1, q);
+			GameMode gameMode = SetGameModeLogic.execute(journal.getMode());
+			String id = journal.getQuizIds().get(i);
+			Quiz q = qDao.selectQuizById(gameMode, id);
+			quizMap.put(i, q);
 		}
 		// System.out.println(journal);
 		request.setAttribute("journal", journal);
