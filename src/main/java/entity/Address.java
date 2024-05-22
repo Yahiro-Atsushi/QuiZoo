@@ -14,7 +14,8 @@ public enum Address {
 	TIMEOUT("WEB-INF/jsp/timeOut.jsp"), 
 	JOURNAL_LIST("WEB-INF/jsp/journalList.jsp"),
 	EMPTY_JOURNAL_LIST("WEB-INF/jsp/emptyJournalList.jsp"), 
-	JOURNAL("WEB-INF/jsp/journal.jsp");
+	JOURNAL("WEB-INF/jsp/journal.jsp"),
+	LOGOUT("WEB-INF/jsp/logout.jsp");
 	
 	private String address;
 
