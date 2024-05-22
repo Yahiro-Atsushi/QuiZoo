@@ -1,27 +1,47 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
 	// クイズに関する情報を所持するクラス
 public class Quiz implements Serializable {
 	private String id; // クイズID
-	private String quistionMsg; // 問題文
+	private String questionMsg; // 問題文
 	private String answer; // 回答
 	private Map<Integer, String> buttons; // key:選択肢の番号(ボタンの番号) ・value:選択肢文
 	private Map<Integer, String> buttonTexts; // key: ・ value:答えの解説
 
 	// コンストラクタ
-	public Quiz(String id, String quistionMsg, String answer,
+	public Quiz(String id, String questionMsg, String answer,
 			Map<Integer, String> buttons, Map<Integer, String> buttonTexts) {
-		this.id = id;
-		this.quistionMsg = quistionMsg;
-		this.answer = answer;
-		this.buttons = buttons;
-		this.buttonTexts = buttonTexts;
 		
-		System.out.println("Quiz Constructor: " + buttons.toString());
+		this.id = nullCheck(id);
+		this.questionMsg = nullCheck(questionMsg);
+		this.answer = nullCheck(answer);
+		this.buttons = nullCheck(buttons);
+		this.buttonTexts = nullCheck(buttonTexts);
+		
+	}
+
+	private Map<Integer, String> nullCheck(Map<Integer, String> map) {
+		if(map == null || map.isEmpty()) {
+			map = new LinkedHashMap<>();
+			for(int i = 1; i <= 10; i++) {
+				map.put(i, "存在しません");
+			}
+			return map;
+		}
+		
+		return map;
+	}
+
+	private String nullCheck(String str) {
+		if(str == null || str.isEmpty())	
+			return "問題がありません";
+		
+		return str;
 	}
 
 	@Override
@@ -45,8 +65,8 @@ public class Quiz implements Serializable {
 		return this.id;
 	}
 
-	public String getQuistionMsg() {
-		return quistionMsg;
+	public String getQuestionMsg() {
+		return questionMsg;
 	}
 
 	public String getAnswer() {

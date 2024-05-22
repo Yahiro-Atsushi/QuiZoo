@@ -35,6 +35,8 @@ public class QuizDao  {
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
+			
+			quiz = new Quiz(null,null,null,null,null);
 
 			while (rs.next()) {
 				// レコードを取得
