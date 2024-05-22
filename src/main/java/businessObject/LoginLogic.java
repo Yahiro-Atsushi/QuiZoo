@@ -1,12 +1,12 @@
 package businessObject;
 
-import database.AccountsDao;
+import database.AccountsDAO;
 import entity.User;
 
 public class LoginLogic {
 	
 	public static User execute(String inputName, String inputPass) {
-		AccountsDao aDao = new AccountsDao();
+		AccountsDAO aDao = new AccountsDAO();
 		User user = aDao.findAccountFromInput(inputName, inputPass);
 		
 		return user;

@@ -1,13 +1,13 @@
 package businessObject;
 
-import database.AccountsDao;
+import database.AccountsDAO;
 import entity.User;
 
 public class RegisterLogic {
 	
 	public static User execute(String inputName, String inputPass) {
 		
-		AccountsDao aDao = new AccountsDao();
+		AccountsDAO aDao = new AccountsDAO();
 		String userName = aDao.findUserName(inputName);
 		
 		//すでにログインしている場合はエラーのためnullを返す
