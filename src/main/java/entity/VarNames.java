@@ -10,6 +10,7 @@ public enum VarNames {
 	userName, // 
 	gameMode,
 	game, 
-	quiz;
+	quiz, 
+	randomIdList;
 
 }

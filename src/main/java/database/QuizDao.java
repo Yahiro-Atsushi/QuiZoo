@@ -133,31 +133,31 @@ public class QuizDao  {
 		return allQuizId;
 	}
 
-	public List<Map<String, String>> selectAllChallengeQuiz(GameMode mode) {
+	public List<String> selectAllChallengeQuizIds(GameMode mode) {
 		
-		List<Map<String, String>> mapList = new ArrayList<>();
+		List<String> list = new ArrayList<>();
 		Map<String, String> map = new LinkedHashMap<>(); 
 
 		String sql = ""
 				+ "SELECT "
-				+ " id, "
-				+ " mode "
-				+ "FROM " + mode.getQuizTable();
+				+ " id "
+				+ "FROM "
+				+ mode.getQuizTable()
+				+ "ORDER BY "
+				+ " RANDOM()";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				String id = rs.getString(ColumnNames.id.name());
-				String quizMode = rs.getString(ColumnNames.mode.name());
-				map.put(id, quizMode);
-				mapList.add(map);
+				list.add(id);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("selectAllQuizId() エラー ： sql文が正しく実行されませんでした。");
+			System.err.println("selectAllChallengeQuizIds() エラー ： sql文が正しく実行されませんでした。");
 		}
 
-		return mapList;
+		return list;
 	}
 }

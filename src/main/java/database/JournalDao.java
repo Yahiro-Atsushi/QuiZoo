@@ -240,4 +240,32 @@ public class JournalDao {
 		return list;
 	}
 
+	public void insertChallengeResult(String userName, int correctCount) {
+		//gameがnullなら処理せず戻る
+		if (userName == null) {
+			System.out.println(""
+					+ "JournalDao.insertChallengeResult(name, count)エラー:プレイヤーがnullです。");
+			return;
+		}
+
+		String sql = ""
+				+ "INSERT INTO "
+				+ " journal_challenge "
+				+ " (name, correct_count) "
+				+ "VALUES "
+				+ " (?, ?)";
+
+		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			/* -------- ?に値を代入する処理 -------- */
+			ps.setString(1, userName);
+			ps.setInt(2, correctCount);
+			/* --------処理終了-------- */
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("JournalDao.insertChallengeResult(name, count):INSERT文が不正に終了しました");
+		}
+		return;
+	}
+
 }
