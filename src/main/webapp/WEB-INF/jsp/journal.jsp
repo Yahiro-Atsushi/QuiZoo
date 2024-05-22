@@ -27,7 +27,6 @@
                 <div class="question-item">
                     <p><strong>問題文:</strong> <c:out value="${quizMap[i].questionMsg}" /></p>
                     <p><strong>答え:</strong> <c:out value="${quizMap[i].answer}" /></p>
-                    <!-- <p><strong>解説:</strong> <c:out value="${quizMap[i].}" /></p> -->
                     <p><strong>あなたの解答:</strong></p>
                      <span class="${question.correct ? 'correct' : 'incorrect'}">
                         <c:out value="${journal.quizResults[i]}" /> (<c:out value="${question.correct ? '正解' : '不正解'}" />)

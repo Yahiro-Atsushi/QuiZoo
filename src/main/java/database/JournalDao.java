@@ -63,10 +63,10 @@ public class JournalDao {
 
 			/* -------- ?に値を代入する処理 -------- */
 			ps.setString(1, journalMap.get("name"));
-			ps.setString(2, journalMap.get("correct_count"));
+			ps.setInt(2, Integer.parseInt(journalMap.get("correct_count")));
 			ps.setString(3, journalMap.get("mode"));
 			//列4～列23までの20列は問題数（=section）のみ列名が違うので、for文で処理をまとめる
-			int parameterIndex = 3;
+			int parameterIndex = 4;
 			final int START_SECTION = 1;
 			final int MAX_SECTION = 10;
 
@@ -158,36 +158,38 @@ public class JournalDao {
 				+ "SELECT "
 				+ " * "
 				+ "FROM "
-				+ " journal "
+				+ " journal_view "
 				+ "WHERE "
 				+ " id = ? ;";
 
 		try (PreparedStatement ps = con.prepareStatement(query)) {
-			ps.setString(1, journalId);
+			ps.setInt(1, Integer.parseInt(journalId));
 
 			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString(ColumnNames.id.name());
+				String playDate = rs.getString(ColumnNames.play_date.name());
+				String name = rs.getString(ColumnNames.name.name());
+				String mode = rs.getString(ColumnNames.mode.name());
+				int correctCount = rs.getInt(ColumnNames.correct_count.name());
 
-			String id = rs.getString(ColumnNames.id.name());
-			String playDate = rs.getString(ColumnNames.play_date.name());
-			String name = rs.getString(ColumnNames.name.name());
-			String mode = rs.getString(ColumnNames.mode.name());
-			int correctCount = rs.getInt(ColumnNames.correct_count.name());
+				Map<Integer, String> quizIds = new LinkedHashMap<>();
+				Map<Integer, String> quizResults = new LinkedHashMap<>();
+				final int START_SECTION = 1;
+				final int MAX_SECTION = 10;
 
-			Map<Integer, String> quizIds = new LinkedHashMap<>();
-			Map<Integer, String> quizResults = new LinkedHashMap<>();
-			final int START_SECTION = 1;
-			final int MAX_SECTION = 10;
+				for (int section = START_SECTION; section <= MAX_SECTION; section++) {
+					String colQuizId = getColNameOfQuizId(section);
+					String colQuizResult = getColNameOfQuizResult(section);
+					String quizId = rs.getString(colQuizId);
+					String quizResult = rs.getString(colQuizResult);
+					quizIds.put(section, quizId);
+					quizResults.put(section, quizResult);
+				}
 
-			for (int section = START_SECTION; section <= MAX_SECTION; section++) {
-				String colQuizId = getColNameOfQuizId(section);
-				String colQuizResult = getColNameOfQuizResult(section);
-				quizIds.put(section, colQuizId);
-				quizResults.put(section, colQuizResult);
+				journal = new Journal(id, playDate, name, mode, correctCount,
+						quizIds, quizResults);
 			}
-
-			journal = new Journal(id, playDate, name, mode, correctCount,
-					quizIds, quizResults);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("JournalDao.findJournalById:SELECT文のエラー");
@@ -226,7 +228,7 @@ public class JournalDao {
 				int correctCount = rs.getInt(ColumnNames.correct_count.name());
 				String playDate = rs.getString(ColumnNames.play_date.name());
 
-				JournalPort jp = new JournalPort(journalId, playDate, name,  gameMode, correctCount);
+				JournalPort jp = new JournalPort(journalId, playDate, name, gameMode, correctCount);
 				list.add(jp);
 			}
 

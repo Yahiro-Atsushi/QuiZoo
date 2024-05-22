@@ -59,8 +59,9 @@ public class JournalServlet extends HttpServlet {
 		QuizDao qDao = new QuizDao();
 		for (int i = 1; i < 11; i++) {
 			GameMode gameMode = SetGameModeLogic.execute(journal.getMode());
-			Quiz q = qDao.selectQuizById(gameMode, journal.getQuizIds().get(i));
-			quizMap.put(1, q);
+			String id = journal.getQuizIds().get(i);
+			Quiz q = qDao.selectQuizById(gameMode, id);
+			quizMap.put(i, q);
 		}
 		// System.out.println(journal);
 		request.setAttribute("journal", journal);
