@@ -61,8 +61,7 @@ public class GameServlet extends HttpServlet {
 		if (game.getQuizCount() <= 10) {
 
 			//次の問題を取得
-			int section = game.getQuizCount() + 1;
-			game.setQuizCount(section);
+			int section = game.getQuizCount();
 			Quiz quiz = game.getQuizzes().get(section);
 
 			//リクエストサーブレットへ

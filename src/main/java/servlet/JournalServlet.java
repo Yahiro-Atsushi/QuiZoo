@@ -67,6 +67,7 @@ public class JournalServlet extends HttpServlet {
 
 		// System.out.println(journal);
 		request.setAttribute("journal", journal);
+		request.setAttribute("quizMap", quizMap);
 		//----------------------------------------------//
 				
 		// フォワード

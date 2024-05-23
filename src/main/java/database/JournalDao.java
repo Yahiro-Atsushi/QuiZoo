@@ -35,7 +35,7 @@ public class JournalDao {
 		String sql = ""
 				+ "INSERT INTO "
 				+ " journal "
-				+ " (name, correct_count, mode, "
+				+ " (name, mode, correct_count, "
 				+ "  q1_id, q1_result, "
 				+ "  q2_id, q2_result, "
 				+ "  q3_id, q3_result, "
@@ -63,8 +63,8 @@ public class JournalDao {
 
 			/* -------- ?に値を代入する処理 -------- */
 			ps.setString(1, journalMap.get("name"));
-			ps.setInt(2, Integer.parseInt(journalMap.get("correct_count")));
-			ps.setString(3, journalMap.get("mode"));
+			ps.setString(2, journalMap.get("mode"));
+			ps.setInt(3, Integer.parseInt(journalMap.get("correct_count")));
 			//列4～列23までの20列は問題数（=section）のみ列名が違うので、for文で処理をまとめる
 			int parameterIndex = 4;
 			final int START_SECTION = 1;
@@ -117,7 +117,7 @@ public class JournalDao {
 				+ " correct_count, "
 				+ " play_date "
 				+ "FROM "
-				+ " journal "
+				+ " journal_view "
 				+ "WHERE "
 				+ " name = ? "
 				+ "ORDER BY "
@@ -168,10 +168,10 @@ public class JournalDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				String id = rs.getString(ColumnNames.id.name());
-				String playDate = rs.getString(ColumnNames.play_date.name());
 				String name = rs.getString(ColumnNames.name.name());
 				String mode = rs.getString(ColumnNames.mode.name());
 				int correctCount = rs.getInt(ColumnNames.correct_count.name());
+				String playDate = rs.getString(ColumnNames.play_date.name());
 
 				Map<Integer, String> quizIds = new LinkedHashMap<>();
 				Map<Integer, String> quizResults = new LinkedHashMap<>();
