@@ -12,5 +12,9 @@ public enum VarNames {
 	game, 
 	quiz, 
 	randomIdList;
+	easy,
+	normal,
+	hard,
+	challenge;
 
 }
