@@ -19,7 +19,7 @@
     </figure>
     <br><br>
     <c:choose>
-        <c:when test="${game.quizCount == 11}">
+        <c:when test="${game.quizCount <= mode.quizNum}">
             <div class="link-container">
                 <a href="GameServlet">解答結果へ</a>
             </div>
