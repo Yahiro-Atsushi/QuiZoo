@@ -36,9 +36,6 @@ public class JudgeServlet extends HttpServlet {
 		// -------------------------------------------//
 		// 正解かどうか照合するロジック
 		game = JudgeLogic.execute(game, input);
-		//次の問題へ
-		int section = game.getQuizCount() + 1;
-		game.setQuizCount(section);
 		session.setAttribute("game", game);
 		System.out.println(input);
 		System.out.println(game);

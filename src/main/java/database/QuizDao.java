@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -136,8 +135,7 @@ public class QuizDao  {
 	public List<String> selectAllChallengeQuizIds(GameMode mode) {
 		
 		List<String> list = new ArrayList<>();
-		Map<String, String> map = new LinkedHashMap<>(); 
-
+		
 		String sql = ""
 				+ "SELECT "
 				+ " id "

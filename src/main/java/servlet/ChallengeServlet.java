@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import businessObject.ChoiceButtonTextLogic;
 import businessObject.GetChallengeIds;
-import businessObject.JudgeLogic;
 import businessObject.RemoveQuizId;
 import businessObject.SetChallengeJournalLogic;
 import businessObject.SetChallengeLogic;
@@ -132,39 +130,39 @@ public class ChallengeServlet extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String input = (String) request.getParameter("input");
-
-		HttpSession session = request.getSession();
-		Game game = (Game) session.getAttribute("game");
-		int section = game.getQuizCount();
-
-		String answer = game.getQuizzes().get(section).getAnswer();
-		String text = ChoiceButtonTextLogic.execute(game, input);
-
-		request.setAttribute("answer", answer);
-		request.setAttribute("text", text);
-
-		// -------------------------------------------//
-		// 正解かどうか照合するロジック
-		game = JudgeLogic.execute(game, input);
-		session.setAttribute("game", game);
-		System.out.println(input);
-		System.out.println(game);
-		boolean isCollect = game.getIsCorrects().get(section);
-		// -------------------------------------------//
-
-		// 正解だったらcorrect.jspへ
-		if (isCollect) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
-			dispatcher.forward(request, response);
-		} else {
-			// 不正解ならnotCorrect.jsp
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
-			dispatcher.forward(request, response);
-		}
-
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		String input = (String) request.getParameter("input");
+//
+//		HttpSession session = request.getSession();
+//		Game game = (Game) session.getAttribute("game");
+//		int section = game.getQuizCount();
+//
+//		String answer = game.getQuizzes().get(section).getAnswer();
+//		String text = ChoiceButtonTextLogic.execute(game, input);
+//
+//		request.setAttribute("answer", answer);
+//		request.setAttribute("text", text);
+//
+//		// -------------------------------------------//
+//		// 正解かどうか照合するロジック
+//		game = JudgeLogic.execute(game, input);
+//		session.setAttribute("game", game);
+//		System.out.println(input);
+//		System.out.println(game);
+//		boolean isCollect = game.getIsCorrects().get(section);
+//		// -------------------------------------------//
+//
+//		// 正解だったらcorrect.jspへ
+//		if (isCollect) {
+//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
+//			dispatcher.forward(request, response);
+//		} else {
+//			// 不正解ならnotCorrect.jsp
+//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
+//			dispatcher.forward(request, response);
+//		}
+//
+//	}
 
 }

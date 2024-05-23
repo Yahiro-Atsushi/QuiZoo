@@ -20,7 +20,7 @@ import entity.VarNames;
 /**
  * Servlet Filter implementation class CheckLoginFilter
  */
-@WebFilter({ "/WelcomeServlet", "/MainServlet", "/GameServlet", "/JournalServlet" })
+@WebFilter({ "/WelcomeServlet", "/MainServlet", "/SelectGameModeServlet" , "/GameServlet", "/JournalServlet" })
 public class CheckLoginFilter extends HttpFilter implements Filter {
 
 	/**
