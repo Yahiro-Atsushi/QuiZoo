@@ -125,7 +125,7 @@ public class ChallengeServlet extends HttpServlet {
 			if (randomIdList == null || randomIdList.isEmpty())
 				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
 
-			rdp = request.getRequestDispatcher(Address.CHALLENGE_RESULT.getAddress());
+			rdp = request.getRequestDispatcher(Address.CHALLENGE_FAULT.getAddress());
 			/* --------処理終了-------- */
 		}
 		rdp.forward(request, response);
