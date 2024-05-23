@@ -39,7 +39,6 @@ public class CheckInitGameFilter extends HttpFilter implements Filter {
 			rdp = request.getRequestDispatcher(Address.SELECT_GAMEMODE.getAddress());
 		
 		else if(mode != null && game == null)
-			continue;
 			
 		
 		
