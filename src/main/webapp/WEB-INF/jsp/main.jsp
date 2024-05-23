@@ -16,7 +16,7 @@
             	<li><a href="MainServlet">TOP</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
                 <li><a href="RankingServlet">ランキング</a></li>
-                <li class="logout-link"><a href="#">ログアウト</a></li>
+                <li class="logout-link"><a href="LogoutServlet">ログアウト</a></li>
             </ul>
         </div>
         <div class="content">
