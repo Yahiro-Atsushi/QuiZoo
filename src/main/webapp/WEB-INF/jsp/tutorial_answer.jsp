@@ -17,6 +17,9 @@
 		<br>
 		<br> 正解やで
 	</div>
+	<div class="parent">>
+		<li><a href="MainServlet">メニュー画面に戻る</a></li>
+	</div>
 	</div>
 </body>
 </html>

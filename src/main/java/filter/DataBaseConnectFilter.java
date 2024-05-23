@@ -19,7 +19,7 @@ import database.DatabaseConnector;
 /**
  * Servlet Filter implementation class DataBaseCloseFilter
  */
-@WebFilter("/LoginServlet, /MainServlet, /GameServlet")
+@WebFilter("/")
 public class DataBaseConnectFilter extends HttpFilter implements Filter {
 
 	/**

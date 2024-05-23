@@ -19,6 +19,9 @@
 		<br>
 		<br> 堪忍やで
 	</div>
+	<div class="parent">>
+		<li><a href="MainServlet">メニュー画面に戻る</a></li>
+	</div>
 	</div>
 </body>
 </body>

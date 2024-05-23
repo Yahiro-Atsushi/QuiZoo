@@ -27,14 +27,16 @@
                                 <th>順位</th>
                                 <th>プレイヤー名</th>
                                 <th>正解数</th>
+                                <th>日付</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="i" begin="1" end="10">
                                 <tr>
                                     <td><p>${i}位</p></td>
-                                    <td><p>末永さん</p></td>
-                                    <td><p>10問</p></td>
+                                    <td><p><c:out value="${journalPort[i].name}"</p></td>
+                                    <td><p><c:out value="${journalPort[i].correctCount}問</p></td>
+                                    <td><p><c:out value="${journalPort[i].playDate}</p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
