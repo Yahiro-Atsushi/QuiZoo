@@ -12,7 +12,7 @@ public class SetGameModeLogic {
 				return value;
 			}
 		}
-		return GameMode.TUTORIAL;
+		return GameMode.TEST;
 	}
 
 }

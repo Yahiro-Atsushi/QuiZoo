@@ -22,8 +22,7 @@ public class JudgeLogic {
 		if(quiz.getAnswer().equals(input)) {
 			game.getIsCorrects().put(section, true);
 		}
-		//次の問題へカウントを増加
-		game.setQuizCount(section + 1);
+
 		return game;
 	}
 }
