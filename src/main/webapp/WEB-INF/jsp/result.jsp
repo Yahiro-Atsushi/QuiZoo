@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="link-container">
-            <a href="MainServlet">メニュー画面へ</a>
+            <a href="MainServlet">TOPへ</a>
         </div>
     </div>
 </body>
