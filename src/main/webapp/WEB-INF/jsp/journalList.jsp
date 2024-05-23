@@ -15,7 +15,7 @@
             	<li><a href="MainServlet">TOP</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
                 <li><a href="#">ランキング</a></li>
-                <li class="logout-link"><a href="#">ログアウト</a></li>
+                <li class="logout-link"><a href="LogoutServlet">ログアウト</a></li>
             </ul>
         </div>
         <div class="content">
@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="1" end="10">
+                            <c:forEach var="journalPort" items="${journalPort}">
                                 <tr>
-                                    <td><c:out value="2024/05/17"/></td>
-                                    <td><c:out value="${i}"/></td>
+                                    <td><c:out value="${journalPort.playDate}"/></td>
+                                    <td><c:out value="${journalPort.correctCount}"/></td>
                                     <td>
                                         <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="historyId" value="${3}">
+                                            <input type="hidden" name="journalId" value="${journalPort.journalId}">
                                             <input type="submit" value="詳細を見る">
                                         </form>
                                     </td>
