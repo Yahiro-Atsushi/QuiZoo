@@ -38,7 +38,7 @@ public class RankingServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			 mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
 		}
-		//セッションスコープになかろうと、SetGameLogic内でTUTORIALになっているのでnullにはならない。
+		//セッションスコープになかろうと、SetGameLogic内でTESTになっているのでnullにはならない。
 		
 		// JournalPortを正解数の多い順で10レコード持ってくるロジック
 		List<JournalPort> journalPortList = GetJournalPortRankingLogic.execute(mode);
