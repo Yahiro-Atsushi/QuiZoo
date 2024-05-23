@@ -1,46 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/journalList.css">
-    <title>履歴一覧</title>
+<meta charset="UTF-8">
+<title>QuiZoo</title>
+<link rel="stylesheet" href="css/ranking.css">
 </head>
 <body>
     <div class="menu-container">
         <div class="sidebar">
             <h2>QuiZoo</h2>
             <ul>
-            	<li><a href="MainServlet">TOP</a></li>
+                <li><a href="MainServlet">TOP</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
-                <li><a href="#">ランキング</a></li>
+                <li><a href="RankingServlet">ランキング</a></li>
                 <li class="logout-link"><a href="LogoutServlet">ログアウト</a></li>
             </ul>
         </div>
         <div class="content">
             <div class="quiz-container">
-                <h1>履歴一覧</h1>
+                c
                 <div class="history-list" style="text-align: center;">
-                    <table style="margin: 0 auto;">
+                    <table style="margin: auto;">
                         <thead>
                             <tr>
-                                <th>日付</th>
+                                <th>順位</th>
+                                <th>プレイヤー名</th>
                                 <th>正解数</th>
-                                <th>詳細</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="journalPort" items="${journalPort}">
+                            <c:forEach var="i" begin="1" end="10">
                                 <tr>
-                                    <td><c:out value="${journalPort.playDate}"/></td>
-                                    <td><c:out value="${journalPort.correctCount}"/></td>
-                                    <td>
-                                        <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="journalId" value="${journalPort.journalId}">
-                                            <input type="submit" value="詳細を見る">
-                                        </form>
-                                    </td>
+                                    <td><p>${i}位</p></td>
+                                    <td><p>末永さん</p></td>
+                                    <td><p>10問</p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
