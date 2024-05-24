@@ -33,13 +33,19 @@ public class GameServlet extends HttpServlet {
 
 		/* --------gameがnullなら初回の処理-------- */
 		if (game == null) {
+			
+			//難易度選択画面からリクエストスコープに格納されている
 			GameMode mode = (GameMode) request.getAttribute(VarNames.gameMode.name());
 
-			//GameModeがnullならチュートリアル
+			//なければメイン画面からのリクエスト。セッションスコープから取り出す。
+			if (mode == null) {
+				mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
+			}
+			//それでもnullの場合は本当に想定外なのでTESTモード
 			if (mode == null) {
 				mode = GameMode.TEST;
 			}
-			
+
 			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
 			session.setAttribute(VarNames.gameMode.name(), mode);
 			game = SetGameLogic.execute(mode);
@@ -49,8 +55,8 @@ public class GameServlet extends HttpServlet {
 		session.setAttribute(VarNames.game.name(), game);
 		RequestDispatcher rdp;
 
-		/* --------処理終了-------- */
-		
+		/* --------ここから継続用の処理開始-------- */
+
 		/* --------クイズが全問終わっているか判定-------- */
 		/* ----10問終えるまではクイズ画面へ遷移する際の処理 ---- */
 		if (game.getQuizCount() <= game.getMode().getButtonSize()) {
@@ -79,7 +85,7 @@ public class GameServlet extends HttpServlet {
 
 			//quiz.jspへ
 			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
-		/* ----リザルト画面へ遷移する際の処理---- */
+			/* ----リザルト画面へ遷移する際の処理---- */
 		} else {
 			//10問終えていたらresult.jspへ
 
