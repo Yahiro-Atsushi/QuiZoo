@@ -23,7 +23,7 @@ import entity.VarNames;
  * Servlet Filter implementation class CheckAbendFilter
  */
 @WebFilter("/GameServlet")
-public class CheckInitGameFilter extends HttpFilter implements Filter {
+public class CheckAbendFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
@@ -55,6 +55,8 @@ public class CheckInitGameFilter extends HttpFilter implements Filter {
 			rdp.forward(httpRequest, response);
 		
 		chain.doFilter(request, response);
+		
+		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
