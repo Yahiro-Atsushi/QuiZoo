@@ -7,30 +7,12 @@
          version="3.1">
 
     <filter>
-        <filter-name>SetEncordingFilter</filter-name>
-        <filter-class>filter.SetEncordingFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>SetEncordingFilter</filter-name>
-        <url-pattern>/SetEncordingFilter</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>CheckLoginFilter</filter-name>
-        <filter-class>filter.CheckLoginFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>CheckLoginFilter</filter-name>
-        <url-pattern>/CheckLoginFilter</url-pattern>
-    </filter-mapping>
-
-    <filter>
         <filter-name>CheckAbendFilter</filter-name>
         <filter-class>filter.CheckAbendFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>CheckAbendFilter</filter-name>
-        <url-pattern>/CheckAbendFilter</url-pattern>
+        <url-pattern>/GameServlet</url-pattern>
     </filter-mapping>
 
 	<filter>
@@ -39,7 +21,7 @@
     </filter>
     <filter-mapping>
         <filter-name>ChallengeModeFilter</filter-name>
-        <url-pattern>/ChallengeModeFilter</url-pattern>
+        <url-pattern>/GameServlet</url-pattern>
     </filter-mapping>
 	
 </web-app>

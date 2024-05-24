@@ -13,7 +13,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/MainServlet")
+@WebFilter({"/WelcomeServlet", "/LoginServlet", "/RegisterServlet", "/MainServlet", "/ResultServlet"})
 public class SetOutProgressFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
