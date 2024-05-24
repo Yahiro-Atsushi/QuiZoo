@@ -6,31 +6,48 @@
 <head>
 <meta charset="UTF-8">
 <title>QuiZoo</title>
+<link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 	<div style="text-align: center">
-		<h1>QuiZoo</h1>
-		<h2>ユーザー登録</h2>
+		<h1 class="text-outline-shadow">QuiZoo</h1>
+	</div>
+
+	<div style="text-align: center">
+		<h2 class="text-outline-shadow_user">ユーザー登録</h2>
+
 		<form action="RegisterServlet" method="post">
+
 			<p style="text-align: center">
-				名前<input type="text" name="name" value="<c:out value='${name}'/>"><br>
+			<h4 class="text-outline-shadow_str">
+				名前 <input type="text" name="name" value="<c:out value='${name}'/>">
+			</h4>
+			
 			<div style="color: red;">
 				<c:out value="${registerErrorMsg.nameError}" />
 			</div>
-			<br> pass<input type="password" name="pass"
-				value="<c:out value='${pass}'/>"><br>
 			<br>
+
+			<h4 class="text-outline-shadow_str">
+				pass <input type="password" name="pass"
+					value="<c:out value='${pass}'/>">
+			</h4>
+			
 			<div style="color: red;">
 				<c:out value="${registerErrorMsg.passError}" />
 			</div>
-			<br> <input type="submit" value="登録・ログイン">
-			<div style="color: red;">
-				<c:out value="${registerErrorMsg.userDoubleError}" />
-			</div>
-			</p>
-		</form>
-		<a href="index.jsp">トップ画面へ戻る</a>
-		
+			<br>
+			<form action="RegisterServlet" method="post">
+				<input type="submit" value="登録・ログイン" class="btn-submit"><br>
 	</div>
+	<div style="color: red;">
+		<c:out value="${registerErrorMsg.userDoubleError}" />
+	</div>
+	</p>
+
+	</form>
+	<form action="LoginServlet" method="post">
+		<input type="submit" value="トップ画面へ戻る" class="btn-submit"><br>
+	</form>
 </body>
 </html>
