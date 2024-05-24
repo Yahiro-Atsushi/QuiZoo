@@ -1,4 +1,4 @@
-package entity;
+package businessObject;
 
 public class DataCheck{
 
