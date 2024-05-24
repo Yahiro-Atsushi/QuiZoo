@@ -6,6 +6,14 @@ import entity.User;
 public class LoginLogic {
 	
 	public static User execute(String inputName, String inputPass) {
+		if(!DataCheck.isInputName(inputName)) {
+			return null;
+		}
+		
+		if(!DataCheck.isInputName(inputPass)) {
+			return null;
+		}
+		
 		// データベースのAccountsテーブルの処理をまとめたクラス のインスタンスを生成
 		AccountsDao aDao = new AccountsDao();
 		
