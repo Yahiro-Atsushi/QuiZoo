@@ -55,6 +55,7 @@ public class JournalServlet extends HttpServlet {
 		// Journalインスタンス（Quizマップ・日付・resultマップ（正解or不正解）・ユーザー名・履歴ID）
 		String journalId = request.getParameter("journalId");
 		Journal journal = GetJournalLogic.execute(journalId);
+
 		Map<Integer, Quiz> quizMap = new TreeMap<>();
 		QuizDao qDao = new QuizDao();
 		for (int i = 1; i < 11; i++) {
@@ -63,6 +64,7 @@ public class JournalServlet extends HttpServlet {
 			Quiz q = qDao.selectQuizById(gameMode, id);
 			quizMap.put(i, q);
 		}
+
 		// System.out.println(journal);
 		request.setAttribute("journal", journal);
 		request.setAttribute("quizMap", quizMap);

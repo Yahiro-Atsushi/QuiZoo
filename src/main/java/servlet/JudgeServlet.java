@@ -39,11 +39,11 @@ public class JudgeServlet extends HttpServlet {
 		session.setAttribute("game", game);
 		System.out.println(input);
 		System.out.println(game);
-		boolean collect = game.getIsCorrects().get(nowSection);
+		boolean correct = game.getIsCorrects().get(nowSection);
 		// -------------------------------------------//
 		
 		// 正解だったらcorrect.jspへ
-		if (collect == true) {
+		if (correct == true) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
 			dispatcher.forward(request, response);
 		} else {

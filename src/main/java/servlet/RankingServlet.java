@@ -38,7 +38,7 @@ public class RankingServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			 mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
 		}
-		//セッションスコープになかろうと、SetGameLogic内でTUTORIALになっているのでnullにはならない。
+		//セッションスコープになかろうと、SetGameLogic内でTESTになっているのでnullにはならない。
 		
 		// JournalPortを正解数の多い順で10レコード持ってくるロジック
 		List<JournalPort> journalPortList = GetJournalPortRankingLogic.execute(mode);
@@ -47,11 +47,12 @@ public class RankingServlet extends HttpServlet {
 		//----------------------------------------------//
 		
 		/* --------履歴がなかった場合にフォワード先を分岐する処理-------- */
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.JOURNAL_LIST.getAddress());
 		if(journalPortList.isEmpty()) {
 			dispatcher = request.getRequestDispatcher(Address.EMPTY_JOURNAL_LIST.getAddress());
 		}
+		/* --------処理終了-------- */
+		
 		dispatcher.forward(request, response);
 	}
 	

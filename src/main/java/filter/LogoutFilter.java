@@ -1,7 +1,6 @@
 package filter;
 
 import java.io.IOException;
-import java.sql.Connection;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,39 +13,24 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.DatabaseConnector;
-
 /**
- * Servlet Filter implementation class DataBaseCloseFilter
+ * Servlet Filter implementation class LogoutFilter
  */
-@WebFilter("/")
-public class DataBaseConnectFilter extends HttpFilter implements Filter {
-
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
+@WebFilter("/LogoutServlet")
+public class LogoutFilter extends HttpFilter implements Filter {
+       
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+		//ログアウト時にセッションスコープを破棄する。
+		HttpServletRequest httpRequest =
+				(HttpServletRequest)request;
 		
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
-		
-		DatabaseConnector connector = DatabaseConnector.getInstance();
-		Connection con = connector.getConnection();
-		session.setAttribute("con", con);
-
-		// pass the request along the filter chain
+		session.invalidate();
 		chain.doFilter(request, response);
-		
-		connector.dbClose();
 	}
 
 	/**
@@ -56,4 +40,10 @@ public class DataBaseConnectFilter extends HttpFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * @see Filter#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
 }

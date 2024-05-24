@@ -28,7 +28,7 @@ public class SelectGameModeServlet extends HttpServlet {
 		request.setAttribute(VarNames.normal.name(), NORMAL);
 		request.setAttribute(VarNames.hard.name(), HARD);
 		request.setAttribute(VarNames.challenge.name(), CHALLENGE);
-		request.setAttribute("test", GameMode.TUTORIAL);
+		request.setAttribute("test", GameMode.TEST);
 		
 		RequestDispatcher rdp = 
 				request.getRequestDispatcher(Address.SELECT_GAMEMODE.getAddress());
