@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.ResultLogic;
 import businessObject.SetGameLogic;
+import businessObject.SetGameModeLogic;
 import businessObject.SetJournalLogic;
 import entity.Address;
 import entity.Game;
@@ -28,7 +29,7 @@ public class GameServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
+		System.out.println(new Date() +" / " + "GameServlet.doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 
@@ -36,8 +37,10 @@ public class GameServlet extends HttpServlet {
 		if (game == null) {
 			
 			//難易度選択画面からリクエストスコープに格納されている
-			GameMode mode = (GameMode) request.getAttribute(VarNames.gameMode.name());
-
+			String gameMode = request.getParameter(VarNames.gameMode.name());
+			GameMode mode = SetGameModeLogic.execute(gameMode);
+			System.out.println(mode);
+			
 			//なければメイン画面からのリクエスト。セッションスコープから取り出す。
 			if (mode == null) {
 				mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
