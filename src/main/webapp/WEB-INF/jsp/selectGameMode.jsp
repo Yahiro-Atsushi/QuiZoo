@@ -11,12 +11,22 @@
 <body>
     <div class="container">
         <div class="title">難易度を選択してね</div>
-        <form action="GameServlet">
-            <button type="submit" name="mode" value="<c:out value='${easy}'/>">簡単</button>
-            <button type="submit" name="mode" value="<c:out value='${normal}'/>">普通</button>
-            <button type="submit" name="mode" value="<c:out value='${hard}'/>">難しい</button>
-            <button type="submit" name="mode" value="<c:out value='${challenge}'/>">チャレンジ</button>
-            <button type="submit" name="mode" value="<c:out value='${test}'/>">テスト</button>
+        <form is="modeForm" action="GameServlet">
+            <button type="submit" name="gameMode" 
+            		value="<c:out value='${easy}'/>" 
+            		id="easy">簡単</button>
+            <button type="submit" name="gameMode" 
+            		value="<c:out value='${normal}'/>" 
+            		id="normal">普通</button>
+            <button type="submit" name="gameMode" 
+            		value="<c:out value='${hard}'/>" 
+            		id="hard">難しい</button>
+            <button type="submit" name="gameMode" 
+            		value="<c:out value='${challenge}'/>" 
+            		id="challenge">チャレンジ</button>
+            <input type="submit" name="gameMode" 
+            		value="<c:out value='${test}'/>" 
+            		id="test">テスト</button>
         </form>
         <div >※チャレンジモードは間違えるまで続くよ！</div>
         <li><a href="MainServlet">メニューに戻る</a></li>
