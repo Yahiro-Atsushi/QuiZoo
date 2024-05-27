@@ -24,7 +24,7 @@
             <span class="tooltip">10秒以内に解答しないと時間切れで不正解</span>
         </div>
         <div class="choices">
-            <form id="quizForm" action="TutorialServletTest" method="post">
+            <form id="quizForm" action="TutorialServlet" method="post">
                 <button type="button" name="choice" value="犬" class="btn-choice has-tooltip" id="choice1">
                     犬
                     <span class="tooltip">クリックするか1を入力すると解答画面に進む</span>

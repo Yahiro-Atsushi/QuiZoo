@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -16,6 +17,7 @@ public class SetEncodingFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println(new Date() +" / " + "SetEncordingFilter.doFilter activate.");
 		// 文字コードのフィルター
 		request.setCharacterEncoding("UTF-8");
 

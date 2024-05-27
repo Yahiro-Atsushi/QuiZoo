@@ -7,11 +7,9 @@ public class JudgeLogic {
 
 	public static Game execute(Game game, String input) {
 		
-		//未入力ならカウントだけして返す
-		if(input == null || input.isEmpty()) {
-			game.setQuizCount(game.getQuizCount() + 1);
+		if(input == null || input.isEmpty())
 			return game;
-		}
+		
 		//今何問目かを取得
 		int section = game.getQuizCount();
 		

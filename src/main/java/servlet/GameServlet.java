@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.ResultLogic;
 import businessObject.SetGameLogic;
+import businessObject.SetGameModeLogic;
 import businessObject.SetJournalLogic;
 import entity.Address;
 import entity.Game;
@@ -27,7 +29,7 @@ public class GameServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println(new Date() +" / " + "GameServlet.doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 
@@ -35,8 +37,10 @@ public class GameServlet extends HttpServlet {
 		if (game == null) {
 			
 			//難易度選択画面からリクエストスコープに格納されている
-			GameMode mode = (GameMode) request.getAttribute(VarNames.gameMode.name());
-
+			String gameMode = request.getParameter(VarNames.gameMode.name());
+			GameMode mode = SetGameModeLogic.execute(gameMode);
+			System.out.println(mode);
+			
 			//なければメイン画面からのリクエスト。セッションスコープから取り出す。
 			if (mode == null) {
 				mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
@@ -72,6 +76,7 @@ public class GameServlet extends HttpServlet {
 			String button2 = quiz.getButtons().get(2);
 			String button3 = quiz.getButtons().get(3);
 			String button4 = quiz.getButtons().get(4);
+			String answer = quiz.getAnswer();
 			System.out.println("質問テスト" + question);
 			System.out.println("ボタン1テスト" + button1);
 			System.out.println("ボタン2テスト" + button2);
@@ -82,6 +87,7 @@ public class GameServlet extends HttpServlet {
 			request.setAttribute("button2", button2);
 			request.setAttribute("button3", button3);
 			request.setAttribute("button4", button4);
+			request.setAttribute("answer", answer);
 
 			//quiz.jspへ
 			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());

@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -24,6 +25,7 @@ public class LogoutFilter extends HttpFilter implements Filter {
 	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		System.out.println(new Date() +" / " + "LogoutFilter.doFilter activate.");
 		//ログアウト時にセッションスコープを破棄する。
 		HttpServletRequest httpRequest =
 				(HttpServletRequest)request;

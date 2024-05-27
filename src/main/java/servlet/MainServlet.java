@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ public class MainServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
 		dispatcher.forward(request, response);
 	}

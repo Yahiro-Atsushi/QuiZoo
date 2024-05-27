@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,9 +19,11 @@ public class SetOutProgressFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println(new Date() +" / " + "SetOutProgressFilter.doFilter activate.");
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
 		session.setAttribute("isInProgress", false);
+		
 		chain.doFilter(request, response);
 	}
 

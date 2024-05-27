@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -35,7 +36,7 @@ public class CheckLoginFilter extends HttpFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("CheckLoginFilter：処理開始");
+		System.out.println(new Date() +" / " + "CheckLoginFilter.doFilter activate.");
 		
 		ServletContext application = request.getServletContext();
 		String userName = (String) application.getAttribute(VarNames.userName.name());

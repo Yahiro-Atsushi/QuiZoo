@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +16,14 @@ public class TutorialServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/tutorial.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/tutorial_answer.jsp");
 		dispatcher.forward(request, response);
 	}

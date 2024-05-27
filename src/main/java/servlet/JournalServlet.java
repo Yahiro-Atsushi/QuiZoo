@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -30,6 +31,7 @@ public class JournalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		//----------------------------------------------//
 		// ログインしているユーザーの日付・正解数・履歴IDを持ってくるロジック
 		ServletContext application = getServletContext();
@@ -50,6 +52,7 @@ public class JournalServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		//----------------------------------------------//
 		// 踏まれたリンクのボタンからID検索してJournalインスタンスが返ってくるロジック
 		// Journalインスタンス（Quizマップ・日付・resultマップ（正解or不正解）・ユーザー名・履歴ID）

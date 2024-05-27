@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,6 +24,7 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		RequestDispatcher rdp = request.getRequestDispatcher(Address.REGISTER.getAddress());
 		rdp.forward(request, response);
 		
@@ -30,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
  		throws ServletException, IOException {
-		
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,7 @@ public class RankingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		//----------------------------------------------//
 		// リクエストスコープから検索する履歴のゲームモードを取得
 		String gameMode = (String)request.getAttribute(VarNames.gameMode.name());
@@ -57,6 +59,7 @@ public class RankingServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		//----------------------------------------------//
 		// 踏まれたリンクのボタンからID検索してJournalインスタンスが返ってくるロジック
 		// Journalインスタンス（Quizマップ・日付・resultマップ（正解or不正解）・ユーザー名・履歴ID）
