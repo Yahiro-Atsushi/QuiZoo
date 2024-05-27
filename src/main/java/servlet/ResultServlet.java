@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -20,7 +21,7 @@ public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute("game");
 		

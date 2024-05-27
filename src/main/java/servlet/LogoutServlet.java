@@ -23,7 +23,7 @@ public class LogoutServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		//LogoutFilterに処理を委譲
 //		//セッションスコープ破棄
 //		request.getSession().invalidate();

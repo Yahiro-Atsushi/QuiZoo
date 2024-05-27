@@ -27,7 +27,7 @@ public class SelectGameModeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		request.setAttribute(VarNames.easy.name(), EASY);
 		request.setAttribute(VarNames.normal.name(), NORMAL);
 		request.setAttribute(VarNames.hard.name(), HARD);
@@ -40,7 +40,7 @@ public class SelectGameModeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +":" + getServletName() + ".doPost activate.");
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		
 		String isContinue = request.getParameter("action");
 		String continueStr = "つづきから";

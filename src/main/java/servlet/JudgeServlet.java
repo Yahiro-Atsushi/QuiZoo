@@ -22,7 +22,7 @@ public class JudgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(new Date() +":" + getServletName() + ".doPost activate.");
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
 		
 		request.setCharacterEncoding("UTF-8");
 		String input = request.getParameter("choice");

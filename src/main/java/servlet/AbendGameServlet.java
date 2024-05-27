@@ -21,7 +21,7 @@ public class AbendGameServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		
 		RequestDispatcher rdp = request.getRequestDispatcher(Address.ABEND_GAME.getAddress());
 		rdp.forward(request, response);
