@@ -63,7 +63,7 @@ body {
     padding: 20px;
     display: flex;
     border:  1px solid #050d16;
-    background-image: url('../image/QuiZoo_TOP3.png'); /* 背景画像のパスを指定 */
+    background-image: url('../image/QuiZoo_index.png'); /* 背景画像のパスを指定 */
     background-size: cover; /* 画像をコンテナ全体にカバーするように設定 */
     background-position: center; /* 画像を中央に配置 */
     flex-direction: column;
