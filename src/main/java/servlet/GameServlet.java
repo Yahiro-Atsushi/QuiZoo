@@ -37,7 +37,7 @@ public class GameServlet extends HttpServlet {
 
 			//GameModeがnullならチュートリアル
 			if (mode == null) {
-				mode = GameMode.TUTORIAL;
+				mode = GameMode.TEST;
 			}
 			
 			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
@@ -49,13 +49,16 @@ public class GameServlet extends HttpServlet {
 		session.setAttribute(VarNames.game.name(), game);
 		RequestDispatcher rdp;
 
+		/* --------処理終了-------- */
+		
 		/* --------クイズが全問終わっているか判定-------- */
 		/* ----10問終えるまではクイズ画面へ遷移する際の処理 ---- */
-		if (game.getQuizCount() <= 10) {
+		if (game.getQuizCount() <= game.getMode().getButtonSize()) {
 
 			//次の問題を取得
-			int section = game.getQuizCount();
-			Quiz quiz = game.getQuizzes().get(section);
+			int next = game.getQuizCount() + 1;
+			game.setQuizCount(next);
+			Quiz quiz = game.getQuizzes().get(next);
 
 			//リクエストサーブレットへ
 			String question = quiz.getQuestionMsg();

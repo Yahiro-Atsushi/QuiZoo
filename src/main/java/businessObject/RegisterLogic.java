@@ -11,7 +11,6 @@ public class RegisterLogic {
 		AccountsDao aDao = new AccountsDao();
 		
 		// 入力されたユーザー名を検索しuserNameに代入する
-		
 		String userName = aDao.findUserName(inputName);
 		
 		//すでにログインしている場合はエラーのためnullを返す

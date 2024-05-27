@@ -9,7 +9,9 @@ import entity.Game;
 public class ResultLogic {
 	
 	public static Map<Integer, String>  execute(Game game) {
-		
+		//問題数を取得
+		int quizCount = game.getQuizzes().size();
+				
 		// Mapに正解・不正解を格納する
 		Map<Boolean, String> correct = new HashMap<>();
 		correct.put(true, "正解");
@@ -17,8 +19,7 @@ public class ResultLogic {
 		
 		// 解答結果を判定する
 		Map<Integer, String> result = new HashMap<>();
-		// for文で10回ループ(問題数)
-		for (int i = 1; i < 11; i++) {
+		for (int i = 1; i <= quizCount; i++) {
 			result.put(i, correct.get(game.getIsCorrects().get(i)));
 		}
 		return result;

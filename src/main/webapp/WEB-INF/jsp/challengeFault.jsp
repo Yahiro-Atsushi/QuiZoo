@@ -9,27 +9,19 @@
 </head>
 <body>
 <div class="quiz-container">    
-    <h1>残念!</h1>
-    <h2>正解は<c:out value="${answer}" /></h2><br>
+    <h1>チャレンジ終了!</h1>
+    <h2>正解数<c:out value="${answerCount}" /></h2><br>
     <div class="talking-left">
-        <c:out  value="${text}" />
+        <p>また挑戦してね</p>
     </div>
     <figure class="talking-left_icon">
         <img src="image/NotCorrectCat.png" alt="代替テキスト">
     </figure>
     <br><br>
-    <c:choose>
-        <c:when test="${game.quizCount <= mode.quizNum}">
-            <div class="link-container">
-                <a href="GameServlet">解答結果へ</a>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div class="link-container">
-                <a href="GameServlet">次の問題へ</a>
-            </div>
-        </c:otherwise>
-    </c:choose>     
+        <div class="link-container">
+                <a href="MainServlet">TOPへ</a>
+        </div>
+         
 </div>
 </body>
 </html>
