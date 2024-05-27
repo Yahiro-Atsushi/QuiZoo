@@ -73,6 +73,7 @@ public class GameServlet extends HttpServlet {
 			String button2 = quiz.getButtons().get(2);
 			String button3 = quiz.getButtons().get(3);
 			String button4 = quiz.getButtons().get(4);
+			String answer = quiz.getAnswer();
 			System.out.println("質問テスト" + question);
 			System.out.println("ボタン1テスト" + button1);
 			System.out.println("ボタン2テスト" + button2);
@@ -83,6 +84,7 @@ public class GameServlet extends HttpServlet {
 			request.setAttribute("button2", button2);
 			request.setAttribute("button3", button3);
 			request.setAttribute("button4", button4);
+			request.setAttribute("answer", answer);
 
 			//quiz.jspへ
 			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());

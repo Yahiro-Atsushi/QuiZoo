@@ -33,12 +33,12 @@
                         <tbody>
                             <c:forEach var="i" begin="1" end="10">
                                 <tr>
-                                    <td><p>1位</p></td>
-                                    <td><p>末永さん</p></td>
-                                    <td><p>10問</p></td>
+                                    <td><p>${i}位</p></td>
+                                    <td><p>${journalPort[i - 1].userName}さん</p></td>
+                                    <td><p>${journalPort[i - 1].correctCount}問</p></td>
                                     <td>
                                         <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="historyId" value="${3}">
+                                            <input type="hidden" name="historyId" value="${journalPort[i - 1].journalId}">
                                             <input type="submit" value="詳細を見る">
                                         </form>
                                     </td>
