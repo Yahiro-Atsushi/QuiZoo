@@ -15,7 +15,7 @@ public class SetGameLogic {
 
 		//リストをランダムな10個のidが並んだリストを作る
 		//宣言
-		int count = 10; //問題数分格納するためのカウント
+		int count = mode.getQuizNum(); //問題数分格納するためのカウント
 		
 		//クイズテーブルの全Idを取得
 		QuizDao dao = new QuizDao();
@@ -41,7 +41,7 @@ public class SetGameLogic {
 			
 			//データベースに10問以上あれば、問題の重複を排除するために
 			//全IDリストから削除する
-			if(allQuizIds.size() >= 10) {
+			if(allQuizIds.size() >= mode.getQuizNum()) {
 				allQuizIds.remove(randomIterator);
 			}
 		}
