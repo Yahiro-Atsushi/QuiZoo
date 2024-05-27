@@ -29,7 +29,7 @@
 					回答した日付:
 					<c:out value="${journal.playDate}" />
 				</p>
-				<c:forEach var="i" begin="1" end="10">
+				<c:forEach var="i" begin="1" end="${mode.quizNum}">
 					<div class="question-item">
 						<p>
 							<strong>問題文:</strong>

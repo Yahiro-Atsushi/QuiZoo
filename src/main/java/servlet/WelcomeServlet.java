@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class WelcomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		
 		RequestDispatcher rdp = request.getRequestDispatcher(Address.INDEX.getAddress());
 		rdp.forward(request, response);

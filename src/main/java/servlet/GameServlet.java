@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -27,7 +28,7 @@ public class GameServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +23,7 @@ public class ChallengeRankingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
 		
 		List<JournalPort> journalPortList = GetJournalChallengeRankingLogic.execute();
 		

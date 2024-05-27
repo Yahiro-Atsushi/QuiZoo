@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ public class AbendGameServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(new Date() +":" + getServletName() + ".doGet activate.");
 		
 		RequestDispatcher rdp = request.getRequestDispatcher(Address.ABEND_GAME.getAddress());
 		rdp.forward(request, response);
@@ -30,6 +32,7 @@ public class AbendGameServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(new Date() +":" + getServletName() + ".doPost activate.");
 		
 		String isContinue = request.getParameter("action");
 		String continueStr = "つづきから";
