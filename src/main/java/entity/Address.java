@@ -19,7 +19,8 @@ public enum Address {
 	CHALLENGE_CLEAR("WEB-INF/jsp/challengeClear.jsp"),
 	CHALLENGE_FAULT("WEB-INF/jsp/challengeFault.jsp"),
 	CHALLENGE_RANKING("WEB-INF/jsp/challengeRanking.jsp"), 
-	LOGOUT("WEB-INF/jsp/logout.jsp");
+	LOGOUT("WEB-INF/jsp/logout.jsp"),
+	ABEND_GAME("WEB-INF/jsp/abendGame.jsp");
 	
 	private String address;
 

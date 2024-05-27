@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import businessObject.ResultLogic;
+import entity.Address;
 import entity.Game;
 
 @WebServlet("/ResultServlet")
@@ -30,7 +31,7 @@ public class ResultServlet extends HttpServlet {
 		//---------------------------------------------------//
 		
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.RESULT.getAddress());
 		dispatcher.forward(request, response);
 
 	}

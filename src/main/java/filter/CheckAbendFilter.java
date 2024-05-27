@@ -14,7 +14,6 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import entity.Address;
 import entity.Game;
 import entity.GameMode;
 import entity.VarNames;
@@ -23,38 +22,38 @@ import entity.VarNames;
  * Servlet Filter implementation class CheckAbendFilter
  */
 @WebFilter("/GameServlet")
-public class CheckInitGameFilter extends HttpFilter implements Filter {
+public class CheckAbendFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
-		GameMode mode = (GameMode)httpRequest.getAttribute(VarNames.gameMode.name());
-		
 		HttpSession session = httpRequest.getSession();
+		
+		GameMode reqMode = 
+				(GameMode)httpRequest.getAttribute(VarNames.gameMode.name());
+		GameMode sesMode = 
+				(GameMode)session.getAttribute(VarNames.gameMode.name());
 		Game game = (Game)session.getAttribute(VarNames.game.name());
+		boolean isInProgress = (boolean)session.getAttribute("isInProgress");
 		
-		RequestDispatcher rdp = null;
-		
-		if(mode == null && game == null) 
-			rdp = request.getRequestDispatcher(Address.SELECT_GAMEMODE.getAddress());
-		
-		else if(mode != null && game == null)
-			
-		
-		
-		if(mode == null)
-			mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
-		/* --------チャレンジモードならChallengeServletへ遷移-------- */
-		if(mode == GameMode.CHALLENGE)
-			rdp = request.getRequestDispatcher("/ChallengeServlet");
-		
-		if(game == null)
-			
-		
-		if(rdp != null)
-			rdp.forward(httpRequest, response);
-		
+		if(isInProgress) {
+			if(game == null && sesMode == null) {
+				forward(request, response, "/SelectGameModeServlet");
+			}
+		}else {
+			if(game == null && reqMode == null && sesMode == null) {
+				forward(httpRequest, response, "/SelectGameModeServlet");
+			}
+			if(game != null) {
+				forward(httpRequest, response, "/AbendGameServlet");
+			}
+		}
 		chain.doFilter(request, response);
+	}
+
+	private void forward(ServletRequest request, ServletResponse response, String address) throws IOException, ServletException  {
+		RequestDispatcher rdp = request.getRequestDispatcher(address);
+		rdp.forward(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
