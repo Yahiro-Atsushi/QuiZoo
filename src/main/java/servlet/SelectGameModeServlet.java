@@ -61,6 +61,7 @@ public class SelectGameModeServlet extends HttpServlet {
 				session.setAttribute("isInProgress", false);
 				session.removeAttribute(VarNames.game.name());
 				session.removeAttribute(VarNames.gameMode.name());
+				session.removeAttribute(VarNames.randomIdList.name());
 				doGet(request, response);
 				return;
 			}

@@ -14,7 +14,6 @@
 		<p class="text-outline-shadow">QuiZoo</p>
 	</div>
 
-
 	<div style="text-align: center">
 		<form action="LoginServlet" method="post">
 			<h4 class="text-outline-shadow_str">
