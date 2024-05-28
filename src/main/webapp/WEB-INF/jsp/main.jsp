@@ -23,6 +23,9 @@
         </div>
         <div class="content">
             <h1 class="title" style="font-size: 100px;">QuiZoo</h1><br><br><br>
+            <script>
+				alert='${gameErrorMsg}'
+			</script>
             <a href="GameServlet" class="start-link">ゲームスタート</a>
         </div>
     </div>

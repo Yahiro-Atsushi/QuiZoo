@@ -63,7 +63,7 @@ public class GameServlet extends HttpServlet {
 
 		/* --------クイズが全問終わっているか判定-------- */
 		/* ----10問終えるまではクイズ画面へ遷移する際の処理 ---- */
-		if (game.getQuizCount() <= game.getMode().getButtonSize()) {
+		if (game.getQuizCount() <= game.getMode().getQuizNum()) {
 
 			//次の問題を取得
 			int next = game.getQuizCount() + 1;
