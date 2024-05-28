@@ -34,7 +34,9 @@ public class CheckAbendFilter extends HttpFilter implements Filter {
 		GameMode sesMode = 
 				(GameMode)session.getAttribute(VarNames.gameMode.name());
 		Game game = (Game)session.getAttribute(VarNames.game.name());
-		System.out.println(game);
+		System.out.println("     game is " + game);
+		System.out.println("     request mode is " + reqMode);
+		System.out.println("     session mode is " + sesMode);
 		boolean isInProgress = (boolean)session.getAttribute("isInProgress");
 		
 		if(isInProgress) {

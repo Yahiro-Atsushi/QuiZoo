@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import entity.Address;
 import entity.Game;
-import entity.GameMode;
 import entity.VarNames;
 
 /**
@@ -32,7 +31,6 @@ public class SelectGameModeServlet extends HttpServlet {
 		request.setAttribute(VarNames.normal.name(), NORMAL);
 		request.setAttribute(VarNames.hard.name(), HARD);
 		request.setAttribute(VarNames.challenge.name(), CHALLENGE);
-		request.setAttribute("test", GameMode.TEST);
 
 		RequestDispatcher rdp = request.getRequestDispatcher(Address.SELECT_GAMEMODE.getAddress());
 		rdp.forward(request, response);

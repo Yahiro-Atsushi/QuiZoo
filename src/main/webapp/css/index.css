@@ -35,6 +35,17 @@ body {
       font-size: 20px;
       margin: 0px;
   }
+  
+ .errorMsg{
+	 max-width: 30%;
+	 margin:auto;
+	 padding:0px 10px;
+	 color:red;
+	 background-color: white;
+	 border:1px solid;
+	 position: relative;
+  }  
+  
   /* ボタン*/
   
   .btn-submit{

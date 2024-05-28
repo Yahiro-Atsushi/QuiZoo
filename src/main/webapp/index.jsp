@@ -20,22 +20,36 @@
 			<h4 class="text-outline-shadow_str">
 				名前<input type="text" name="name" value="<c:out value='${name}'/>"><br>
 			</h4>
+			
+			<c:if test="${ not empty loginErrorMsg.nameError }">
+				<div class="errorMsg">
+					<c:out value="${loginErrorMsg.nameError}" />
+				</div>
+			</c:if>
 			<div style="color: red;">
-				<c:out value="${loginErrorMsg.nameError}" />
+				<c:out value="${}" />
 			</div>
+			
 			<br>
 			<div style="text-align: center">
 				<h4 class="text-outline-shadow_str">
 					pass<input type="password" name="pass"
 						value="<c:out value='${pass}'/>"><br>
 				</h4>
-				<div style="color: red;">
-					<c:out value="${loginErrorMsg.passError}" />
-				</div>
+				
+				<c:if test="${ not empty loginErrorMsg.passError }">
+					<div class="errorMsg">
+						<c:out value="${loginErrorMsg.passError}" />
+					</div>
+				</c:if>
+				
 				<br> <input type="submit" value="ログイン" class="btn-submit"><br>
-				<div style="color: red;">
-		<c:out value="${loginErrorMsg.notUser}" />
-	</div>
+				
+				<c:if test="${ not empty loginErrorMsg.notUser }">
+					<div class="errorMsg">
+						<c:out value="${loginErrorMsg.notUser}" />
+					</div>
+				</c:if>
 		</form>
 	</div>
 <br>

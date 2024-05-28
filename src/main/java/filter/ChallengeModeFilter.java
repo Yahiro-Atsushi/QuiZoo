@@ -35,6 +35,7 @@ public class ChallengeModeFilter extends HttpFilter implements Filter {
 		}
 		
 		if(mode == GameMode.CHALLENGE) {
+			System.out.println("チャレンジモードへ移行します。");
 			RequestDispatcher rdp = request.getRequestDispatcher("/ChallengeServlet");
 			rdp.forward(request, response);
 		}

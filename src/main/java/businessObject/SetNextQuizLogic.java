@@ -17,10 +17,8 @@ public class SetNextQuizLogic {
 		QuizDao qDao = new QuizDao();
 		Quiz nextQuiz = qDao.selectQuizById(mode, randomId);
 		
-		//2問目以降の処理の場合はカウントを進める。
-		if(section > 1) {
-			game.setQuizCount(section + 1);
-		}
+		//カウントを進める。
+		game.setQuizCount(section + 1);
 		
 		//ゲームインスタンスに格納
 		game.getQuizzes().put(section, nextQuiz);

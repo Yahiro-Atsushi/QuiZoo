@@ -33,6 +33,7 @@
                     猫
                     <span class="tooltip">クリックするか2を入力すると解答画面に進む</span>
                 </button>
+                <br>
                 <button type="button" name="choice" value="鳥" class="btn-choice has-tooltip" id="choice3">
                     鳥
                     <span class="tooltip">クリックするか3を入力すると解答画面に進む</span>

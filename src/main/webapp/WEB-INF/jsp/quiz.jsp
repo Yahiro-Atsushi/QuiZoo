@@ -37,6 +37,7 @@
             <form id="quizForm" action="JudgeServlet" method="post">
                 <input class="btn-choice" type="submit" name="input" value="${button1}" id="choice1">
                 <input class="btn-choice" type="submit" name="input" value="${button2}" id="choice2">
+                <br>
                 <input class="btn-choice" type="submit" name="input" value="${button3}" id="choice3">
                 <input class="btn-choice" type="submit" name="input" value="${button4}" id="choice4">
             </form>

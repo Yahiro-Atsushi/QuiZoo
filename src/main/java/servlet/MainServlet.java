@@ -24,11 +24,14 @@ public class MainServlet extends HttpServlet {
 		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		
 		HttpSession session = request.getSession();
-		boolean gameIsABone = (boolean) session.getAttribute(VarNames.gameIsAbone.name());
-		String gameIsABoneErrorMsg = GameErrorMsgLogic.execute(gameIsABone);
 		
-		request.setAttribute(VarNames.gameErrorMsg.name(), gameIsABoneErrorMsg);
-		
+		Object parameter = session.getAttribute(VarNames.gameIsAbone.name());
+		if(parameter != null){
+			boolean gameIsABone = (boolean)parameter;
+			String gameIsABoneErrorMsg = GameErrorMsgLogic.execute(gameIsABone);
+			request.setAttribute(VarNames.gameErrorMsg.name(), gameIsABoneErrorMsg);
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
 		dispatcher.forward(request, response);
 	}

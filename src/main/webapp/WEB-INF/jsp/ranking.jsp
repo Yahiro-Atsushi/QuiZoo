@@ -21,7 +21,6 @@
         </div>
         <div class="content">
             <div class="quiz-container">
-                c
                 <div class="history-list" style="text-align: center;">
                     <table style="margin: auto;">
                         <thead>
@@ -33,12 +32,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="1" end="10">
+                            <c:forEach var="i" items="${journalPort}" varStatus="s">
                                 <tr>
-                                    <td><p>${i}位</p></td>
-                                    <td><p>${journalPort[i - 1].userName}さん</p></td>
-                                    <td><p>${journalPort[i - 1].correctCount}問</p></td>
-                                    <td><p><p>${journalPort[i - 1].playDate}</p></td>
+                                    <td><p>${s.index + 1}位</p></td>
+                                    <td><p>${i.userName}さん</p></td>
+                                    <td><p>${i.correctCount}問</p></td>
+                                    <td><p><p>${i.playDate}</p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

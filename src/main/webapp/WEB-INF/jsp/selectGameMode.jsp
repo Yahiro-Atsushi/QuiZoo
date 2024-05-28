@@ -24,9 +24,6 @@
             <button type="submit" name="gameMode" 
             		value="<c:out value='${challenge}'/>" 
             		id="challenge">チャレンジ</button>
-            <input type="submit" name="gameMode" 
-            		value="<c:out value='${test}'/>" 
-            		id="test">テスト</button>
         </form>
         <div >※チャレンジモードは間違えるまで続くよ！</div>
         

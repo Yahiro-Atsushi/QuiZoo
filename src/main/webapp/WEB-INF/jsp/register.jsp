@@ -23,9 +23,11 @@
 				名前 <input type="text" name="name" value="<c:out value='${name}'/>">
 			</h4>
 			
-			<div style="color: red;">
-				<c:out value="${registerErrorMsg.nameError}" />
-			</div>
+			<c:if test="${ not empty registerErrorMsg.nameError }">
+				<div class="errorMsg">
+					<c:out value="${registerErrorMsg.nameError}" />
+				</div>
+			</c:if>
 			<br>
 
 			<h4 class="text-outline-shadow_str">
@@ -33,16 +35,22 @@
 					value="<c:out value='${pass}'/>">
 			</h4>
 			
-			<div style="color: red;">
-				<c:out value="${registerErrorMsg.passError}" />
-			</div>
+			<c:if test="${ not empty registerErrorMsg.passError }">
+				<div class="errorMsg">
+					<c:out value="${registerErrorMsg.passError}" />
+				</div>
+			</c:if>
 			<br>
 			<form action="RegisterServlet" method="post">
 				<input type="submit" value="登録・ログイン" class="btn-submit"><br>
+				
+			<c:if test="${ not empty registerErrorMsg.userDoubleError }">
+				<div class="errorMsg">
+					<c:out value="${registerErrorMsg.userDoubleError}" />
+				</div>
+			</c:if>
 	</div>
-	<div style="color: red;">
-		<c:out value="${registerErrorMsg.userDoubleError}" />
-	</div>
+	
 	</p>
 
 	</form>

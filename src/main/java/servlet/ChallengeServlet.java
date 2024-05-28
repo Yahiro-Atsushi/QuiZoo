@@ -43,6 +43,7 @@ public class ChallengeServlet extends HttpServlet {
 		if (game == null) {
 			//リザルト表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
 			GameMode mode = GameMode.CHALLENGE;
+			session.setAttribute(VarNames.gameMode.name(), mode);
 			//クイズテーブルの全Idをランダムに取得
 			randomIdList = GetChallengeIds.execute();
 			//ゲームインスタンスの生成
