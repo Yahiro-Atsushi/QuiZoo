@@ -29,7 +29,10 @@
             		id="test">テスト</button>
         </form>
         <div >※チャレンジモードは間違えるまで続くよ！</div>
-        <li><a href="MainServlet">メニューに戻る</a></li>
+        
+         <div style="text-align: center">
+            <div class="button003">
+        <a href="MainServlet">メニューに戻る</a>
     </div>
 </body>
 </html>
