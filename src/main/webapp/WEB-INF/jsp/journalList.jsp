@@ -11,10 +11,12 @@
     <div class="menu-container">
         <div class="sidebar">
             <h2>QuiZoo</h2>
-            <ul>
+			<ul>
             	<li><a href="MainServlet">TOP</a></li>
+                <li><a href="TutorialServlet">遊び方</a></li>
+            	<li><a href="SelectGameModeServlet">ゲーム開始</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
-                <li><a href="RankingServlet">ランキング</a></li>
+                <li><a href="ChallengeRankingServlet">ランキング</a></li>
                 <li class="logout-link"><a href="LogoutServlet">ログアウト</a></li>
             </ul>
         </div>
