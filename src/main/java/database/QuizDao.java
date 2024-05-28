@@ -140,17 +140,20 @@ public class QuizDao  {
 				+ "SELECT "
 				+ " id "
 				+ "FROM "
-				+ mode.getQuizTable()
+				+ " ? "
 				+ "ORDER BY "
 				+ " RANDOM()";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
-
+			System.out.print("     randomId[");
 			while (rs.next()) {
 				String id = rs.getString(ColumnNames.id.name());
 				list.add(id);
+				System.out.print(id + ", ");
 			}
+			System.out.println("]");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("selectAllChallengeQuizIds() エラー ： sql文が正しく実行されませんでした。");

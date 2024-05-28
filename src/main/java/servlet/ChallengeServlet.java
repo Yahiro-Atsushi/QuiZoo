@@ -33,7 +33,7 @@ public class ChallengeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
+		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 		@SuppressWarnings("unchecked")
@@ -41,6 +41,7 @@ public class ChallengeServlet extends HttpServlet {
 
 		/* --------gameがnullなら初回の処理-------- */
 		if (game == null) {
+			System.out.println("     初回の処理開始");
 			//リザルト表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
 			GameMode mode = GameMode.CHALLENGE;
 			session.setAttribute(VarNames.gameMode.name(), mode);
@@ -66,7 +67,7 @@ public class ChallengeServlet extends HttpServlet {
 			request.setAttribute("button2", button2);
 			request.setAttribute("button3", button3);
 			request.setAttribute("button4", button4);
-			
+
 			//セッションスコープへ格納
 			session.setAttribute(VarNames.gameMode.name(), mode);//最初のみ
 			session.setAttribute(VarNames.randomIdList.name(), randomIdList);
@@ -86,6 +87,14 @@ public class ChallengeServlet extends HttpServlet {
 
 		/* --------前回のクイズで正解の場合の処理-------- */
 		if (isCorrect) {
+			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
+			if (randomIdList == null || randomIdList.isEmpty()) {
+				session.removeAttribute(VarNames.game.name());
+				session.removeAttribute(VarNames.randomIdList.name());
+				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
+				rdp.forward(request, response);
+				return;
+			}
 
 			//次の問題を取得
 			game = SetNextQuizLogic.execute(randomIdList, game);
@@ -120,51 +129,46 @@ public class ChallengeServlet extends HttpServlet {
 			session.removeAttribute(VarNames.game.name());
 			session.removeAttribute(VarNames.randomIdList.name());
 			/* --------処理終了-------- */
-			/* --------リクエスト先指定処理-------- */
-			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
-			if (randomIdList == null || randomIdList.isEmpty())
-				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
-
+			
 			rdp = request.getRequestDispatcher(Address.CHALLENGE_FAULT.getAddress());
-			/* --------処理終了-------- */
 		}
 		rdp.forward(request, response);
 
 	}
 
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		String input = (String) request.getParameter("input");
-//
-//		HttpSession session = request.getSession();
-//		Game game = (Game) session.getAttribute("game");
-//		int section = game.getQuizCount();
-//
-//		String answer = game.getQuizzes().get(section).getAnswer();
-//		String text = ChoiceButtonTextLogic.execute(game, input);
-//
-//		request.setAttribute("answer", answer);
-//		request.setAttribute("text", text);
-//
-//		// -------------------------------------------//
-//		// 正解かどうか照合するロジック
-//		game = JudgeLogic.execute(game, input);
-//		session.setAttribute("game", game);
-//		System.out.println(input);
-//		System.out.println(game);
-//		boolean isCollect = game.getIsCorrects().get(section);
-//		// -------------------------------------------//
-//
-//		// 正解だったらcorrect.jspへ
-//		if (isCollect) {
-//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
-//			dispatcher.forward(request, response);
-//		} else {
-//			// 不正解ならnotCorrect.jsp
-//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
-//			dispatcher.forward(request, response);
-//		}
-//
-//	}
+	//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	//			throws ServletException, IOException {
+	//		String input = (String) request.getParameter("input");
+	//
+	//		HttpSession session = request.getSession();
+	//		Game game = (Game) session.getAttribute("game");
+	//		int section = game.getQuizCount();
+	//
+	//		String answer = game.getQuizzes().get(section).getAnswer();
+	//		String text = ChoiceButtonTextLogic.execute(game, input);
+	//
+	//		request.setAttribute("answer", answer);
+	//		request.setAttribute("text", text);
+	//
+	//		// -------------------------------------------//
+	//		// 正解かどうか照合するロジック
+	//		game = JudgeLogic.execute(game, input);
+	//		session.setAttribute("game", game);
+	//		System.out.println(input);
+	//		System.out.println(game);
+	//		boolean isCollect = game.getIsCorrects().get(section);
+	//		// -------------------------------------------//
+	//
+	//		// 正解だったらcorrect.jspへ
+	//		if (isCollect) {
+	//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
+	//			dispatcher.forward(request, response);
+	//		} else {
+	//			// 不正解ならnotCorrect.jsp
+	//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
+	//			dispatcher.forward(request, response);
+	//		}
+	//
+	//	}
 
 }
