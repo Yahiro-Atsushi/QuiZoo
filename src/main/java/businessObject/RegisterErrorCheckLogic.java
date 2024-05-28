@@ -17,6 +17,11 @@ public class RegisterErrorCheckLogic {
 		if (inputName == null || inputName.isEmpty())
 			nameError = "ユーザー名が入力されていません。";
 		
+		if(!DataCheck.isInputName(inputName)) {
+			passError = "ユーザー名は12文字までの文字列にしてください。";
+		}
+		
+		
 		if (inputPass == null || inputPass.isEmpty())
 			passError = "パスワードが入力されていません。";
 		

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import businessObject.RegisterErrorCheckLogic;
 import businessObject.RegisterLogic;
+import businessObject.TrimLogic;
 import entity.Address;
 import entity.RegisterErrorMessage;
 import entity.User;
@@ -36,6 +37,10 @@ public class RegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
+		
+		//空白を削除する
+		name = TrimLogic.execute(name);
+		pass = TrimLogic.execute(pass);
 		
 		// アカウント登録処理
 		//すでにアカウントが登録されていてもnull

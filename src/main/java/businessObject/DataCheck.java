@@ -3,19 +3,25 @@ package businessObject;
 public class DataCheck{
 
 	public static boolean isInputName(String data) {
-		if(isInput(data)) {
-			data.trim();
-			return true;
+		if(!isInput(data)) {
+			return false;
 		}
 		
-		return false;
+		int length = data.length();
+		final int MIN = 1;
+		final int MAX = 12;
+		
+		if(!(MIN <= length && length <= MAX)) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public static boolean isValidPass(String data) {
 		if(!isInput(data)) {
 			return false;
 		}
-		data.trim();
 		
 		int length = data.length();
 		final int MIN = 4;
@@ -25,6 +31,14 @@ public class DataCheck{
 			return false;
 		}
 		
+		if(!isAlphanumericChars(data)){
+			return false;
+		}
+		
+		return true;
+	}
+
+	private static boolean isAlphanumericChars(String data) {
 		for (char c : data.toCharArray()) {
             if (!Character.isLetterOrDigit(c)) {
                 return false;
@@ -32,13 +46,6 @@ public class DataCheck{
         }
 		
 		return true;
-	}
-
-	private static boolean isMatchedExpression(String data) {
-		String expression = "[]{4,8}";
-		
-		
-		return false;
 	}
 
 	private static boolean isInput(String data) {
