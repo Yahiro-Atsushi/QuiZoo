@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import businessObject.SetGameModeLogic;
+import entity.Game;
 import entity.GameMode;
 import entity.VarNames;
 
@@ -28,7 +29,8 @@ public class ChallengeModeFilter extends HttpFilter implements Filter {
 		System.out.println(new Date() +" / " + "ChallengeModeFilter.doFilter activate.");
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpSession session = httpRequest.getSession();
-		
+		RequestDispatcher rdp;
+		Game game = (Game)session.getAttribute(VarNames.game.name());
 		GameMode mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
 		if(mode == null) {
 			String param = httpRequest.getParameter(VarNames.gameMode.name());
@@ -37,8 +39,18 @@ public class ChallengeModeFilter extends HttpFilter implements Filter {
 		
 		if(mode == GameMode.CHALLENGE) {
 			System.out.println("チャレンジモードへ移行します。");
-			RequestDispatcher rdp = request.getRequestDispatcher("/ChallengeServlet");
+			rdp = request.getRequestDispatcher("/ChallengeServlet");
 			rdp.forward(request, response);
+			return;
+		}
+		
+		if(game != null) {
+			if(game.getMode() == GameMode.CHALLENGE) {
+				rdp = request.getRequestDispatcher("/ChallengeServlet");
+				rdp.forward(request, response);
+				return;
+			}
+			
 		}
 		
 		chain.doFilter(request, response);

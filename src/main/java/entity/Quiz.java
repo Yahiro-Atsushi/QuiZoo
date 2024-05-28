@@ -7,6 +7,11 @@ import java.util.Objects;
 
 	// クイズに関する情報を所持するクラス
 public class Quiz implements Serializable {
+	@Override
+	public String toString() {
+		return "Quiz [id=" + id + ", answer=" + answer + "]";
+	}
+
 	private String id; // クイズID
 	private String questionMsg; // 問題文
 	private String answer; // 回答

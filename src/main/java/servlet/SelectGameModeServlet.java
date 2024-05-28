@@ -53,6 +53,10 @@ public class SelectGameModeServlet extends HttpServlet {
 				//続行の処理
 				session.setAttribute("isInProgress", true);
 				Game game = (Game)session.getAttribute(VarNames.game.name());
+				int section = game.getQuizCount();
+				if(section > 0) {
+					game.setQuizCount(section - 1);
+				}
 				session.setAttribute(VarNames.gameMode.name(), game.getMode());
 				address = "/GameServlet";
 			}

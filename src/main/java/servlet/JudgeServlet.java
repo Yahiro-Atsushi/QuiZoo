@@ -28,10 +28,12 @@ public class JudgeServlet extends HttpServlet {
 		String input = request.getParameter("choice");
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
+		int section = game.getQuizCount();
 		
-		String answer = game.getQuizzes().get(game.getQuizCount()).getAnswer();
+		System.out.println("     getQuizCount() : " + section);
+		
+		String answer = game.getQuizzes().get(section).getAnswer();
 		String text = ChoiceButtonTextLogic.execute(game, input);
-		int nowSection = game.getQuizCount();
 		
 		request.setAttribute("answer", answer);
 		request.setAttribute("text", text);
@@ -41,7 +43,7 @@ public class JudgeServlet extends HttpServlet {
 		game = JudgeLogic.execute(game, input);
 		session.setAttribute("game", game);
 		System.out.println("     ユーザーの入力：" + input);
-		boolean correct = game.getIsCorrects().get(nowSection);
+		boolean correct = game.getIsCorrects().get(section);
 		// -------------------------------------------//
 		
 		// 正解だったらcorrect.jspへ

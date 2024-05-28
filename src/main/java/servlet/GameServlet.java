@@ -50,9 +50,11 @@ public class GameServlet extends HttpServlet {
 			if (mode == null) {
 				rdp = request.getRequestDispatcher("/MainServlet");
 				rdp.forward(request, response);
+				return;
 			}else if(mode == GameMode.CHALLENGE) {
 				rdp = request.getRequestDispatcher("/ChallengeServlet");
 				rdp.forward(request, response);
+				return;
 			}
 			
 			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
@@ -61,7 +63,12 @@ public class GameServlet extends HttpServlet {
 		}
 		
 		/* --------初回の処理終了-------- */
-
+		if(game.getMode() == GameMode.CHALLENGE) {
+			rdp = request.getRequestDispatcher("/ChallengeServlet");
+			rdp.forward(request, response);
+			return;
+		}
+		
 		session.setAttribute(VarNames.game.name(), game);
 
 		/* --------ここから継続用の処理開始-------- */
@@ -113,7 +120,6 @@ public class GameServlet extends HttpServlet {
 
 			session.removeAttribute(VarNames.game.name());
 			rdp = request.getRequestDispatcher(Address.RESULT.getAddress());
-
 		}
 		/* --------リクエスト先処理終了-------- */
 
