@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/* 背景画像*/
+body {
+    background-repeat:no-repeat;
+    background-image: url('../image/QuiZoo_index.jpg');
+    background-size: 1350px 680px;
+  }
+  
+/* 見出し*/
+  .text-outline-shadow {
+    padding: 0.5em 10px;
+    color: #ebd937;
+    font-size:200%;
+    font-weight:900;
+    text-shadow: 
+      5px 5px 5px rgb(0, 128, 0),
+      -1px -1px 1px rgb(0, 128, 0),
+      -1px 1px 1px rgb(0, 128, 0),
+      1px -1px 1px rgb(0, 128, 0);
+      font-size: 80px;
+      margin: 0px;
+  }
+/* 名前・pass*/
+  .text-outline-shadow_str {
+    padding: 0.5em 10px;
+    color: #ebd937;
+    font-size:200%;
+    font-weight:900;
+    text-shadow: 
+      1px 1px 1px rgb(0, 128, 0),
+      -1px -1px 1px rgb(0, 128, 0),
+      -1px 1px 1px rgb(0, 128, 0),
+      1px -1px 1px rgb(0, 128, 0);
+      font-size: 20px;
+      margin: 0px;
+  }
+  
+ .errorMsg{
+	 max-width: 30%;
+	 margin:auto;
+	 padding:0px 10px;
+	 color:red;
+	 background-color: white;
+	 border:1px solid;
+	 position: relative;
+  }  
+  
+  /* ボタン*/
+  
+  .btn-submit{
+	  display: block;
+	  padding: 7px 25px;
+	  border-radius: 7px;
+	  border: none;
+	  border-bottom: 3px solid #ebd937;
+	  background-color: #2eb42eec;
+	  font-size: 16px;
+	  font-weight: bold;
+	  color: #fff;
+	  cursor: pointer;
+	  appearance: none;
+	  margin: auto;
+	}
+	.btn-submit:active {
+	  margin-top: 3px;
+	  background-color: #ebd937;
+	  border-bottom: 3px solid #37af07;
+	}
+

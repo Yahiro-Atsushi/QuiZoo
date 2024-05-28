@@ -1,0 +1,92 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../image/QuiZoo_Quiz.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    background-size: 1350px 670px;
+     background-repeat:no-repeat;
+}
+.quiz-container {
+    text-align: center;
+    background-color: rgb(247, 203, 109);
+    border:  1px solid #050d16;
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    width: 100%;
+    position: relative;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+.question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #495057;
+}
+.timer {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #dc3545;
+}
+.choices {
+    display: flex;
+    flex-direction: column;
+}
+.btn-choice {
+    margin: 10px 0;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #17a2b8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-choice:hover {
+    background-color: #138496;
+}
+.btn-choice {
+            margin: 10px 0;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fdfdfd;
+            background-color: #fa8221;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .btn-choice:hover {
+            background-color: #0bee29;
+        }
+        .btn-choice.disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+        #hintButton {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #f13607;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #hintButton:hover {
+            background-color: #0be63a;
+        }

@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+/* 全体のリセット */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	 background-image: url('../image/QuiZoo_GameMode.jpg');
+	background-size: 1350px 670px;
+	background-repeat:no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+}
+
+/* コンテナ */
+.container {
+	text-align: center;
+}
+
+/* タイトル */
+.title {
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+/* ボタンのスタイル */
+button {
+	display: block;
+	width: 200px;
+	padding: 1rem;
+	margin: 0.5rem auto;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+input {
+	display: block;
+	width: 200px;
+	padding: 1rem;
+	margin: 0.5rem auto;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+button:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(66, 139, 202, 0.6);
+}
+
+/* メニューに戻るボタンの枠内の色*/
+ .button003 a {
+    background: rgba(217, 230, 38, 0.815);
+    border-radius: 50px;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    margin:  auto;
+    max-width: 75px;
+    padding: 10px 28px;
+    font-weight: 7px;
+    color: #1690e2;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+	line-height: 3.0;
+}
+/* ボタンに触れた時の文字色*/
+.button003 a:hover {
+    background: #4eeb1ecc;
+    color: #FFF;
+}
+
+/* ボタン内の矢印 > */
+.button003 a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #313131;
+    border-right: 3px solid #313131;
+    transform: rotate(-138deg) translateY(-40%);
+    position: absolute;
+    top: 40%;
+    left: 14px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+
+/* ボタンに触れた時の>ボタンの色*/
+.button003 a:hover:after {
+    border-color: #313131;
+}

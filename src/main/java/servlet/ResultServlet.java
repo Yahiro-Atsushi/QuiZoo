@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -11,15 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Game;
-import model.ResultLogic;
+import businessObject.ResultLogic;
+import entity.Address;
+import entity.Game;
 
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute("game");
 		
@@ -30,7 +32,7 @@ public class ResultServlet extends HttpServlet {
 		//---------------------------------------------------//
 		
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.RESULT.getAddress());
 		dispatcher.forward(request, response);
 
 	}
