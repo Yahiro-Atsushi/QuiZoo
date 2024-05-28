@@ -1,129 +1,138 @@
 @charset "UTF-8";
-@charset "UTF-8";
-body {
-        margin: 0;
-        padding: 0;
-        background-image: url('../image/Zoo_Inside.png');
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: #333;
-        }
-        .quiz-container {
-        text-align: center;
-        background-color: rgb(225, 243, 236);
-        padding: 40px 60px;
-        border: 1px solid;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        width: 100%;
-        position: relative;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #343a40;
-        }
-        .question {
-            font-size: 2.0em;
-            margin-bottom: 20px;
-            color: #f50202;
-            position: relative;
-        }
-        .explain {
-            margin: auto;
-            text-align: center;
-            justify-content: center;
-            display: flex;
-            bottom: -10px;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #343a40;
-            position: relative;
-        }
-        .link-container {
-        margin-top: 20px;
-        text-align: center;
-        margin: auto;
-        }
 
-        .link-container a {
-        margin: auto;
-        text-decoration: none;
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 30px;
-        background-color: #007bff;
-        color: #fff;
-        transition: background-color 0.3s;
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url('../image/Zoo_Inside.png');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	color: #333;
+}
+
+.quiz-container {
+	text-align: center;
+	background-color: rgb(225, 243, 236);
+	padding: 40px 60px;
+	border: 1px solid;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	max-width: 600px;
+	width: 100%;
+	position: relative;
+}
+
+h1 {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	color: #343a40;
+}
+
+.question {
+	font-size: 2.0em;
+	margin-bottom: 20px;
+	color: #f50202;
+	position: relative;
+}
+
+.explain {
+	margin: auto;
+	text-align: center;
+	justify-content: center;
+	display: flex;
+	bottom: -10px;
+	font-size: 1.5em;
+	margin-bottom: 20px;
+	color: #343a40;
+	position: relative;
+}
+
+.link-container {
+	margin-top: 20px;
+	text-align: center;
+	margin: auto;
+}
+
+.link-container a {
+	margin: auto;
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 30px;
+	background-color: #007bff;
+	color: #fff;
+	transition: background-color 0.3s;
 }
 
 .link-container a:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
+
 .talking {
-    margin: auto;
-    justify-content: center;
+	margin: auto;
+	justify-content: center;
 	width: 500px;
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid ;
-    border-radius: 10px;
-    background-color: lightpink;
-    text-align: center;
-    word-wrap: break-word; /* テキストの折り返しを設定 */
-    word-break: break-word; /* 長い単語や文字列を折り返す */
-    overflow-wrap: break-word; /* 長い単語の折り返しを強制 */
+	margin-bottom: 20px;
+	padding: 15px;
+	border: 1px solid;
+	border-radius: 10px;
+	background-color: lightpink;
+	text-align: center;
+	word-wrap: break-word;
+	word-break: break-word;
+	overflow-wrap: break-word;
 }
-        .tooltip {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .has-tooltip:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-    .start-link {
-    position: absolute;
-    bottom: -30;
-    text-decoration: none;
-    color: #155505;
-    font-size: 1.5em;
-    padding: 10px 25px;
-    border: 2px solid #000407; /* 枠線の初期設定 */
-    border-radius: 30px;
-    background-color: rgb(247, 203, 109);
-    transition: all 0.3s;
-    display: inline-block; /* リンク要素をブロック要素に変更 */
-    position: relative; /* 枠線を追加するための相対位置 */
+
+.tooltip {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -100px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.has-tooltip:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+
+.start-link {
+	position: absolute;
+	bottom: -30;
+	text-decoration: none;
+	color: #155505;
+	font-size: 1.5em;
+	padding: 10px 25px;
+	border: 2px solid #000407;
+	border-radius: 30px;
+	background-color: rgb(247, 203, 109);
+	transition: all 0.3s;
+	display: inline-block;
+	position: relative;
 }
 
 .start-link:hover {
-    color: #fff;
-    background-color: #0056b3;
+	color: #fff;
+	background-color: #0056b3;
 }
 
 .start-link:before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border-radius: 32px;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	top: -6px;
+	left: -6px;
+	right: -6px;
+	bottom: -6px;
+	border-radius: 32px;
+	z-index: -1;
 }

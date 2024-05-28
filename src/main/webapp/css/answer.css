@@ -60,9 +60,9 @@ h2 {
     border-radius: 10px;
     background-color: lightpink;
     text-align: left;
-    word-wrap: break-word; /* テキストの折り返しを設定 */
-    word-break: break-word; /* 長い単語や文字列を折り返す */
-    overflow-wrap: break-word; /* 長い単語の折り返しを強制 */
+    word-wrap: break-word; 
+    word-break: break-word; 
+    overflow-wrap: break-word; 
 }
 
 .link-container {

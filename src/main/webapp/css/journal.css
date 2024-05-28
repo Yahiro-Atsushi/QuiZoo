@@ -63,11 +63,11 @@ h1 {
 
 .summary {
     display: inline-block;
-    padding: 5px 10px; /* ボタンのパディングを追加 */
-    background-color: rgb(255, 128, 128); /* ボタンの背景色を指定 */
-    color: #fff; /* ボタンのテキスト色を指定 */
-    border: none; /* ボタンの枠線を削除 */
-    border-radius: 5px; /* ボタンの角丸を設定 */
+    padding: 5px 10px; 
+    background-color: rgb(255, 128, 128); 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
 }
 
 .link-container {
@@ -77,17 +77,16 @@ h1 {
 
 .btn-return {
     display: inline-block;
-    padding: 10px 20px; /* ボタンのパディングを追加 */
-    background-color: #007bff; /* ボタンの背景色を指定 */
-    color: #fff; /* ボタンのテキスト色を指定 */
-    border: none; /* ボタンの枠線を削除 */
-    border-radius: 5px; /* ボタンの角丸を設定 */
-    cursor: pointer; /* カーソルをポインターに設定 */
-    transition: background-color 0.3s; /* ボタンのホバーエフェクトを追加 */
+    padding: 10px 20px; 
+    background-color: #007bff;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
-
 .btn-return:hover {
-    background-color: #0056b3; /* ボタンのホバーエフェクト時の背景色を指定 */
+    background-color: #0056b3; 
 }
 .sidebar {
             width: 160px;
@@ -127,7 +126,7 @@ h1 {
         }
 
         .logout-link {
-            margin-top: auto; /* ログアウトリンクを下端に配置 */
+            margin-top: auto;
         }
 
         .logout-link a {

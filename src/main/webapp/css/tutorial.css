@@ -1,126 +1,142 @@
 @charset "UTF-8";
+
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url('../image/Zoo_Inside.png');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #333;
+	margin: 0;
+	padding: 0;
+	background-image: url('../image/Zoo_Inside.png');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	color: #333;
 }
+
 .quiz-container {
-    text-align: center;
-    background-color: rgb(225, 243, 236);
-    padding: 40px 60px;
-    border: 1px solid;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    position: relative;
+	text-align: center;
+	background-color: rgb(225, 243, 236);
+	padding: 40px 60px;
+	border: 1px solid;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	max-width: 600px;
+	width: 100%;
+	position: relative;
 }
+
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #343a40;
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	color: #343a40;
 }
+
 .question {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: #495057;
-    position: relative;
+	font-size: 1.5em;
+	margin-bottom: 20px;
+	color: #495057;
+	position: relative;
 }
+
 .timer {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    color: #dc3545;
-    position: relative;
+	font-size: 1.2em;
+	margin-bottom: 30px;
+	color: #dc3545;
+	position: relative;
 }
+
 .choices {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
+
 .btn-choice {
-    margin: 10px 0;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    color: #fdfdfd;
-    background-color: #fa8221;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: relative;
+	margin: 10px 0;
+	padding: 15px 30px;
+	font-size: 1.2em;
+	color: #fdfdfd;
+	background-color: #fa8221;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	position: relative;
 }
+
 .btn-choice:hover {
-    background-color: #0bee29;
+	background-color: #0bee29;
 }
+
 .btn-choice.disabled {
-    background-color: #ccc;
-    cursor: default;
+	background-color: #ccc;
+	cursor: default;
 }
+
 #hintButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 10px;
-    font-size: 1em;
-    background-color: #f13607;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	padding: 10px;
+	font-size: 1em;
+	background-color: #f13607;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
+
 #hintButton:hover {
-    background-color: #0be63a;
+	background-color: #0be63a;
 }
+
 .tooltip {
-    visibility: hidden;
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
+	visibility: hidden;
+	width: 250px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -100px;
+	opacity: 0;
+	transition: opacity 0.3s;
 }
+
 .has-tooltip:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
+
 .start-link {
-    position: absolute;
-    bottom: -30;
-    text-decoration: none;
-    color: #155505;
-    font-size: 1.5em;
-    padding: 10px 25px;
-    border: 2px solid #000407; /* 枠線の初期設定 */
-    border-radius: 30px;
-    background-color: rgb(247, 203, 109);
-    transition: all 0.3s;
-    display: inline-block; /* リンク要素をブロック要素に変更 */
-    position: relative; /* 枠線を追加するための相対位置 */
+	position: absolute;
+	bottom: -30;
+	text-decoration: none;
+	color: #155505;
+	font-size: 1.5em;
+	padding: 10px 25px;
+	border: 2px solid #000407;
+	border-radius: 30px;
+	background-color: rgb(247, 203, 109);
+	transition: all 0.3s;
+	display: inline-block;
+	position: relative;
 }
+
 .start-link:hover {
-    color: #fff;
-    background-color: #0056b3;
+	color: #fff;
+	background-color: #0056b3;
 }
+
 .start-link:before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border-radius: 32px;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	top: -6px;
+	left: -6px;
+	right: -6px;
+	bottom: -6px;
+	border-radius: 32px;
+	z-index: -1;
 }
