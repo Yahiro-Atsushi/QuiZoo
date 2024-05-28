@@ -10,10 +10,12 @@
     <div class="menu-container">
         <div class="sidebar">
             <h2>QuiZoo</h2>
-            <ul>
-                <li><a href="MainServlet">TOP</a></li>
+			<ul>
+            	<li><a href="MainServlet">TOP</a></li>
+                <li><a href="TutorialServlet">遊び方</a></li>
+            	<li><a href="SelectGameModeServlet">ゲーム開始</a></li>
                 <li><a href="JournalServlet">履歴</a></li>
-                <li><a href="RankingServlet">ランキング</a></li>
+                <li><a href="ChallengeRankingServlet">ランキング</a></li>
                 <li class="logout-link"><a href="LogoutServlet">ログアウト</a></li>
             </ul>
         </div>
@@ -27,21 +29,16 @@
                                 <th>順位</th>
                                 <th>プレイヤー名</th>
                                 <th>正解数</th>
-                                <th>詳細</th>
+                                <th>日付</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="i" begin="1" end="10">
                                 <tr>
-                                    <td><p>1位</p></td>
-                                    <td><p>末永さん</p></td>
-                                    <td><p>10問</p></td>
-                                    <td>
-                                        <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="historyId" value="${3}">
-                                            <input type="submit" value="詳細を見る">
-                                        </form>
-                                    </td>
+                                    <td><p>${i}位</p></td>
+                                    <td><p>${journalPort[i - 1].userName}さん</p></td>
+                                    <td><p>${journalPort[i - 1].correctCount}問</p></td>
+                                    <td><p><p>${journalPort[i - 1].playDate}</p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

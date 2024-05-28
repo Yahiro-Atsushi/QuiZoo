@@ -13,8 +13,9 @@ public class Game implements Serializable {
 
 	// Gameコンストラクタ
 	public Game(GameMode mode) {
-		//問題数の初期値は1にする。これはゲームの始まりが１問目であり、Mapのkeyも1以上10以下で作成するから。
-		this.quizCount = 1;
+		//問題数の初期値は0にする。GameServletで+1されて始まる。
+		//１問目であり、Mapのkeyも1以上10以下で作成するから。
+		this.quizCount = 0;
 		this.mode = mode;
 		this.quizzes = new LinkedHashMap<>();
 		this.isCorrects = new LinkedHashMap<>();

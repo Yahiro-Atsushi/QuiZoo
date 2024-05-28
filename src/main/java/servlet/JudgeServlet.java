@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,8 +22,10 @@ public class JudgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
+		
 		request.setCharacterEncoding("UTF-8");
-		String input = request.getParameter("input");
+		String input = request.getParameter("choice");
 		HttpSession session = request.getSession();
 		Game game = (Game)session.getAttribute("game");
 		
@@ -37,8 +40,7 @@ public class JudgeServlet extends HttpServlet {
 		// 正解かどうか照合するロジック
 		game = JudgeLogic.execute(game, input);
 		session.setAttribute("game", game);
-		System.out.println(input);
-		System.out.println(game);
+		System.out.println("     ユーザーの入力：" + input);
 		boolean correct = game.getIsCorrects().get(nowSection);
 		// -------------------------------------------//
 		

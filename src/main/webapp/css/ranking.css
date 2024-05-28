@@ -138,7 +138,7 @@
         flex: 1;
         padding: 20px;
         display: flex;
-        background-image: url('Images/QuiZoo_Ranking.png');
+        background-image: url('../image/QuiZoo_Journal.png');
         flex-direction: column;
         justify-content: center;
         align-items: center;
