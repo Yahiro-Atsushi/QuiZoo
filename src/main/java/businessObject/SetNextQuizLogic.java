@@ -12,18 +12,19 @@ public class SetNextQuizLogic {
 	public static Game execute(List<String> randomIdList, Game game) {
 		//共通の処理
 		GameMode mode = game.getMode();
-		int section = game.getQuizCount(); //問題数カウント
+		int nextSection = game.getQuizCount() + 1; //問題数カウント
 		String randomId = randomIdList.get(0); //すでにemptyは弾いている。
+		System.out.print("     次の問題:" + randomId);
 		QuizDao qDao = new QuizDao();
 		Quiz nextQuiz = qDao.selectQuizById(mode, randomId);
-		
+		System.out.println(" " + nextQuiz);
 		//カウントを進める。
-		game.setQuizCount(section + 1);
+		game.setQuizCount(nextSection);
 		
 		//ゲームインスタンスに格納
-		game.getQuizzes().put(section, nextQuiz);
+		game.getQuizzes().put(nextSection, nextQuiz);
 		//後の処理で正解判定を格納するが、時間切れ処理の兼ね合いもありここでfalseとおく。
-		game.getIsCorrects().put(section, false);
+		game.getIsCorrects().put(nextSection, false);
 		
 		//同じクイズを呼び出さないようにする処理
 		randomIdList.remove(randomId);

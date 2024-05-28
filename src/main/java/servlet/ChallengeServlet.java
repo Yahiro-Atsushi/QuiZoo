@@ -38,13 +38,13 @@ public class ChallengeServlet extends HttpServlet {
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 		@SuppressWarnings("unchecked")
 		List<String> randomIdList = (List<String>) session.getAttribute(VarNames.randomIdList.name());
-
+		System.out.println("     randdomIdList : " + randomIdList);
+		
 		/* --------gameがnullなら初回の処理-------- */
 		if (game == null) {
 			System.out.println("     初回の処理開始");
 			//リザルト表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
 			GameMode mode = GameMode.CHALLENGE;
-			session.setAttribute(VarNames.gameMode.name(), mode);
 			//クイズテーブルの全Idをランダムに取得
 			randomIdList = GetChallengeIds.execute();
 			//ゲームインスタンスの生成
@@ -54,6 +54,7 @@ public class ChallengeServlet extends HttpServlet {
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
 			int section = game.getQuizCount();
+			System.out.println("     getQuizCount() : " + section);
 			Quiz quiz = game.getQuizzes().get(section);
 
 			//リクエストサーブレットへ
@@ -98,11 +99,12 @@ public class ChallengeServlet extends HttpServlet {
 
 			//次の問題を取得
 			game = SetNextQuizLogic.execute(randomIdList, game);
+			
 
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
 
-			//リクエストサーブレットへ
+			//リクエストスコープへ
 			section = game.getQuizCount();
 			Quiz nextQuiz = game.getQuizzes().get(section);
 			String question = nextQuiz.getQuestionMsg();
@@ -116,6 +118,8 @@ public class ChallengeServlet extends HttpServlet {
 			request.setAttribute("button3", button3);
 			request.setAttribute("button4", button4);
 
+			//セッションスコープへ
+			session.setAttribute(VarNames.game.name(), game);
 			//quiz.jspへ
 			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
 		} else {
