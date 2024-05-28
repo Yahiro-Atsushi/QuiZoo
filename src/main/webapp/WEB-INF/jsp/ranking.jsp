@@ -27,7 +27,7 @@
                                 <th>順位</th>
                                 <th>プレイヤー名</th>
                                 <th>正解数</th>
-                                <th>詳細</th>
+                                <th>日付</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,12 +36,7 @@
                                     <td><p>${i}位</p></td>
                                     <td><p>${journalPort[i - 1].userName}さん</p></td>
                                     <td><p>${journalPort[i - 1].correctCount}問</p></td>
-                                    <td>
-                                        <form action="JournalServlet" method="post">
-                                            <input type="hidden" name="historyId" value="${journalPort[i - 1].journalId}">
-                                            <input type="submit" value="詳細を見る">
-                                        </form>
-                                    </td>
+                                    <td><p><p>${journalPort[i - 1].playDate}</p></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
