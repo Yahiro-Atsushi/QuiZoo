@@ -32,39 +32,44 @@ public class GameServlet extends HttpServlet {
 		System.out.println(new Date() +" / " + "GameServlet.doGet activate.");
 		HttpSession session = request.getSession();
 		Game game = (Game) session.getAttribute(VarNames.game.name());
-
+		RequestDispatcher rdp;
+		
 		/* --------gameがnullなら初回の処理-------- */
 		if (game == null) {
 			
 			//難易度選択画面からリクエストスコープに格納されている
 			String gameMode = request.getParameter(VarNames.gameMode.name());
 			GameMode mode = SetGameModeLogic.execute(gameMode);
-			System.out.println(mode);
+			System.out.println("request gameMode is " + mode);
 			
 			//なければメイン画面からのリクエスト。セッションスコープから取り出す。
 			if (mode == null) {
 				mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
 			}
-			//それでもnullの場合は本当に想定外なのでTESTモード
+			//ここでnullorCHALLENGEの場合は本当に想定外
 			if (mode == null) {
-				mode = GameMode.TEST;
+				rdp = request.getRequestDispatcher("/MainServlet");
+				rdp.forward(request, response);
+			}else if(mode == GameMode.CHALLENGE) {
+				rdp = request.getRequestDispatcher("/ChallengeServlet");
+				rdp.forward(request, response);
 			}
-
+			
 			//履歴表示する際に引き継いでおいたほうがいいのでセッションスコープに格納する
 			session.setAttribute(VarNames.gameMode.name(), mode);
 			game = SetGameLogic.execute(mode);
 		}
+		
 		/* --------初回の処理終了-------- */
 
 		session.setAttribute(VarNames.game.name(), game);
-		RequestDispatcher rdp;
 
 		/* --------ここから継続用の処理開始-------- */
 
 		/* --------クイズが全問終わっているか判定-------- */
 		/* ----10問終えるまではクイズ画面へ遷移する際の処理 ---- */
 		if (game.getQuizCount() < game.getMode().getQuizNum()) {
-
+			
 			//次の問題を取得
 			int next = game.getQuizCount() + 1;
 			game.setQuizCount(next);

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import businessObject.SetGameModeLogic;
 import entity.GameMode;
 import entity.VarNames;
 
@@ -30,8 +31,8 @@ public class ChallengeModeFilter extends HttpFilter implements Filter {
 		
 		GameMode mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
 		if(mode == null) {
-			
-			mode = (GameMode)httpRequest.getAttribute(VarNames.gameMode.name());
+			String param = httpRequest.getParameter(VarNames.gameMode.name());
+			mode = SetGameModeLogic.execute(param);
 		}
 		
 		if(mode == GameMode.CHALLENGE) {
