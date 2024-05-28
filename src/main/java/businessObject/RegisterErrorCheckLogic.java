@@ -20,6 +20,10 @@ public class RegisterErrorCheckLogic {
 		if (inputPass == null || inputPass.isEmpty())
 			passError = "パスワードが入力されていません。";
 		
+		if(!DataCheck.isValidPass(inputPass)) {
+			passError = "4文字以上12文字以下の英数字を入力してください。";
+		}
+		
 		if(userName != null) 
 			userDoubleError = "ユーザー名が重複しています。";
 
