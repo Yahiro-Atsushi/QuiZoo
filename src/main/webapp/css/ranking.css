@@ -47,7 +47,7 @@
         background-color: #f9f9f9;
         text-align: left;
         margin: 10px 0;
-        word-wrap: break-word; 
+        word-wrap: break-word; /* テキストの折り返しを設定 */
     }
 
     .question-item p {
@@ -74,17 +74,17 @@
 
     .btn-return {
         display: inline-block;
-        padding: 10px 20px; 
-        background-color: #007bff; 
-        color: #fff; 
-        border: none; 
-        border-radius: 5px; 
-        cursor: pointer; 
-        transition: background-color 0.3s;
+        padding: 10px 20px; /* ボタンのパディングを追加 */
+        background-color: #007bff; /* ボタンの背景色を指定 */
+        color: #fff; /* ボタンのテキスト色を指定 */
+        border: none; /* ボタンの枠線を削除 */
+        border-radius: 5px; /* ボタンの角丸を設定 */
+        cursor: pointer; /* カーソルをポインターに設定 */
+        transition: background-color 0.3s; /* ボタンのホバーエフェクトを追加 */
     }
 
     .btn-return:hover {
-        background-color: #0056b3; 
+        background-color: #0056b3; /* ボタンのホバーエフェクト時の背景色を指定 */
     }
 
     .sidebar {
@@ -125,7 +125,7 @@
     }
 
     .logout-link {
-        margin-top: auto; 
+        margin-top: auto; /* ログアウトリンクを下端に配置 */
     }
 
     .logout-link a {
@@ -152,11 +152,11 @@
     th, td {
         border: 1px solid #0a0303;
         padding: 10px;
-        text-align: center; 
-        vertical-align: middle; 
+        text-align: center; /* テキストを中央揃え */
+        vertical-align: middle; /* 垂直方向の中央揃え */
     }
 
     form {
-        margin: 0; 
-        padding: 0; 
+        margin: 0; /* フォームのマージンをリセット */
+        padding: 0; /* フォームのパディングをリセット */
     }
