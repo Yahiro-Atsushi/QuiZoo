@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+/* 背景 */
+body {
+    margin: auto;
+    padding: 0;
+    background-image:  url('../image/QuiZoo_Logout.jpg');
+    justify-content: center;
+    align-items: center;
+    background-size: 1350px 650px;
+    background-repeat:no-repeat;
+}
+
+/* 見出し */
+.text-outline-shadow {
+    padding: 0.5em 10px;
+    color: #ebd937;
+    font-size:200%;
+    font-weight:900;
+    text-shadow: 
+      5px 5px 5px rgb(0, 128, 0),
+      -1px -1px 1px rgb(0, 128, 0),
+      -1px 1px 1px rgb(0, 128, 0),
+      1px -1px 1px rgb(0, 128, 0);
+      font-size: 120px;
+      margin: 0px;
+      align-items: center;
+      line-height: 200px;
+
+  }
+  /* 文字、ログアウト*/
+  .text-outline-shadow_logout {
+    padding: 0.5em 10px;
+    color: #128807;
+    font-size:200%;
+    font-weight:900;
+    text-shadow: 
+      1px 1px 1px rgb(247, 243, 17),
+      -1px -1px 1px  rgb(247, 243, 17),
+      -1px 1px 1px  rgb(247, 243, 17),
+      1px -1px 1px  rgb(247, 243, 17);
+      font-size: 40px;
+      margin: -30px;
+  }
+
+  /* 文字、thankyou*/
+  .text-outline-shadow_thankyou {
+    padding: 0.5em 10px;
+    color: #ebd937;
+    font-size:200%;
+    font-weight:900;
+    text-shadow: 
+      1px 1px 1px rgb(0, 128, 0),
+      -1px -1px 1px rgb(0, 128, 0),
+      -1px 1px 1px rgb(0, 128, 0),
+      1px -1px 1px rgb(0, 128, 0);
+      font-size: 25px;
+      margin: 10px;
+      align-items: center;
+ }
+
+  /* ボタンの枠内の色*/
+  .button003 a {
+    background: rgba(247, 243, 17, 0.904);
+    border-radius: 50px;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    margin:  auto;
+    max-width: 75px;
+    padding: 10px 28px;
+    font-weight: 7px;
+    color: #1690e2;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+}
+/* ボタンに触れた時の文字色*/
+.button003 a:hover {
+    background: #4eeb1ecc;
+    color: #FFF;
+}
+
+/* ボタン内の矢印 > */
+.button003 a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #313131;
+    border-right: 3px solid #313131;
+    transform: rotate(-138deg) translateY(-40%);
+    position: absolute;
+    top: 40%;
+    left: 14px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+
+/* ボタンに触れた時の>ボタンの色*/
+.button003 a:hover:after {
+    border-color: #313131;
+}

@@ -11,7 +11,7 @@
         }
 .quiz-container {
     text-align: center;
-    background-color: rgb(247, 203, 109);
+   background-color: rgba(247, 203, 109, 0.842);
     padding: 40px 60px;
     border-radius: 10px;
     border: 1px solid;
@@ -135,8 +135,9 @@ h1 {
             flex: 1;
             padding: 20px;
             display: flex;
-            background-image: url('../image/QuiZoo_Journal.png');
+            background-image: url('../image/QuiZoo_JournalList.jpg');
             flex-direction: column;
             justify-content: center;
             align-items: center;
+             background-size: 1350px 650px;
         }

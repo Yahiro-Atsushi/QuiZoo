@@ -3,7 +3,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../image/QuiZoo_Result.png');
+    background-image: url('../image/QuiZoo_Result.jpg');
+    background-size:1350px 680px;
+    background-repeat:no-repeat;
+    align-items: center;
 }
 
 .quiz-container {
