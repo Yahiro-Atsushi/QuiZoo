@@ -88,10 +88,10 @@ public class QuizDao {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM ? ;" ;
+				+ "FROM "
+				+ mode.getQuizTable() + " ;" ;
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -129,10 +129,10 @@ public class QuizDao {
 		String sql = ""
 				+ "SELECT "
 				+ " id "
-				+ "FROM ? ;";
+				+ "FROM "
+				+ mode.getQuizTable() + " ;";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -158,12 +158,11 @@ public class QuizDao {
 				+ "SELECT "
 				+ " id "
 				+ "FROM "
-				+ " ? "
+				+ mode.getQuizTable() + " "
 				+ "ORDER BY "
 				+ " RANDOM();";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 			System.out.print("     randomId[");
 			while (rs.next()) {
