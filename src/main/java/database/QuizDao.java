@@ -37,11 +37,9 @@ public class QuizDao {
 				+ "FROM "
 				+ mode.getQuizTable() + " "
 				+ "WHERE "
-				+ " id = ? ;";
+				+ " id = " + randomId + " ;";
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
-			ps.setString(1, randomId);
-			
 			ResultSet rs = ps.executeQuery();
 
 			final int BUTTON_START_INDEX = 1;
