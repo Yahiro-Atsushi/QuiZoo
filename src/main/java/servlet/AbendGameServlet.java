@@ -12,17 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.JspAddress;
 
-/**
- * Servlet implementation class AbendGameServlet
- */
 @WebServlet("/AbendGameServlet")
 public class AbendGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
-		
+		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
+
 		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.ABEND_GAME.getAddress());
 		rdp.forward(request, response);
 	}

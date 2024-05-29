@@ -14,31 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import entity.JspAddress;
 import entity.VarNames;
 
-/**
- * Servlet implementation class LogoutServlet
- */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
-		//LogoutFilterに処理を委譲
-//		//セッションスコープ破棄
-//		request.getSession().invalidate();
-		
+		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
+
 		/* --------アプリケーションスコープからユーザー名を破棄-------- */
 		ServletContext application = getServletContext();
 		application.removeAttribute(VarNames.userName.name());
 		/* --------処理終了-------- */
-		
-		//ログアウト画面へフォワード
-		RequestDispatcher rdp = 
-				request.getRequestDispatcher(JspAddress.LOGOUT.getAddress());
-		rdp.forward(request, response);
-		
-	}
 
+		//ログアウト画面へフォワード
+		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.LOGOUT.getAddress());
+		rdp.forward(request, response);
+
+	}
 
 }

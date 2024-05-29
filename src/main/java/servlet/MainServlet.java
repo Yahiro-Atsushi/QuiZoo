@@ -18,16 +18,16 @@ import entity.VarNames;
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
+
 		HttpSession session = request.getSession();
-		
+
 		Object parameter = session.getAttribute(VarNames.gameIsAbone.name());
-		if(parameter != null){
-			boolean gameIsABone = (boolean)parameter;
+		if (parameter != null) {
+			boolean gameIsABone = (boolean) parameter;
 			String gameIsABoneErrorMsg = GameErrorMsgLogic.execute(gameIsABone);
 			request.setAttribute(VarNames.gameErrorMsg.name(), gameIsABoneErrorMsg);
 		}
@@ -35,5 +35,4 @@ public class MainServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.MAIN.getAddress());
 		dispatcher.forward(request, response);
 	}
-
 }

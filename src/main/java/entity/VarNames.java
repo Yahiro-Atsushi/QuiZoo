@@ -19,6 +19,8 @@ public enum VarNames {
 	gameIsAbone, /* boolean */
 	gameErrorMsg, /* GameErrorMsg */
 	answerCount, /* int */
-	isInProgress; /* boolean */
+	isInProgress, /* boolean */
+	journalPort, /* List<JournalPort> */
+	result; /* Map<Integer, String> */
 
 }

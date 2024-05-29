@@ -13,20 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import entity.JspAddress;
 import entity.Game;
+import entity.JspAddress;
 import entity.VarNames;
 
-/**
- * Servlet implementation class SelectGameModeServlet
- */
 @WebServlet("/SelectGameModeServlet")
 public class SelectGameModeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
+		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
 		request.setAttribute(VarNames.easy.name(), EASY);
 		request.setAttribute(VarNames.normal.name(), NORMAL);
 		request.setAttribute(VarNames.hard.name(), HARD);
@@ -38,31 +35,30 @@ public class SelectGameModeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(new Date() +" / " + getServletName() + ".doPost activate.");
-		
+		System.out.println(new Date() + " / " + getServletName() + ".doPost activate.");
+
 		String isContinue = request.getParameter("action");
 		String continueStr = "つづきから";
 		String beginStr = "はじめから";
 		String address = "/MainServlet";
-		
+
 		if (isContinue != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("isInProgress", true);
-			
-			if(isContinue.equals(continueStr)) {
+
+			if (isContinue.equals(continueStr)) {
 				//続行の処理
-				session.setAttribute("isInProgress", true);
-				Game game = (Game)session.getAttribute(VarNames.game.name());
+				session.setAttribute(VarNames.isInProgress.name(), true);
+				Game game = (Game) session.getAttribute(VarNames.game.name());
 				int section = game.getQuizCount();
-				if(section > 0) {
+				if (section > 0) {
 					game.setQuizCount(section - 1);
 				}
 				session.setAttribute(VarNames.gameMode.name(), game.getMode());
 				address = "/GameServlet";
 			}
-			
-			if(isContinue.equals(beginStr)) {
-				session.setAttribute("isInProgress", false);
+
+			if (isContinue.equals(beginStr)) {
+				session.setAttribute(VarNames.isInProgress.name(), false);
 				session.removeAttribute(VarNames.game.name());
 				session.removeAttribute(VarNames.gameMode.name());
 				session.removeAttribute(VarNames.randomIdList.name());
