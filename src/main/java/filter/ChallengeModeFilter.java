@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import businessObject.SetGameModeLogic;
-import entity.Game;
 import entity.GameMode;
 import entity.VarNames;
 
@@ -23,43 +22,43 @@ import entity.VarNames;
  * Servlet Filter implementation class ChallengeModeFilter
  */
 public class ChallengeModeFilter extends HttpFilter implements Filter {
-       
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		/* --------チャレンジモードならChallengeServletへ遷移-------- */
-		System.out.println(new Date() +" / " + "ChallengeModeFilter.doFilter activate.");
-		HttpServletRequest httpRequest = (HttpServletRequest)request;
+		System.out.println(new Date() + " / " + "ChallengeModeFilter.doFilter activate.");
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
 		RequestDispatcher rdp;
-		Game game = (Game)session.getAttribute(VarNames.game.name());
-		GameMode mode = (GameMode)session.getAttribute(VarNames.gameMode.name());
-		if(mode == null) {
-			String param = httpRequest.getParameter(VarNames.gameMode.name());
+//		Game game = (Game) session.getAttribute(VarNames.game.name());
+		GameMode mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
+		String param = httpRequest.getParameter(VarNames.gameMode.name());
+		if (param == null || param.isEmpty()) {
 			mode = SetGameModeLogic.execute(param);
 		}
 		
-		if(mode == GameMode.CHALLENGE) {
+		if (mode == GameMode.CHALLENGE) {
 			System.out.println("チャレンジモードへ移行します。");
 			rdp = request.getRequestDispatcher("/ChallengeServlet");
 			rdp.forward(request, response);
 			return;
 		}
-		
-		if(game != null) {
-			if(game.getMode() == GameMode.CHALLENGE) {
-				rdp = request.getRequestDispatcher("/ChallengeServlet");
-				rdp.forward(request, response);
-				return;
-			}
-			
-		}
-		
+
+//		if (game != null) {
+//			if (game.getMode() == GameMode.CHALLENGE) {
+//				rdp = request.getRequestDispatcher("/ChallengeServlet");
+//				rdp.forward(request, response);
+//				return;
+//			}
+//		}
+
 		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}
-	
+
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
