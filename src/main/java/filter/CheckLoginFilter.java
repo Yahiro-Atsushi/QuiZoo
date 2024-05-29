@@ -32,13 +32,13 @@ public class CheckLoginFilter extends HttpFilter implements Filter {
 		ServletContext application = request.getServletContext();
 		String userName = (String) application.getAttribute(VarNames.userName.name());
 		if (userName == null || userName.isEmpty()) {
-			System.out.println("ユーザー名がnullです。トップ画面へ遷移");
+			System.out.println("     ユーザー名がnullです。トップ画面へ遷移");
 			HttpServletRequest HttpRequest = (HttpServletRequest) request;
 			RequestDispatcher rdp = HttpRequest.getRequestDispatcher(JspAddress.INDEX.getAddress());
 			rdp.forward(HttpRequest, response);
 			return;
 		}else {
-			System.out.println("ユーザー名取得：" + userName);
+			System.out.println("     ユーザー名取得：" + userName);
 		}
 		
 		chain.doFilter(request, response);
