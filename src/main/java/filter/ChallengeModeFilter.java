@@ -33,7 +33,7 @@ public class ChallengeModeFilter extends HttpFilter implements Filter {
 //		Game game = (Game) session.getAttribute(VarNames.game.name());
 		GameMode mode = (GameMode) session.getAttribute(VarNames.gameMode.name());
 		String param = httpRequest.getParameter(VarNames.gameMode.name());
-		if (param == null || param.isEmpty()) {
+		if (!(param == null || param.isEmpty())) {
 			mode = SetGameModeLogic.execute(param);
 		}
 		

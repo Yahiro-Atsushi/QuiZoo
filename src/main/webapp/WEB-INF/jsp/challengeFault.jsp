@@ -10,7 +10,7 @@
 <body>
 <div class="quiz-container">    
     <h1>チャレンジ終了!</h1>
-    <h2>正解数<c:out value="${answerCount}" /></h2><br>
+    <h2>正解数 <c:out value="${answerCount}" /></h2><br>
     <div class="talking-left">
         <p>また挑戦してね</p>
     </div>

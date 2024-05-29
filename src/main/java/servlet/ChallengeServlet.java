@@ -90,6 +90,8 @@ public class ChallengeServlet extends HttpServlet {
 		if (isCorrect) {
 			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
 			if (randomIdList == null || randomIdList.isEmpty()) {
+				int answerCount = game.getQuizCount() - 1;
+				request.setAttribute(VarNames.answerCount.name(), answerCount);
 				session.removeAttribute(VarNames.game.name());
 				session.removeAttribute(VarNames.randomIdList.name());
 				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
@@ -100,7 +102,6 @@ public class ChallengeServlet extends HttpServlet {
 			//次の問題を取得
 			game = SetNextQuizLogic.execute(randomIdList, game);
 			
-
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
 
@@ -129,7 +130,9 @@ public class ChallengeServlet extends HttpServlet {
 			ServletContext application = getServletContext();
 			String userName = (String) application.getAttribute(VarNames.userName.name());
 			SetChallengeJournalLogic.execute(userName, game);
-
+			/* ---------------- */
+			int answerCount = game.getQuizCount() - 1;
+			request.setAttribute(VarNames.answerCount.name(), answerCount);
 			session.removeAttribute(VarNames.game.name());
 			session.removeAttribute(VarNames.randomIdList.name());
 			/* --------処理終了-------- */
