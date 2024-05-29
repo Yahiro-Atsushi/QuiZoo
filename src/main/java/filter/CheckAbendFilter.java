@@ -39,18 +39,18 @@ public class CheckAbendFilter extends HttpFilter implements Filter {
 		System.out.println("     game is " + game);
 		System.out.println("     request mode is " + reqMode);
 		System.out.println("     session mode is " + sesMode);
-		boolean isInProgress = (boolean)session.getAttribute("isInProgress");
+		boolean isInProgress = (boolean)session.getAttribute(VarNames.isInProgress.name());
 		String address = null;
 		
 		if(isInProgress) {
-			System.out.println("in progress.");
+			System.out.println("　　　　　in progress.");
 			if(game == null && sesMode == null) {
 				System.out.println("game & mode is null.");
 //				forward(request, response, "/SelectGameModeServlet");
 //				return;
 			}
 		}else {
-			System.out.println("not in progress.");
+			System.out.println("　　　　　not in progress.");
 			if(game == null && reqMode == null && sesMode == null) {
 				System.out.println("game & mode is null.");
 				address = "/SelectGameModeServlet";

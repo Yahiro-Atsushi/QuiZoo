@@ -14,6 +14,9 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/*
+ * ゲーム中かどうかのフラグ[isInProgress]をtrueにするフィルター
+ */
 @WebFilter({"/JudgeServlet", "/TimeOutServlet"})
 public class SetInProgressFilter extends HttpFilter implements Filter {
        

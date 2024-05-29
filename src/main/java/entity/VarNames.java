@@ -18,6 +18,7 @@ public enum VarNames {
 	challenge, /* String */
 	gameIsAbone, /* boolean */
 	gameErrorMsg, /* GameErrorMsg */
-	answerCount; /* int */
+	answerCount, /* int */
+	isInProgress; /* boolean */
 
 }
