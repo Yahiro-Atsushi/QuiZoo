@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="title">難易度を選択してね</div>
+        <div class="title">難易度を選択してゲームスタートします！</div>
         <form is="modeForm" action="GameServlet">
             <button type="submit" name="gameMode" 
             		value="<c:out value='${easy}'/>" 
