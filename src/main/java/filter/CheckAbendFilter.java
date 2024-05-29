@@ -19,13 +19,15 @@ import entity.Game;
 import entity.GameMode;
 import entity.VarNames;
 
-/**
- * Servlet Filter implementation class CheckAbendFilter
+/*
+ *  前回のゲームが異常終了したか検知する機能 
+ *  セッションスコープにGameインスタンスが存在し、かつゲーム中フラグがfalseの場合に起動される。
  */
 public class CheckAbendFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println(new Date() +" / " + "CheckAbendFilter.doFilter activate.");
+		
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpSession session = httpRequest.getSession();
 		

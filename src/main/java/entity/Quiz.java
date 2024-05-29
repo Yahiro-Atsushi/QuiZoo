@@ -15,8 +15,8 @@ public class Quiz implements Serializable {
 	private String id; // クイズID
 	private String questionMsg; // 問題文
 	private String answer; // 回答
-	private Map<Integer, String> buttons; // key:選択肢の番号(ボタンの番号) ・value:選択肢文
-	private Map<Integer, String> buttonTexts; // key: ・ value:答えの解説
+	private Map<Integer, String> buttons; // key:選択肢の番号(ボタンの番号) value:選択肢文
+	private Map<Integer, String> buttonTexts; // key:選択肢の番号 value:答えの解説
 
 	// コンストラクタ
 	public Quiz(String id, String questionMsg, String answer,

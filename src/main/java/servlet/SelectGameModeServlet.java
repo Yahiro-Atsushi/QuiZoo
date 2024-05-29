@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import entity.Address;
+import entity.JspAddress;
 import entity.Game;
 import entity.VarNames;
 
@@ -32,7 +32,7 @@ public class SelectGameModeServlet extends HttpServlet {
 		request.setAttribute(VarNames.hard.name(), HARD);
 		request.setAttribute(VarNames.challenge.name(), CHALLENGE);
 
-		RequestDispatcher rdp = request.getRequestDispatcher(Address.SELECT_GAMEMODE.getAddress());
+		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.SELECT_GAMEMODE.getAddress());
 		rdp.forward(request, response);
 	}
 

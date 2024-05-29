@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Address;
+import entity.JspAddress;
 
 /**
  * Servlet implementation class AbendGameServlet
@@ -23,7 +23,7 @@ public class AbendGameServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		
-		RequestDispatcher rdp = request.getRequestDispatcher(Address.ABEND_GAME.getAddress());
+		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.ABEND_GAME.getAddress());
 		rdp.forward(request, response);
 	}
 

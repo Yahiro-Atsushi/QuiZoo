@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Address;
+import entity.JspAddress;
 
 /**
  * Servlet implementation class WelcomeServlet
@@ -22,7 +22,7 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		
-		RequestDispatcher rdp = request.getRequestDispatcher(Address.INDEX.getAddress());
+		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.INDEX.getAddress());
 		rdp.forward(request, response);
 		
 	}

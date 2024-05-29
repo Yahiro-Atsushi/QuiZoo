@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import businessObject.ResultLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.Game;
 
 @WebServlet("/ResultServlet")
@@ -32,7 +32,7 @@ public class ResultServlet extends HttpServlet {
 		//---------------------------------------------------//
 		
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.RESULT.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.RESULT.getAddress());
 		dispatcher.forward(request, response);
 
 	}

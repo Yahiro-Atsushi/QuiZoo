@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import businessObject.LoginErrorCheckLogic;
 import businessObject.LoginLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.LoginUserErrorMessage;
 import entity.User;
 import entity.VarNames;
@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher(Address.REGISTER.getAddress());
+				request.getRequestDispatcher(JspAddress.REGISTER.getAddress());
 		dispatcher.forward(request, response);
 		
 	}
@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 			
 			// indexにフォワード
 			RequestDispatcher dispatcher =
-					request.getRequestDispatcher(Address.INDEX.getAddress());
+					request.getRequestDispatcher(JspAddress.INDEX.getAddress());
 			dispatcher.forward(request, response);
 			
 			/* --------処理終了-------- */
@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 
 			// main画面にフォワード
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher(Address.MAIN.getAddress());
+					request.getRequestDispatcher(JspAddress.MAIN.getAddress());
 			dispatcher.forward(request, response);
 			
 			/* --------処理終了-------- */

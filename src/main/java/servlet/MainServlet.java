@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import businessObject.GameErrorMsgLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.VarNames;
 
 @WebServlet("/MainServlet")
@@ -32,7 +32,7 @@ public class MainServlet extends HttpServlet {
 			request.setAttribute(VarNames.gameErrorMsg.name(), gameIsABoneErrorMsg);
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.MAIN.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.MAIN.getAddress());
 		dispatcher.forward(request, response);
 	}
 

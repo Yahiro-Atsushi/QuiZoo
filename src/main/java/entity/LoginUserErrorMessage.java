@@ -10,7 +10,10 @@ public class LoginUserErrorMessage implements Serializable {
 
 	@Override
 	public String toString() {
-		return "LoginUserErrorMessage [notUser=" + notUser + ", nameError=" + nameError + ", passError=" + passError
+		return "LoginUserErrorMessage ["
+				+ "notUser=" + notUser + ", "
+				+ "nameError=" + nameError + ", "
+				+ "passError=" + passError
 				+ "]";
 	}
 

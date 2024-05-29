@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.ChoiceButtonTextLogic;
 import businessObject.JudgeLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.Game;
 
 @WebServlet("/TimeOutServlet")
@@ -41,7 +41,7 @@ public class TimeOutServlet extends HttpServlet {
 		// -------------------------------------------//
 
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.TIMEOUT.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.TIMEOUT.getAddress());
 		dispatcher.forward(request, response);
 	}
 

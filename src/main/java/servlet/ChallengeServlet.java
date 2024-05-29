@@ -18,9 +18,9 @@ import businessObject.RemoveQuizId;
 import businessObject.SetChallengeJournalLogic;
 import businessObject.SetChallengeLogic;
 import businessObject.SetNextQuizLogic;
-import entity.Address;
 import entity.Game;
 import entity.GameMode;
+import entity.JspAddress;
 import entity.Quiz;
 import entity.VarNames;
 
@@ -62,7 +62,7 @@ public class ChallengeServlet extends HttpServlet {
 			session.setAttribute(VarNames.randomIdList.name(), randomIdList);
 			session.setAttribute(VarNames.game.name(), game);
 
-			RequestDispatcher rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
+			RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.QUIZ.getAddress());
 			rdp.forward(request, response);
 			return;
 		}
@@ -78,11 +78,11 @@ public class ChallengeServlet extends HttpServlet {
 		if (isCorrect) {
 			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
 			if (randomIdList == null || randomIdList.isEmpty()) {
-				int answerCount = game.getQuizCount() - 1;
+				int answerCount = game.getQuizCount();
 				request.setAttribute(VarNames.answerCount.name(), answerCount);
 				session.removeAttribute(VarNames.game.name());
 				session.removeAttribute(VarNames.randomIdList.name());
-				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
+				rdp = request.getRequestDispatcher(JspAddress.CHALLENGE_CLEAR.getAddress());
 				rdp.forward(request, response);
 				return;
 			}
@@ -99,7 +99,7 @@ public class ChallengeServlet extends HttpServlet {
 			//セッションスコープへ
 			session.setAttribute(VarNames.game.name(), game);
 			//quiz.jspへ
-			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
+			rdp = request.getRequestDispatcher(JspAddress.QUIZ.getAddress());
 		} else {
 			//ここは不正解の場合。
 
@@ -108,13 +108,13 @@ public class ChallengeServlet extends HttpServlet {
 			String userName = (String) application.getAttribute(VarNames.userName.name());
 			SetChallengeJournalLogic.execute(userName, game);
 			/* ---------------- */
-			int answerCount = game.getQuizCount() - 1;
+			int answerCount = game.getQuizCount();
 			request.setAttribute(VarNames.answerCount.name(), answerCount);
 			session.removeAttribute(VarNames.game.name());
 			session.removeAttribute(VarNames.randomIdList.name());
 			/* --------処理終了-------- */
 			
-			rdp = request.getRequestDispatcher(Address.CHALLENGE_FAULT.getAddress());
+			rdp = request.getRequestDispatcher(JspAddress.CHALLENGE_FAULT.getAddress());
 		}
 		rdp.forward(request, response);
 

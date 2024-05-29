@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import businessObject.GetJournalChallengeRankingLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.JournalPort;
 
 /**
@@ -28,9 +28,9 @@ public class ChallengeRankingServlet extends HttpServlet {
 		List<JournalPort> journalPortList = GetJournalChallengeRankingLogic.execute();
 		
 		request.setAttribute("journalPort", journalPortList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CHALLENGE_RANKING.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.CHALLENGE_RANKING.getAddress());
 		if(journalPortList.isEmpty()) {
-			dispatcher = request.getRequestDispatcher(Address.EMPTY_JOURNAL_LIST.getAddress());
+			dispatcher = request.getRequestDispatcher(JspAddress.EMPTY_JOURNAL_LIST.getAddress());
 		}
 		dispatcher.forward(request, response);
 	}

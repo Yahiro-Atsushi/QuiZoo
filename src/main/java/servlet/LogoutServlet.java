@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Address;
+import entity.JspAddress;
 import entity.VarNames;
 
 /**
@@ -35,7 +35,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		//ログアウト画面へフォワード
 		RequestDispatcher rdp = 
-				request.getRequestDispatcher(Address.LOGOUT.getAddress());
+				request.getRequestDispatcher(JspAddress.LOGOUT.getAddress());
 		rdp.forward(request, response);
 		
 	}

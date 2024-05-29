@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import entity.Address;
+import entity.JspAddress;
 import entity.VarNames;
 
 /**
@@ -43,7 +43,7 @@ public class CheckLoginFilter extends HttpFilter implements Filter {
 		if (userName == null || userName.isEmpty()) {
 			System.out.println("ユーザー名がnullです。トップ画面へ遷移");
 			HttpServletRequest HttpRequest = (HttpServletRequest) request;
-			RequestDispatcher rdp = HttpRequest.getRequestDispatcher(Address.INDEX.getAddress());
+			RequestDispatcher rdp = HttpRequest.getRequestDispatcher(JspAddress.INDEX.getAddress());
 			rdp.forward(HttpRequest, response);
 			return;
 		}else {

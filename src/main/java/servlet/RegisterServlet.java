@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import businessObject.RegisterErrorCheckLogic;
 import businessObject.RegisterLogic;
 import businessObject.TrimLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.RegisterErrorMessage;
 import entity.User;
 import entity.VarNames;
@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(new Date() +" / " + getServletName() + ".doGet activate.");
-		RequestDispatcher rdp = request.getRequestDispatcher(Address.REGISTER.getAddress());
+		RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.REGISTER.getAddress());
 		rdp.forward(request, response);
 		
 	}
@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 			
 			// register.jspにフォワード
 			RequestDispatcher dispatcher =
-					request.getRequestDispatcher(Address.REGISTER.getAddress());
+					request.getRequestDispatcher(JspAddress.REGISTER.getAddress());
 			dispatcher.forward(request, response);
 			
 			/* --------処理終了-------- */
@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
 
 			// main画面にフォワード
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher(Address.MAIN.getAddress());
+					request.getRequestDispatcher(JspAddress.MAIN.getAddress());
 			dispatcher.forward(request, response);
 			
 			/* --------処理終了-------- */

@@ -17,7 +17,7 @@ import businessObject.ResultLogic;
 import businessObject.SetGameLogic;
 import businessObject.SetGameModeLogic;
 import businessObject.SetJournalLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.Game;
 import entity.GameMode;
 import entity.Quiz;
@@ -102,7 +102,7 @@ public class GameServlet extends HttpServlet {
 			request.setAttribute("answer", answer);
 
 			//quiz.jspへ
-			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
+			rdp = request.getRequestDispatcher(JspAddress.QUIZ.getAddress());
 			/* ----リザルト画面へ遷移する際の処理---- */
 		} else {
 			//10問終えていたらresult.jspへ
@@ -119,7 +119,7 @@ public class GameServlet extends HttpServlet {
 			SetJournalLogic.execute(userName, game, result);
 
 			session.removeAttribute(VarNames.game.name());
-			rdp = request.getRequestDispatcher(Address.RESULT.getAddress());
+			rdp = request.getRequestDispatcher(JspAddress.RESULT.getAddress());
 		}
 		/* --------リクエスト先処理終了-------- */
 

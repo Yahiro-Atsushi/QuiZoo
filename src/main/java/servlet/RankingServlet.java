@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import businessObject.GetJournalLogic;
 import businessObject.GetJournalPortRankingLogic;
 import businessObject.SetGameModeLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.GameMode;
 import entity.Journal;
 import entity.JournalPort;
@@ -49,9 +49,9 @@ public class RankingServlet extends HttpServlet {
 		//----------------------------------------------//
 		
 		/* --------履歴がなかった場合にフォワード先を分岐する処理-------- */
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.JOURNAL_LIST.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.JOURNAL_LIST.getAddress());
 		if(journalPortList.isEmpty()) {
-			dispatcher = request.getRequestDispatcher(Address.EMPTY_JOURNAL_LIST.getAddress());
+			dispatcher = request.getRequestDispatcher(JspAddress.EMPTY_JOURNAL_LIST.getAddress());
 		}
 		/* --------処理終了-------- */
 		
@@ -70,7 +70,7 @@ public class RankingServlet extends HttpServlet {
 		//----------------------------------------------//
 				
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Address.JOURNAL.getAddress());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.JOURNAL.getAddress());
 		dispatcher.forward(request, response);
 	}
 

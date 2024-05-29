@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import businessObject.ChoiceButtonTextLogic;
 import businessObject.JudgeLogic;
-import entity.Address;
+import entity.JspAddress;
 import entity.Game;
 
 
@@ -48,11 +48,11 @@ public class JudgeServlet extends HttpServlet {
 		
 		// 正解だったらcorrect.jspへ
 		if (correct == true) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
+			RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.CORRECT.getAddress());
 			dispatcher.forward(request, response);
 		} else {
 		// 不正解ならnotCorrect.jsp
-			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
+			RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.NOT_CORRECT.getAddress());
 			dispatcher.forward(request, response);
 		}
 	
