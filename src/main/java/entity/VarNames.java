@@ -16,6 +16,8 @@ public enum VarNames {
 	normal,
 	hard,
 	challenge, 
-	gameIsAbone, gameErrorMsg;
+	gameIsAbone, 
+	gameErrorMsg, 
+	answerCount;
 
 }
