@@ -5,11 +5,11 @@ import java.io.Serializable;
 
 // 列挙型でゲームの難易度・テーブル・回答の選択肢の数を持つ
 public enum GameMode implements Serializable {
-	EASY("かんたん", " quiz_easy_view ", " journal_view ", 4, 10), 
-	NORMAL("普通", " quiz_normal_view ", " journal_view ", 4, 10), 
-	HARD("むずかしい", " quiz_hard_view ", " journal_view ", 4, 10),
-	CHALLENGE("チャレンジ", " quiz_challenge_view ", " ranking_challenge ", 4, 100),
-	TEST("テスト", " quiz_test_view ", " journal_view ", 4, 10);
+	EASY("かんたん", "quiz_easy_view", "journal_view", 4, 10), 
+	NORMAL("普通", "quiz_normal_view", "journal_view", 4, 10), 
+	HARD("むずかしい", "quiz_hard_view", "journal_view", 4, 10),
+	CHALLENGE("チャレンジ", "quiz_challenge_view", "ranking_challenge", 4, 100),
+	TEST("テスト", "quiz_test_view", "journal_view", 4, 10);
 
 	private String strLevel; // 難易度
 	private String quizTable; // データベースのテーブル名
