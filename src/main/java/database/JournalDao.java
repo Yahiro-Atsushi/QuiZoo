@@ -23,6 +23,16 @@ public class JournalDao {
 		this.con = connector.getConnection();
 	}
 
+	private String getColNameOfQuizId(int section) {
+		String colQuizId = "q" + section + "_id";
+		return colQuizId;
+	}
+
+	private String getColNameOfQuizResult(int section) {
+		String colQuizResult = "q" + section + "_result";
+		return colQuizResult;
+	}
+
 	public void insertGameResult(Map<String, String> journalMap) {
 		// journalMap<"列名", "値">
 		//Mapがnullなら処理せず戻る
@@ -92,64 +102,38 @@ public class JournalDao {
 		return;
 	}
 
-	private String getColNameOfQuizResult(int section) {
-		String colQuizResult = "q" + section + "_result";
-		return colQuizResult;
-	}
-
-	private String getColNameOfQuizId(int section) {
-		String colQuizId = "q" + section + "_id";
-		return colQuizId;
-	}
-
-	public List<JournalPort> selectJournalPortsByUserName(String userName) {
-		if (userName == null || userName.isEmpty()) {
-			System.out.println("userNameがnullです");
+	public void insertChallengeResult(String userName, int correctCount) {
+		//gameがnullなら処理せず戻る
+		if (userName == null) {
+			System.out.println(""
+					+ "JournalDao.insertChallengeResult(name, count)エラー:プレイヤーがnullです。");
+			return;
 		}
 
-		List<JournalPort> list = new ArrayList<>();
+		String sql = ""
+				+ "INSERT INTO "
+				+ " journal_challenge "
+				+ " (name, correct_count) "
+				+ "VALUES "
+				+ " (?, ?)";
 
-		String query = ""
-				+ "SELECT "
-				+ " id, "
-				+ " name, "
-				+ " mode, "
-				+ " correct_count, "
-				+ " play_date "
-				+ "FROM "
-				+ " journal_view "
-				+ "WHERE "
-				+ " name = ? "
-				+ "ORDER BY "
-				+ " id DESC;";
-
-		try (PreparedStatement ps = con.prepareStatement(query)) {
+		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			/* -------- ?に値を代入する処理 -------- */
 			ps.setString(1, userName);
-
-			ResultSet rs = ps.executeQuery();
-
-			while (rs.next()) {
-				String journalId = rs.getString(ColumnNames.id.name());
-				String name = rs.getString(ColumnNames.name.name());
-				String mode = rs.getString(ColumnNames.mode.name());
-				int correctCount = rs.getInt(ColumnNames.correct_count.name());
-				String playDate = rs.getString(ColumnNames.play_date.name());
-
-				JournalPort jp = new JournalPort(journalId, playDate, name, mode, correctCount);
-				list.add(jp);
-			}
-
+			ps.setInt(2, correctCount);
+			/* --------処理終了-------- */
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("JournalDao.selectJournalPortByUserName:SELECT文のエラー");
+			System.out.println("JournalDao.insertChallengeResult(name, count):INSERT文が不正に終了しました");
 		}
-
-		return list;
+		return;
 	}
 
 	public Journal findJournalById(String journalId) {
 		if (journalId == null || journalId.isEmpty()) {
 			System.out.println("journalIdがnullです");
+			return null;
 		}
 
 		Journal journal = null;
@@ -198,7 +182,57 @@ public class JournalDao {
 		return journal;
 	}
 
+	public List<JournalPort> selectJournalPortsByUserName(String userName) {
+		if (userName == null || userName.isEmpty()) {
+			System.out.println(" [JournalDao] userName is null.");
+			return null;
+		}
+
+		List<JournalPort> list = new ArrayList<>();
+
+		String query = ""
+				+ "SELECT "
+				+ " id, "
+				+ " name, "
+				+ " mode, "
+				+ " correct_count, "
+				+ " play_date "
+				+ "FROM "
+				+ " journal_view "
+				+ "WHERE "
+				+ " name = ? "
+				+ "ORDER BY "
+				+ " id DESC;";
+
+		try (PreparedStatement ps = con.prepareStatement(query)) {
+			ps.setString(1, userName);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String journalId = rs.getString(ColumnNames.id.name());
+				String name = rs.getString(ColumnNames.name.name());
+				String mode = rs.getString(ColumnNames.mode.name());
+				int correctCount = rs.getInt(ColumnNames.correct_count.name());
+				String playDate = rs.getString(ColumnNames.play_date.name());
+
+				JournalPort jp = new JournalPort(journalId, playDate, name, mode, correctCount);
+				list.add(jp);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("JournalDao.selectJournalPortByUserName:SELECT文のエラー");
+		}
+
+		return list;
+	}
+
 	public List<JournalPort> selectRankingByGameMode(GameMode mode) {
+		if (mode == null) {
+			System.out.println(" [JournalDao] mode is null.");
+			return null;
+		}
 
 		List<JournalPort> list = new ArrayList<>();
 
@@ -238,34 +272,6 @@ public class JournalDao {
 		}
 
 		return list;
-	}
-
-	public void insertChallengeResult(String userName, int correctCount) {
-		//gameがnullなら処理せず戻る
-		if (userName == null) {
-			System.out.println(""
-					+ "JournalDao.insertChallengeResult(name, count)エラー:プレイヤーがnullです。");
-			return;
-		}
-
-		String sql = ""
-				+ "INSERT INTO "
-				+ " journal_challenge "
-				+ " (name, correct_count) "
-				+ "VALUES "
-				+ " (?, ?)";
-
-		try (PreparedStatement ps = con.prepareStatement(sql)) {
-			/* -------- ?に値を代入する処理 -------- */
-			ps.setString(1, userName);
-			ps.setInt(2, correctCount);
-			/* --------処理終了-------- */
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("JournalDao.insertChallengeResult(name, count):INSERT文が不正に終了しました");
-		}
-		return;
 	}
 
 	public List<JournalPort> selectChallengeRanking() {
