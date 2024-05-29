@@ -52,13 +52,13 @@ public class CheckAbendFilter extends HttpFilter implements Filter {
 		}else {
 			System.out.println("　　　　　not in progress.");
 			if(game == null && reqMode == null && sesMode == null) {
-				System.out.println("game & mode is null.");
+				System.out.println("     game & mode is null.");
 				address = "/SelectGameModeServlet";
 				forward(httpRequest, response, address);
 				return;
 			}
 			if(game != null) {
-				System.out.println("game is not null.");
+				System.out.println("     game is not null.");
 				address = "/AbendGameServlet";
 				forward(httpRequest, response, address);
 				return;

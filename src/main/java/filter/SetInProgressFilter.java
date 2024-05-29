@@ -14,6 +14,8 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import entity.VarNames;
+
 /*
  * ゲーム中かどうかのフラグ[isInProgress]をtrueにするフィルター
  */
@@ -25,7 +27,7 @@ public class SetInProgressFilter extends HttpFilter implements Filter {
 		System.out.println(new Date() +" / " + "SetInProgressFilter.doFilter activate.");
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpSession session = httpRequest.getSession();
-		session.setAttribute("isInProgress", true);
+		session.setAttribute(VarNames.isInProgress.name(), true);
 		
 		chain.doFilter(request, response);
 	}
