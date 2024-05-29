@@ -12,7 +12,7 @@ import java.util.TreeMap;
 import entity.GameMode;
 import entity.Quiz;
 
-public class QuizDao  {
+public class QuizDao {
 	private DatabaseConnector connector;
 	private Connection con;
 
@@ -21,22 +21,31 @@ public class QuizDao  {
 		this.connector = DatabaseConnector.getInstance();
 		this.con = connector.getConnection();
 	}
-	
+
 	// IDを指定しクイズを検索する
 	public Quiz selectQuizById(GameMode mode, String randomId) {
+		if (mode == null || randomId == null || randomId.isEmpty()) {
+			System.out.println(" [QuizDao] args is null.");
+			return null;
+		}
+
 		Quiz quiz = null;
 		// SELECT文を実行
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getQuizTable() + " "
+				+ "FROM ? "
 				+ "WHERE "
-				+ " id = " + randomId + " ;";
+				+ " id = ? ;";
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
-			ResultSet rs = ps.executeQuery();
+			ps.setString(1, mode.getQuizTable());
+			ps.setString(2, randomId);
 			
-			quiz = new Quiz(null,null,null,null,null);
+			ResultSet rs = ps.executeQuery();
+
+			final int BUTTON_START_INDEX = 1;
+			final int BUTTON_MAX_INDEX = mode.getButtonSize();
 
 			while (rs.next()) {
 				// レコードを取得
@@ -45,7 +54,8 @@ public class QuizDao  {
 				String answer = rs.getString(ColumnNames.answer.name());
 				Map<Integer, String> buttons = new TreeMap<>();
 				Map<Integer, String> buttonTexts = new TreeMap<>();
-				for (int i = 1; i <= mode.getButtonSize(); i++) {
+
+				for (int i = BUTTON_START_INDEX; i <= BUTTON_MAX_INDEX; i++) {
 					// 選択肢分ループ
 					//button1, button2, button3, button4
 					String button = "button" + i;
@@ -68,15 +78,20 @@ public class QuizDao  {
 	}
 
 	public List<Quiz> selectAllQuiz(GameMode mode) {
-
+		if (mode == null) {
+			System.out.println(" [QuizDao] args is null.");
+			return null;
+		}
+		
 		List<Quiz> allQuiz = new ArrayList<>();
 
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM " + mode.getQuizTable();
+				+ "FROM ? ;" ;
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -114,14 +129,14 @@ public class QuizDao  {
 		String sql = ""
 				+ "SELECT "
 				+ " id "
-				+ "FROM " + mode.getQuizTable();
+				+ "FROM ? ;";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				String id = rs.getString(ColumnNames.id.name());
-
 				allQuizId.add(id);
 			}
 		} catch (SQLException e) {
@@ -133,19 +148,22 @@ public class QuizDao  {
 	}
 
 	public List<String> selectAllChallengeQuizIds(GameMode mode) {
-		
+		if(mode == null) {
+			System.out.println(" [QuizDao] args is null.");
+			return null;
+		}
 		List<String> list = new ArrayList<>();
-		
+
 		String sql = ""
 				+ "SELECT "
 				+ " id "
 				+ "FROM "
-				+ mode.getQuizTable()
+				+ " ? "
 				+ "ORDER BY "
-				+ " RANDOM()";
+				+ " RANDOM();";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
-			
+			ps.setString(1, mode.getQuizTable());
 			ResultSet rs = ps.executeQuery();
 			System.out.print("     randomId[");
 			while (rs.next()) {

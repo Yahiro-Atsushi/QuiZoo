@@ -6,11 +6,13 @@ import entity.User;
 public class LoginLogic {
 	
 	public static User execute(String inputName, String inputPass) {
-		if(!DataCheck.isInputName(inputName)) {
+		
+		//ここでは未入力かどうかだけ判定し、入力されていればデータベースと照合する。
+		if(!DataCheck.isInput(inputName)) {
 			return null;
 		}
 		
-		if(!DataCheck.isInputName(inputPass)) {
+		if(!DataCheck.isInput(inputPass)) {
 			return null;
 		}
 		

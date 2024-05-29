@@ -10,7 +10,7 @@ public class DataCheck {
 		if (!isValidPass(inputPass)) {
 			return false;
 		}
-
+		
 		return true;
 	}
 	
