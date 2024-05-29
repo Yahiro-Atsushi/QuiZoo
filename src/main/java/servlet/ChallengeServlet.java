@@ -53,21 +53,9 @@ public class ChallengeServlet extends HttpServlet {
 			game = SetNextQuizLogic.execute(randomIdList, game);
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
-			int section = game.getQuizCount();
-			System.out.println("     getQuizCount() : " + section);
-			Quiz quiz = game.getQuizzes().get(section);
 
-			//リクエストサーブレットへ
-			String question = quiz.getQuestionMsg();
-			String button1 = quiz.getButtons().get(1);
-			String button2 = quiz.getButtons().get(2);
-			String button3 = quiz.getButtons().get(3);
-			String button4 = quiz.getButtons().get(4);
-			request.setAttribute("question", question);
-			request.setAttribute("button1", button1);
-			request.setAttribute("button2", button2);
-			request.setAttribute("button3", button3);
-			request.setAttribute("button4", button4);
+			//リクエストサーブレットへ格納
+			request = setNextQuizToScope(request, game);
 
 			//セッションスコープへ格納
 			session.setAttribute(VarNames.gameMode.name(), mode);//最初のみ
@@ -105,19 +93,8 @@ public class ChallengeServlet extends HttpServlet {
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
 
-			//リクエストスコープへ
-			section = game.getQuizCount();
-			Quiz nextQuiz = game.getQuizzes().get(section);
-			String question = nextQuiz.getQuestionMsg();
-			String button1 = nextQuiz.getButtons().get(1);
-			String button2 = nextQuiz.getButtons().get(2);
-			String button3 = nextQuiz.getButtons().get(3);
-			String button4 = nextQuiz.getButtons().get(4);
-			request.setAttribute("question", question);
-			request.setAttribute("button1", button1);
-			request.setAttribute("button2", button2);
-			request.setAttribute("button3", button3);
-			request.setAttribute("button4", button4);
+			//リクエストスコープへ次のクイズを格納する
+			request = setNextQuizToScope(request, game);
 
 			//セッションスコープへ
 			session.setAttribute(VarNames.game.name(), game);
@@ -141,6 +118,28 @@ public class ChallengeServlet extends HttpServlet {
 		}
 		rdp.forward(request, response);
 
+	}
+
+	private HttpServletRequest setNextQuizToScope(HttpServletRequest request, Game game) {
+
+		int section = game.getQuizCount();
+		System.out.println("     getQuizCount() : " + section);
+		Quiz quiz = game.getQuizzes().get(section);
+		
+		String question = quiz.getQuestionMsg();
+		String answer = quiz.getAnswer();
+		String button1 = quiz.getButtons().get(1);
+		String button2 = quiz.getButtons().get(2);
+		String button3 = quiz.getButtons().get(3);
+		String button4 = quiz.getButtons().get(4);
+		request.setAttribute("question", question);
+		request.setAttribute("answer", answer);
+		request.setAttribute("button1", button1);
+		request.setAttribute("button2", button2);
+		request.setAttribute("button3", button3);
+		request.setAttribute("button4", button4);
+		
+		return request;
 	}
 
 	//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
