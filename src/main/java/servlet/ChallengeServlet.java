@@ -78,6 +78,11 @@ public class ChallengeServlet extends HttpServlet {
 		if (isCorrect) {
 			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
 			if (randomIdList == null || randomIdList.isEmpty()) {
+				/* --------データベースにゲームの結果を入力する処理-------- */
+				ServletContext application = getServletContext();
+				String userName = (String) application.getAttribute(VarNames.userName.name());
+				SetChallengeJournalLogic.execute(userName, game);
+				/* ---------------- */
 				int answerCount = game.getQuizCount();
 				request.setAttribute(VarNames.answerCount.name(), answerCount);
 				session.removeAttribute(VarNames.game.name());
