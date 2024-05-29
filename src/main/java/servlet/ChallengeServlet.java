@@ -113,7 +113,8 @@ public class ChallengeServlet extends HttpServlet {
 			String userName = (String) application.getAttribute(VarNames.userName.name());
 			SetChallengeJournalLogic.execute(userName, game);
 			/* ---------------- */
-			int answerCount = game.getQuizCount();
+			final int FAULT_QUIZ_NUM = 1;
+			int answerCount = game.getQuizCount() - FAULT_QUIZ_NUM;
 			request.setAttribute(VarNames.answerCount.name(), answerCount);
 			session.removeAttribute(VarNames.game.name());
 			session.removeAttribute(VarNames.randomIdList.name());
