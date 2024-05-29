@@ -18,22 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import entity.JspAddress;
 import entity.VarNames;
 
-/**
- * Servlet Filter implementation class CheckLoginFilter
+/*
+ * ログインしているか判定するフィルター
+ * セッションスコープのuserNameに値が入ってるかどうか
  */
 @WebFilter({ "/WelcomeServlet", "/MainServlet", "/SelectGameModeServlet" , "/GameServlet", "/JournalServlet" })
 public class CheckLoginFilter extends HttpFilter implements Filter {
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println(new Date() +" / " + "CheckLoginFilter.doFilter activate.");
@@ -53,11 +44,9 @@ public class CheckLoginFilter extends HttpFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
-
+	
+	public void destroy() {
+	}
 }
