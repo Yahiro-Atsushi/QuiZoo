@@ -34,13 +34,13 @@ public class QuizDao {
 		String sql = ""
 				+ "SELECT "
 				+ " * "
-				+ "FROM ? "
+				+ "FROM "
+				+ mode.getQuizTable() + " "
 				+ "WHERE "
 				+ " id = ? ;";
 
 		try (PreparedStatement ps = this.con.prepareStatement(sql)) {
-			ps.setString(1, mode.getQuizTable());
-			ps.setString(2, randomId);
+			ps.setString(1, randomId);
 			
 			ResultSet rs = ps.executeQuery();
 
