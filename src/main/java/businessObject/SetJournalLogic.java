@@ -13,9 +13,9 @@ public class SetJournalLogic {
 	public static void execute(String userName, Game game, Map<Integer, String> resultMap) {
 		//まずデータチェック
 		final int QUIZ_SIZE = game.getQuizzes().size(); 
-		final int QUIZ_VALUE = 10; 
+		final int QUIZ_VALUE = game.getMode().getQuizNum(); 
 		
-		//クイズ数は10問のはずなので、違ったら処理せず帰る。
+		//クイズテーブルの問題数と出題された問題数が違ったら処理せず帰る。
 		if(QUIZ_SIZE != QUIZ_VALUE) {
 			System.out.println("SetJournalLogic.Execute（）：問題数が不正です。");
 			return;

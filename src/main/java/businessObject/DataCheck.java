@@ -1,8 +1,8 @@
 package businessObject;
 
 public class DataCheck {
-
-	public static boolean isInputName(String data) {
+	
+	public static boolean isValidName(String data) {
 		if (!isInput(data)) {
 			return false;
 		}
@@ -48,7 +48,7 @@ public class DataCheck {
 		return true;
 	}
 
-	private static boolean isInput(String data) {
+	public static boolean isInput(String data) {
 		if (data != null && data.length() != 0) {
 			return true;
 		}

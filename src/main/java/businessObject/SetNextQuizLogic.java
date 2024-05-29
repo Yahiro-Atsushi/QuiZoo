@@ -20,15 +20,12 @@ public class SetNextQuizLogic {
 		System.out.println(" " + nextQuiz);
 		//カウントを進める。
 		game.setQuizCount(nextSection);
-		
+
 		//ゲームインスタンスに格納
 		game.getQuizzes().put(nextSection, nextQuiz);
 		//後の処理で正解判定を格納するが、時間切れ処理の兼ね合いもありここでfalseとおく。
 		game.getIsCorrects().put(nextSection, false);
-		
-		//同じクイズを呼び出さないようにする処理
-		randomIdList.remove(randomId);
-		
+
 		return game;
 	}
 

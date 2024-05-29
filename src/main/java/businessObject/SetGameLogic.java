@@ -13,8 +13,8 @@ public class SetGameLogic {
 		//ゲームインスタンス生成
 		Game game = new Game(mode);
 
-		//リストをランダムな10個のidが並んだリストを作る
-		//このロジック、データベースのORDER BY句で「Random()」と並び順を指定すれば必要ないことに気づいた
+		//ランダムな10個のidが並んだリストを作る
+		//このロジックはデータベースのORDER BY句で「Random()」と並び順を指定すれば必要ないことに気づいた
 		//宣言
 		int count = mode.getQuizNum(); //問題数分格納するためのカウント
 
