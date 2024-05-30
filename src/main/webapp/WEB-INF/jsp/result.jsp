@@ -10,9 +10,6 @@
 <body>
     <div class="quiz-container">
         <h1>解答結果</h1>
-        <div class="link-container">
-            	<a href="MainServlet">TOPへ</a>
-        </div>
         <div class="columns-container">
             <div class="column">
                 <c:forEach var="i" begin="1" end="5">
@@ -38,6 +35,9 @@
                     </div>
                 </c:forEach>
             </div>
+        <div class="link-container">
+          	<a href="MainServlet">TOPへ</a>
+        </div>
         </div>
     </div>
 </body>
