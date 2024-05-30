@@ -28,6 +28,18 @@ h1 {
     color: #343a40;
 }
 
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #0a0303;
+        padding: 10px;
+        text-align: center; /* テキストを中央揃え */
+        vertical-align: middle; /* 垂直方向の中央揃え */
+    }
+
 .date {
     font-size: 1.2em;
     margin-bottom: 30px;

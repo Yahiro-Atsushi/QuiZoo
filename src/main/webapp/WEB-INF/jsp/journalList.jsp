@@ -22,9 +22,9 @@
         </div>
         <div class="content">
             <div class="quiz-container">
-                <h1>履歴一覧</h1>
+                <h2>10問クイズの履歴一覧</h2>
                 <div class="history-list" style="text-align: center;">
-                    <table style="margin: 0 auto;">
+                    <table style="margin: auto;">
                         <thead>
                             <tr>
                                 <th>日付</th>

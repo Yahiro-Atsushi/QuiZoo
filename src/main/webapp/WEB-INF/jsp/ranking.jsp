@@ -21,6 +21,7 @@
         </div>
         <div class="content">
             <div class="quiz-container">
+            <h2>ランキング（チャレンジモード）</h2>
                 <div class="history-list" style="text-align: center;">
                     <table style="margin: auto;">
                         <thead>
