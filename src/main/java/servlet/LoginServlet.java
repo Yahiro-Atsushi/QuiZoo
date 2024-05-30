@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import businessObject.LoginErrorCheckLogic;
 import businessObject.LoginLogic;
+import businessObject.TrimLogic;
 import entity.JspAddress;
 import entity.LoginUserErrorMessage;
 import entity.User;
@@ -35,7 +36,10 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(new Date() + " / " + getServletName() + ".doPost activate.");
 		String name = request.getParameter(VarNames.name.name());
 		String pass = request.getParameter(VarNames.pass.name());
-
+		
+		name = TrimLogic.execute(name);
+		pass = TrimLogic.execute(pass);
+		
 		// ログイン処理
 		User user = LoginLogic.execute(name, pass);
 
