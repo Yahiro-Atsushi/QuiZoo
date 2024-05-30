@@ -13,11 +13,11 @@
         <div>再開しますか？</div>
         <form action="SelectGameModeServlet" method="post">
             <input type="hidden" name="action" value="はじめから">
-            <button type="submit" value="はじめから"></button>
+            <button type="submit" value="はじめから">はじめから</button>
 		</form>
 		<form action="SelectGameModeServlet" method="post">
             <input type="hidden" name="action" value="つづきから">
-            <button type="submit" value="つづきから"></button>
+            <button type="submit" value="つづきから">つづきから</button>
 		</form>
         
         <a href="MainServlet">メニューに戻る</a>
