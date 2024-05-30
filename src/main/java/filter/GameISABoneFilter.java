@@ -34,7 +34,7 @@ public class GameISABoneFilter extends HttpFilter implements Filter {
 			String address = "/MainServlet";
 			if(game == null) {
 				RequestDispatcher rdp = request.getRequestDispatcher(address);
-				session.setAttribute(VarNames.gameIsAbone.name(), true);
+				httpRequest.setAttribute(VarNames.gameIsAbone.name(), true);
 				rdp.forward(httpRequest, response);
 			}
 		

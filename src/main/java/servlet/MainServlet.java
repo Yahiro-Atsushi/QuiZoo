@@ -23,9 +23,7 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println(new Date() + " / " + getServletName() + ".doGet activate.");
 
-		HttpSession session = request.getSession();
-
-		Object parameter = session.getAttribute(VarNames.gameIsAbone.name());
+		Object parameter = request.getAttribute(VarNames.gameIsAbone.name());
 		if (parameter != null) {
 			boolean gameIsABone = (boolean) parameter;
 			String gameIsABoneErrorMsg = GameErrorMsgLogic.execute(gameIsABone);
