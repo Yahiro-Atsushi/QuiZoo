@@ -142,7 +142,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-         background-size: 1250px 670px;
+         background-size: auto;
     }
 
     table {
