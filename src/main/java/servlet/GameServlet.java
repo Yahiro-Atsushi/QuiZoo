@@ -110,6 +110,11 @@ public class GameServlet extends HttpServlet {
 		rdp.forward(request, response);
 
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
 	private HttpServletRequest setQuizToRequest(HttpServletRequest request, Game game) {
 		

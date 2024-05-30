@@ -40,7 +40,7 @@
 							<c:out value="${quizMap[i].answer}" />
 						</p>
 						<p>
-							<strong>あなたの解答:</strong>
+							<strong>あなたの解答結果:</strong>
 						</p>
 						<span class="${question.correct ? 'correct' : 'incorrect'}">
 							<c:out value="${journal.quizResults[i]}" />

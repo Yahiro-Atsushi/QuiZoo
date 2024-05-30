@@ -12,11 +12,14 @@
         <div class="title">前回のゲーム中に異常終了したようです</div>
         <div>再開しますか？</div>
         <form action="SelectGameModeServlet" method="post">
-            <button type="submit" 
-            		name="action" value="はじめから">はじめから</button>
-            <button type="submit"
-            		name="action" value="つづきから">つづきから</button>
-        </form>
+            <input type="hidden" name="action" value="はじめから">
+            <button type="submit" value="はじめから"></button>
+		</form>
+		<form action="SelectGameModeServlet" method="post">
+            <input type="hidden" name="action" value="つづきから">
+            <button type="submit" value="つづきから"></button>
+		</form>
+        
         <a href="MainServlet">メニューに戻る</a>
     </div>
 </body>

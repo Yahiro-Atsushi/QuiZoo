@@ -122,6 +122,11 @@ public class ChallengeServlet extends HttpServlet {
 		rdp.forward(request, response);
 
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
 	private HttpServletRequest setNextQuizToScope(HttpServletRequest request, Game game) {
 		int section = game.getQuizCount();
