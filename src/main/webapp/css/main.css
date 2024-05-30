@@ -21,7 +21,7 @@ body {
     flex-direction: column;
 }
 
-.sidebar h1 {
+.sidebar h2 {
     margin-bottom: 30px;
 }
 
@@ -48,6 +48,15 @@ body {
     color: #17a2b8;
 }
 
+.logout-link {
+    margin-top: auto; /* ログアウトリンクを下端に配置 */
+}
+
+.logout-link a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+}
 .logout-link {
     margin-top: auto; /* ログアウトリンクを下端に配置 */
 }
