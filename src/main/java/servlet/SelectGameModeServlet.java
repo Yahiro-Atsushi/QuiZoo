@@ -49,6 +49,14 @@ public class SelectGameModeServlet extends HttpServlet {
 				//続行の処理
 				session.setAttribute(VarNames.isInProgress.name(), true);
 				Game game = (Game) session.getAttribute(VarNames.game.name());
+				
+				if(game == null) {
+					RequestDispatcher rdp = request.getRequestDispatcher(address);
+					request.setAttribute(VarNames.gameIsAbone.name(), true);
+					rdp.forward(request, response);
+					return;
+				}
+			
 				int section = game.getQuizCount();
 				if (section > 0) {
 					game.setQuizCount(section - 1);
