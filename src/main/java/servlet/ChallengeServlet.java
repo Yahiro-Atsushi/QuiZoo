@@ -18,15 +18,12 @@ import businessObject.RemoveQuizId;
 import businessObject.SetChallengeJournalLogic;
 import businessObject.SetChallengeLogic;
 import businessObject.SetNextQuizLogic;
-import entity.Address;
 import entity.Game;
 import entity.GameMode;
+import entity.JspAddress;
 import entity.Quiz;
 import entity.VarNames;
 
-/**
- * Servlet implementation class ChallengeServlet
- */
 @WebServlet("/ChallengeServlet")
 public class ChallengeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,8 +35,8 @@ public class ChallengeServlet extends HttpServlet {
 		Game game = (Game) session.getAttribute(VarNames.game.name());
 		@SuppressWarnings("unchecked")
 		List<String> randomIdList = (List<String>) session.getAttribute(VarNames.randomIdList.name());
-		System.out.println("     randdomIdList : " + randomIdList);
-		
+		System.out.println("     randomIdList : " + randomIdList);
+
 		/* --------gameがnullなら初回の処理-------- */
 		if (game == null) {
 			System.out.println("     初回の処理開始");
@@ -53,28 +50,16 @@ public class ChallengeServlet extends HttpServlet {
 			game = SetNextQuizLogic.execute(randomIdList, game);
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
-			int section = game.getQuizCount();
-			System.out.println("     getQuizCount() : " + section);
-			Quiz quiz = game.getQuizzes().get(section);
 
-			//リクエストサーブレットへ
-			String question = quiz.getQuestionMsg();
-			String button1 = quiz.getButtons().get(1);
-			String button2 = quiz.getButtons().get(2);
-			String button3 = quiz.getButtons().get(3);
-			String button4 = quiz.getButtons().get(4);
-			request.setAttribute("question", question);
-			request.setAttribute("button1", button1);
-			request.setAttribute("button2", button2);
-			request.setAttribute("button3", button3);
-			request.setAttribute("button4", button4);
+			//リクエストサーブレットへ格納
+			request = setNextQuizToScope(request, game);
 
 			//セッションスコープへ格納
 			session.setAttribute(VarNames.gameMode.name(), mode);//最初のみ
 			session.setAttribute(VarNames.randomIdList.name(), randomIdList);
 			session.setAttribute(VarNames.game.name(), game);
 
-			RequestDispatcher rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
+			RequestDispatcher rdp = request.getRequestDispatcher(JspAddress.QUIZ.getAddress());
 			rdp.forward(request, response);
 			return;
 		}
@@ -90,38 +75,33 @@ public class ChallengeServlet extends HttpServlet {
 		if (isCorrect) {
 			//リストに何も存在しない場合は問題切れでチャレンジ全問正解
 			if (randomIdList == null || randomIdList.isEmpty()) {
+				/* --------データベースにゲームの結果を入力する処理-------- */
+				ServletContext application = getServletContext();
+				String userName = (String) application.getAttribute(VarNames.userName.name());
+				SetChallengeJournalLogic.execute(userName, game);
+				/* ---------------- */
+				int answerCount = game.getQuizCount();
+				request.setAttribute(VarNames.answerCount.name(), answerCount);
 				session.removeAttribute(VarNames.game.name());
 				session.removeAttribute(VarNames.randomIdList.name());
-				rdp = request.getRequestDispatcher(Address.CHALLENGE_CLEAR.getAddress());
+				rdp = request.getRequestDispatcher(JspAddress.CHALLENGE_CLEAR.getAddress());
 				rdp.forward(request, response);
 				return;
 			}
 
 			//次の問題を取得
 			game = SetNextQuizLogic.execute(randomIdList, game);
-			
 
 			//IDリストから取得したクイズのIDを削除
 			randomIdList = RemoveQuizId.execute(game, randomIdList);
 
-			//リクエストスコープへ
-			section = game.getQuizCount();
-			Quiz nextQuiz = game.getQuizzes().get(section);
-			String question = nextQuiz.getQuestionMsg();
-			String button1 = nextQuiz.getButtons().get(1);
-			String button2 = nextQuiz.getButtons().get(2);
-			String button3 = nextQuiz.getButtons().get(3);
-			String button4 = nextQuiz.getButtons().get(4);
-			request.setAttribute("question", question);
-			request.setAttribute("button1", button1);
-			request.setAttribute("button2", button2);
-			request.setAttribute("button3", button3);
-			request.setAttribute("button4", button4);
+			//リクエストスコープへ次のクイズを格納する
+			request = setNextQuizToScope(request, game);
 
 			//セッションスコープへ
 			session.setAttribute(VarNames.game.name(), game);
 			//quiz.jspへ
-			rdp = request.getRequestDispatcher(Address.QUIZ.getAddress());
+			rdp = request.getRequestDispatcher(JspAddress.QUIZ.getAddress());
 		} else {
 			//ここは不正解の場合。
 
@@ -129,50 +109,43 @@ public class ChallengeServlet extends HttpServlet {
 			ServletContext application = getServletContext();
 			String userName = (String) application.getAttribute(VarNames.userName.name());
 			SetChallengeJournalLogic.execute(userName, game);
-
+			/* ---------------- */
+			final int FAULT_QUIZ_NUM = 1;
+			int answerCount = game.getQuizCount() - FAULT_QUIZ_NUM;
+			request.setAttribute(VarNames.answerCount.name(), answerCount);
 			session.removeAttribute(VarNames.game.name());
 			session.removeAttribute(VarNames.randomIdList.name());
 			/* --------処理終了-------- */
-			
-			rdp = request.getRequestDispatcher(Address.CHALLENGE_FAULT.getAddress());
+
+			rdp = request.getRequestDispatcher(JspAddress.CHALLENGE_FAULT.getAddress());
 		}
 		rdp.forward(request, response);
 
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
-	//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	//			throws ServletException, IOException {
-	//		String input = (String) request.getParameter("input");
-	//
-	//		HttpSession session = request.getSession();
-	//		Game game = (Game) session.getAttribute("game");
-	//		int section = game.getQuizCount();
-	//
-	//		String answer = game.getQuizzes().get(section).getAnswer();
-	//		String text = ChoiceButtonTextLogic.execute(game, input);
-	//
-	//		request.setAttribute("answer", answer);
-	//		request.setAttribute("text", text);
-	//
-	//		// -------------------------------------------//
-	//		// 正解かどうか照合するロジック
-	//		game = JudgeLogic.execute(game, input);
-	//		session.setAttribute("game", game);
-	//		System.out.println(input);
-	//		System.out.println(game);
-	//		boolean isCollect = game.getIsCorrects().get(section);
-	//		// -------------------------------------------//
-	//
-	//		// 正解だったらcorrect.jspへ
-	//		if (isCollect) {
-	//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.CORRECT.getAddress());
-	//			dispatcher.forward(request, response);
-	//		} else {
-	//			// 不正解ならnotCorrect.jsp
-	//			RequestDispatcher dispatcher = request.getRequestDispatcher(Address.NOT_CORRECT.getAddress());
-	//			dispatcher.forward(request, response);
-	//		}
-	//
-	//	}
+	private HttpServletRequest setNextQuizToScope(HttpServletRequest request, Game game) {
+		int section = game.getQuizCount();
+		System.out.println("     getQuizCount() : " + section);
+		Quiz quiz = game.getQuizzes().get(section);
 
+		String question = quiz.getQuestionMsg();
+		String answer = quiz.getAnswer();
+		String button1 = quiz.getButtons().get(1);
+		String button2 = quiz.getButtons().get(2);
+		String button3 = quiz.getButtons().get(3);
+		String button4 = quiz.getButtons().get(4);
+		request.setAttribute("question", question);
+		request.setAttribute("answer", answer);
+		request.setAttribute("button1", button1);
+		request.setAttribute("button2", button2);
+		request.setAttribute("button3", button3);
+		request.setAttribute("button4", button4);
+
+		return request;
+	}
 }

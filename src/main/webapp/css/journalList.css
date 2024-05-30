@@ -28,6 +28,18 @@ h1 {
     color: #343a40;
 }
 
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #0a0303;
+        padding: 10px;
+        text-align: center; /* テキストを中央揃え */
+        vertical-align: middle; /* 垂直方向の中央揃え */
+    }
+
 .date {
     font-size: 1.2em;
     margin-bottom: 30px;
@@ -85,42 +97,51 @@ h1 {
     background-color: #0056b3; /* ボタンのホバーエフェクト時の背景色を指定 */
 }
 .sidebar {
-            width: 160px;
-            background-color: #343a40;
-            color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
+    width: 160px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
 
-        .sidebar h1 {
-            margin-bottom: 30px;
-        }
+.sidebar h2 {
+    margin-bottom: 30px;
+}
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
+.sidebar ul li {
+    margin-bottom: 10px;
+}
 
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1.2em;
-        }
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+}
 
-        .sidebar ul li a:hover {
-            color: #17a2b8;
-        }
+.sidebar ul li a:hover {
+    color: #17a2b8;
+}
 
+.logout-link {
+    margin-top: auto; /* ログアウトリンクを下端に配置 */
+}
+
+.logout-link a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+}
         .logout-link {
             margin-top: auto; /* ログアウトリンクを下端に配置 */
         }
@@ -139,5 +160,5 @@ h1 {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-             background-size: 1350px 650px;
+             background-size: 1350px 660px;
         }

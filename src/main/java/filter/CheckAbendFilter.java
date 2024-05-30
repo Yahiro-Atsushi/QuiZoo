@@ -19,13 +19,15 @@ import entity.Game;
 import entity.GameMode;
 import entity.VarNames;
 
-/**
- * Servlet Filter implementation class CheckAbendFilter
+/*
+ *  前回のゲームが異常終了したか検知する機能 
+ *  セッションスコープにGameインスタンスが存在し、かつゲーム中フラグがfalseの場合に起動される。
  */
 public class CheckAbendFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println(new Date() +" / " + "CheckAbendFilter.doFilter activate.");
+		
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpSession session = httpRequest.getSession();
 		
@@ -37,25 +39,28 @@ public class CheckAbendFilter extends HttpFilter implements Filter {
 		System.out.println("     game is " + game);
 		System.out.println("     request mode is " + reqMode);
 		System.out.println("     session mode is " + sesMode);
-		boolean isInProgress = (boolean)session.getAttribute("isInProgress");
+		boolean isInProgress = (boolean)session.getAttribute(VarNames.isInProgress.name());
+		String address = null;
 		
 		if(isInProgress) {
-			System.out.println("in progress.");
+			System.out.println("　　　　　in progress.");
 			if(game == null && sesMode == null) {
 				System.out.println("game & mode is null.");
 //				forward(request, response, "/SelectGameModeServlet");
 //				return;
 			}
 		}else {
-			System.out.println("not in progress.");
+			System.out.println("　　　　　not in progress.");
 			if(game == null && reqMode == null && sesMode == null) {
-				System.out.println("game & mode is null.");
-				forward(httpRequest, response, "/SelectGameModeServlet");
+				System.out.println("     game & mode is null.");
+				address = "/SelectGameModeServlet";
+				forward(httpRequest, response, address);
 				return;
 			}
 			if(game != null) {
-				System.out.println("game is not null.");
-				forward(httpRequest, response, "/AbendGameServlet");
+				System.out.println("     game is not null.");
+				address = "/AbendGameServlet";
+				forward(httpRequest, response, address);
 				return;
 			}
 		}

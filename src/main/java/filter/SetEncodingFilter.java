@@ -12,6 +12,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 
+/*
+ * 文字コードを指定するフィルター
+ */
 @WebFilter("/*")
 public class SetEncodingFilter extends HttpFilter implements Filter {
 

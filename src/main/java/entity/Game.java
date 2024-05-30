@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-	// ゲームの情報を所持するクラス
+// ゲームの情報を所持するクラス
 public class Game implements Serializable {
 	private int quizCount; // 問題数
 	private GameMode mode; // ゲームの難易度・テーブル名・解答の選択肢の数(列挙型)
@@ -20,6 +20,7 @@ public class Game implements Serializable {
 		this.quizzes = new LinkedHashMap<>();
 		this.isCorrects = new LinkedHashMap<>();
 	}
+
 	// 所持内容を返す
 	@Override
 	public String toString() {

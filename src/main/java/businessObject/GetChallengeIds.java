@@ -9,9 +9,9 @@ public class GetChallengeIds {
 
 	public static List<String> execute() {
 		GameMode mode = GameMode.CHALLENGE;
-		
+
 		QuizDao qDao = new QuizDao();
-		
+
 		return qDao.selectAllChallengeQuizIds(mode);
 	}
 

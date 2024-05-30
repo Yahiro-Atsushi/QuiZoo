@@ -10,7 +10,6 @@ public class JournalPort implements Serializable {
 	private String mode;
 	private int correctCount;
 
-
 	@Override
 	public String toString() {
 		return "JournalPort [journalId=" + journalId + ", playDate=" + playDate + ", userName=" + userName + ", mode="

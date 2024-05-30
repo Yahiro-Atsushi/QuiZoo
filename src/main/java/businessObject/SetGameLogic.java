@@ -13,10 +13,11 @@ public class SetGameLogic {
 		//ゲームインスタンス生成
 		Game game = new Game(mode);
 
-		//リストをランダムな10個のidが並んだリストを作る
+		//ランダムな10個のidが並んだリストを作る
+		//このロジックはデータベースのORDER BY句で「Random()」と並び順を指定すれば必要ないことに気づいた
 		//宣言
 		int count = mode.getQuizNum(); //問題数分格納するためのカウント
-		
+
 		//クイズテーブルの全Idを取得
 		QuizDao dao = new QuizDao();
 		List<String> allQuizIds = dao.selectAllQuizId(mode);
@@ -29,24 +30,24 @@ public class SetGameLogic {
 			String randomId = allQuizIds.get(randomIterator);
 			System.out.println("randomID:" + randomId);
 			Quiz quiz = dao.selectQuizById(mode, randomId);
-			
+
 			//取得したクイズを格納する。
 			game.getQuizzes().put(count, quiz);
-			
+
 			//クイズの結果は一旦falseで置く
 			game.getIsCorrects().put(count, false);
-			
+
 			//クイズを格納したのでカウントを減らす。
 			count--;
-			
+
 			//データベースに10問以上あれば、問題の重複を排除するために
 			//全IDリストから削除する
-			if(allQuizIds.size() >= mode.getQuizNum()) {
+			if (allQuizIds.size() >= mode.getQuizNum()) {
 				allQuizIds.remove(randomIterator);
 			}
 		}
 		//これで問題数分のクイズリストが格納された状態になる。
-		
+
 		return game;
 	}
 }

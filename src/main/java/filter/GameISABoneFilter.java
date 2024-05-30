@@ -18,8 +18,9 @@ import javax.servlet.http.HttpSession;
 import entity.Game;
 import entity.VarNames;
 
-/**
- * Servlet Filter implementation class GameISABoneFilter
+/*
+ * ゲームインスタンスに異常が発生した場合にメインサーブレットに遷移するフィルター
+ * 「戻る」とかを押されるとこいつの出番。
  */
 @WebFilter({"/JudgeServlet", "/TimeOutServlet"})
 public class GameISABoneFilter extends HttpFilter implements Filter {
@@ -33,7 +34,7 @@ public class GameISABoneFilter extends HttpFilter implements Filter {
 			String address = "/MainServlet";
 			if(game == null) {
 				RequestDispatcher rdp = request.getRequestDispatcher(address);
-				session.setAttribute(VarNames.gameIsAbone.name(), true);
+				httpRequest.setAttribute(VarNames.gameIsAbone.name(), true);
 				rdp.forward(httpRequest, response);
 			}
 		

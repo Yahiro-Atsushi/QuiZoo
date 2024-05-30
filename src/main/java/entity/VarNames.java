@@ -3,19 +3,24 @@ package entity;
 // 列挙型で属性名を所持するクラス
 // マジックワードを減らすのが目的
 public enum VarNames {
-	name, 
-	pass, 
-	loginErrorMsg, 
-	registerErrorMsg, 
-	userName, // 
-	gameMode,
-	game, 
-	quiz, 
-	randomIdList,
-	easy,
-	normal,
-	hard,
-	challenge, 
-	gameIsAbone, gameErrorMsg;
+	name, /* String */
+	pass, /* String */
+	loginErrorMsg, /* LoginErrorMsg */
+	registerErrorMsg, /* RegisterErrorMsg */
+	userName, /* String */
+	gameMode, /* GameMode */
+	game,  /* Game */
+	quiz, /* Quiz */
+	randomIdList, /* List<String> */
+	easy, /* String */
+	normal, /* String */
+	hard, /* String */
+	challenge, /* String */
+	gameIsAbone, /* boolean */
+	gameErrorMsg, /* GameErrorMsg */
+	answerCount, /* int */
+	isInProgress, /* boolean */
+	journalPort, /* List<JournalPort> */
+	result; /* Map<Integer, String> */
 
 }

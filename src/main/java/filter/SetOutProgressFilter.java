@@ -14,6 +14,11 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import entity.VarNames;
+
+/*
+ *  ゲーム中であることを示すフラグ[isInProgress]をfalseにするフィルター
+ */
 @WebFilter({"/WelcomeServlet", "/LoginServlet", "/RegisterServlet", "/MainServlet", "/ResultServlet"})
 public class SetOutProgressFilter extends HttpFilter implements Filter {
 
@@ -22,7 +27,7 @@ public class SetOutProgressFilter extends HttpFilter implements Filter {
 		System.out.println(new Date() +" / " + "SetOutProgressFilter.doFilter activate.");
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
-		session.setAttribute("isInProgress", false);
+		session.setAttribute(VarNames.isInProgress.name(), false);
 		
 		chain.doFilter(request, response);
 	}

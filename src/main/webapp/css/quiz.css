@@ -13,7 +13,7 @@ body {
 }
 .quiz-container {
     text-align: center;
-    background-color: rgb(247, 203, 109);
+    background-color: rgba(247, 203, 109, 0.829);
     border:  1px solid #050d16;
     padding: 40px 60px;
     border-radius: 10px;
