@@ -38,6 +38,7 @@ public class SelectGameModeServlet extends HttpServlet {
 		System.out.println(new Date() + " / " + getServletName() + ".doPost activate.");
 
 		String isContinue = request.getParameter("action");
+		System.out.println("     action is " + isContinue);
 		String continueStr = "つづきから";
 		String beginStr = "はじめから";
 		String address = "/MainServlet";
@@ -48,13 +49,28 @@ public class SelectGameModeServlet extends HttpServlet {
 			if (isContinue.equals(continueStr)) {
 				//続行の処理
 				session.setAttribute(VarNames.isInProgress.name(), true);
+				System.out.println("      Set SessionScope isInProgress.");
 				Game game = (Game) session.getAttribute(VarNames.game.name());
+				System.out.println("      Get SessionScope game.");
+				System.out.println(" 　    game is " + game);
+				if(game == null) {
+					RequestDispatcher rdp = request.getRequestDispatcher(address);
+					request.setAttribute(VarNames.gameIsAbone.name(), true);
+					rdp.forward(request, response);
+					return;
+				}
+			
 				int section = game.getQuizCount();
+				System.out.println("     section = " + section);
 				if (section > 0) {
 					game.setQuizCount(section - 1);
 				}
+				System.out.println("     section = " + section);
 				session.setAttribute(VarNames.gameMode.name(), game.getMode());
+				System.out.println("     Set SessionScope game.");
+				System.out.println(" game is " + game);
 				address = "/GameServlet";
+				System.out.println();
 			}
 
 			if (isContinue.equals(beginStr)) {
