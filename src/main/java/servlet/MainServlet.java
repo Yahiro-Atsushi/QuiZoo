@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import businessObject.GameErrorMsgLogic;
 import entity.JspAddress;
@@ -32,5 +31,10 @@ public class MainServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.MAIN.getAddress());
 		dispatcher.forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }

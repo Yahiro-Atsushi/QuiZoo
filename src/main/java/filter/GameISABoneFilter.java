@@ -33,9 +33,11 @@ public class GameISABoneFilter extends HttpFilter implements Filter {
 			Game game = (Game)session.getAttribute(VarNames.game.name());
 			String address = "/MainServlet";
 			if(game == null) {
+				System.out.println("     game is " + game);
 				RequestDispatcher rdp = request.getRequestDispatcher(address);
 				httpRequest.setAttribute(VarNames.gameIsAbone.name(), true);
 				rdp.forward(httpRequest, response);
+				return;
 			}
 		
 
