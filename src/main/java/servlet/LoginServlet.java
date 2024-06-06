@@ -52,7 +52,8 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute(VarNames.pass.name(), pass);
 
 			// indexにフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher(JspAddress.INDEX.getAddress());
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(JspAddress.INDEX.getAddress());
 			dispatcher.forward(request, response);
 
 			/* --------処理終了-------- */
